@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - RAOGY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #scrollToTop {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+        #scrollToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .touch-target {
+            min-width: 44px;
+            min-height: 44px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Header -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm py-4">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <a href="/" class="flex items-center gap-3 cursor-pointer">
+                    <img src="/images/logo.svg" alt="RAOGY Logo" class="w-10 h-10">
+                    <div class="text-2xl font-bold gradient-text">RAOGY</div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#home" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Home</a>
+                    <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">About</a>
+                    <a href="/#services" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Services</a>
+                    <a href="/#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Portfolio</a>
+                    <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Contact</a>
+                    
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    
+                    <a href="/#contact" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-lg">Hire Me</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button onclick="toggleMenu()" class="text-gray-700 dark:text-white p-2">
+                        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-800 w-full border-t border-gray-200 dark:border-slate-700 hidden">
+                <div class="flex flex-col p-4 space-y-2">
+                    <a href="/#home" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Home</a>
+                    <a href="/#about" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">About</a>
+                    <a href="/#services" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Services</a>
+                    <a href="/#portfolio" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Portfolio</a>
+                    <a href="/#contact" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 max-w-4xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Privacy Policy</h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">Last updated: December 8, 2025</p>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 space-y-8">
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Introduction</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Welcome to RAOGY's Privacy Policy. Your privacy is important to us. This policy explains how we collect, use, and protect your personal information when you visit our website or use our services.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Information We Collect</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    We may collect the following types of information:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                    <li><strong>Contact Information:</strong> Name, email address, phone number when you reach out to us</li>
+                    <li><strong>Usage Data:</strong> Information about how you interact with our website</li>
+                    <li><strong>Device Information:</strong> Browser type, IP address, operating system</li>
+                    <li><strong>Cookies:</strong> We use cookies to enhance your browsing experience and remember your preferences</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">How We Use Your Information</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    We use the collected information for:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                    <li>Providing and improving our services</li>
+                    <li>Responding to your inquiries and requests</li>
+                    <li>Communicating with you about projects and updates</li>
+                    <li>Analyzing website usage to enhance user experience</li>
+                    <li>Protecting against unauthorized access and ensuring security</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Data Protection</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Third-Party Services</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Our website may contain links to third-party services (social media, GitHub, etc.). We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Your Rights</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    You have the right to:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
+                    <li>Access your personal data</li>
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data</li>
+                    <li>Object to processing of your data</li>
+                    <li>Request data portability</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Cookies Policy</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    We use cookies and similar technologies to store your theme preferences (dark/light mode) and improve your browsing experience. You can control cookies through your browser settings.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Updates to This Policy</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last updated" date. We encourage you to review this policy periodically.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Contact Us</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    If you have any questions about this Privacy Policy, please contact us:
+                </p>
+                <div class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <p><strong>Email:</strong> <a href="mailto:raogyy@gmail.com" class="text-purple-600 dark:text-purple-400 hover:underline">raogyy@gmail.com</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/916300163216" target="_blank" class="text-purple-600 dark:text-purple-400 hover:underline">+91 6300163216</a></p>
+                    <p><strong>Website:</strong> <a href="https://raogy.com" class="text-purple-600 dark:text-purple-400 hover:underline">raogy.com</a></p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-600 dark:text-gray-400">
+                © <span id="year"></span> RAOGY. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 touch-target" aria-label="Scroll to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = localStorage.getItem('theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Scroll to Top Button
+        const scrollButton = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('show');
+            } else {
+                scrollButton.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>

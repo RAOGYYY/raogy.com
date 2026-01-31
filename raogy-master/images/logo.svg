@@ -1,0 +1,26 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#grad1)"/>
+  
+  <!-- Letter R with modern design -->
+  <path d="M 60 60 L 60 140 L 70 140 L 70 105 L 100 105 L 125 140 L 138 140 L 110 102 C 120 98 128 88 128 75 C 128 58 115 60 100 60 L 60 60 Z M 70 70 L 98 70 C 108 70 118 70 118 75 C 118 85 108 95 98 95 L 70 95 L 70 70 Z" fill="white"/>
+  
+  <!-- Decorative code brackets -->
+  <path d="M 35 85 L 30 90 L 30 110 L 35 115" stroke="url(#grad2)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 165 85 L 170 90 L 170 110 L 165 115" stroke="url(#grad2)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Bottom accent line -->
+  <line x1="60" y1="155" x2="140" y2="155" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>

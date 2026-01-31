@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAOGY - Professional Web Developer & Designer</title>
+    <meta name="description" content="RAOGY - Expert web developer specializing in modern, responsive websites. Custom web solutions, UI/UX design, and full-stack development services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        #scrollToTop {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+        #scrollToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        @keyframes bounce-up {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .mobile-menu-item {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+            .touch-target {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+      
+      <!-- Navbar -->
+      <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+          <a href="/" class="flex items-center gap-3 cursor-pointer">
+            <img src="/images/logo.svg" alt="RAOGY Logo" class="w-10 h-10">
+            <div class="text-2xl font-bold gradient-text">RAOGY</div>
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#home" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
+              Home
+            </a>
+            <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
+              About
+            </a>
+            <a href="/#services" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
+              Services
+            </a>
+            <a href="/#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
+              Portfolio
+            </a>
+            <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
+              Contact
+            </a>
+            
+            <!-- Theme Toggle -->
+            <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+              <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <svg id="theme-toggle-light-icon" class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            
+            <a href="/#contact" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-lg">
+              Hire Me
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden flex items-center gap-2">
+            <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
+              <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <button onclick="toggleMenu()" class="text-gray-700 dark:text-white p-2">
+              <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-800 w-full border-t border-gray-200 dark:border-slate-700 hidden">
+          <div class="flex flex-col p-4 space-y-2">
+            <a href="/#home" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Home</a>
+            <a href="/#about" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">About</a>
+            <a href="/#services" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Services</a>
+            <a href="/#portfolio" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Portfolio</a>
+            <a href="/#contact" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 dark:opacity-20 animate-blob"></div>
+        <div class="absolute top-40 left-10 w-72 h-72 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 dark:opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 dark:opacity-20 animate-blob animation-delay-4000"></div>
+
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <!-- Left Content -->
+            <div class="flex-1 text-center lg:text-left">
+              <div class="inline-block px-4 py-2 mb-6 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 text-purple-700 dark:text-purple-300 text-sm font-medium animate-fade-in-up">
+                👋 Hello, I'm a Web Developer
+              </div>
+              <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Hi, I'm <span class="gradient-text">RAOGY</span>
+              </h1>
+              <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
+                Full Stack Web Developer
+              </h2>
+              <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed">
+                I craft beautiful, modern websites and web applications that provide exceptional user experiences. 
+                Specializing in responsive design, performance optimization, and cutting-edge technologies.
+              </p>
+              <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                <button onclick="scrollToSection('portfolio')" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  View My Work 
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                <button onclick="scrollToSection('contact')" class="px-8 py-4 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-slate-600 rounded-full font-semibold transition-all shadow-lg">
+                  Get in Touch
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Content - Profile Image/Illustration -->
+            <div class="flex-1 flex justify-center lg:justify-end">
+              <div class="relative">
+                <div class="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-purple-400 via-blue-500 to-purple-600 p-1 shadow-2xl">
+                  <div class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                    <!-- Profile Image -->
+                    <img src="/images/raogy.jpg" alt="RAOGY - Web Developer" class="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <!-- Floating Elements -->
+                <div class="absolute -top-4 -right-4 bg-yellow-400 dark:bg-yellow-500 text-yellow-900 px-4 py-2 rounded-full font-bold shadow-lg animate-bounce">
+                  Available
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 bg-white dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-slate-700">
+            <div class="text-center">
+              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">100+</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Projects Completed</p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">5+</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Years Experience</p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">50+</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Happy Clients</p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">24/7</h3>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Support Available</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 bg-white dark:bg-slate-800/30">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Passionate Web Developer</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                With over 5 years of experience in web development, I specialize in creating modern, responsive, and user-friendly websites. 
+                My expertise spans across front-end and back-end technologies, ensuring seamless integration and optimal performance.
+              </p>
+              <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                I'm passionate about clean code, innovative design, and delivering solutions that exceed client expectations. 
+                Whether it's a simple landing page or a complex web application, I bring dedication and expertise to every project.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">React</span>
+                <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Node.js</span>
+                <span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">MongoDB</span>
+                <span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">JavaScript</span>
+                <span class="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">Tailwind CSS</span>
+                <span class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">Python</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div class="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-700/50">
+                <div class="text-4xl mb-3">🎨</div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">UI/UX Design</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Beautiful interfaces that users love</p>
+              </div>
+              <div class="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-700/50">
+                <div class="text-4xl mb-3">⚡</div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Performance</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Fast loading & optimized code</p>
+              </div>
+              <div class="bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 p-6 rounded-2xl border border-green-200 dark:border-green-700/50">
+                <div class="text-4xl mb-3">📱</div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Responsive</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Works on all devices seamlessly</p>
+              </div>
+              <div class="bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/20 dark:to-pink-800/20 p-6 rounded-2xl border border-pink-200 dark:border-pink-700/50">
+                <div class="text-4xl mb-3">🚀</div>
+                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Modern Tech</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Latest tools & frameworks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="py-20 bg-gradient-to-br from-gray-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Services</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
+            <p class="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
+              I offer comprehensive web development solutions tailored to your business needs
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Web Development</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Custom websites built with modern technologies like React, Next.js, and Node.js. Fast, secure, and SEO optimized.
+              </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Responsive Design</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Websites that look stunning on every device - from mobile phones to large desktop screens. Mobile-first approach.
+              </p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">E-Commerce</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Full-featured online stores with payment integration, inventory management, and admin dashboards.
+              </p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">UI/UX Design</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Beautiful, intuitive interfaces with exceptional user experience. Wireframing, prototyping, and design systems.
+              </p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Performance</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Speed optimization, code splitting, lazy loading, and caching strategies for lightning-fast websites.
+              </p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:-translate-y-2">
+              <div class="mb-6 w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Custom Solutions</h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Tailored web applications and APIs built to solve your specific business challenges and requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="py-20 bg-white dark:bg-slate-800/30 relative">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-2">My <span class="gradient-text">Portfolio</span></h2>
+              <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"></div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+              <button onclick="filterProjects('All')" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg">
+                All
+              </button>
+              <button onclick="filterProjects('Web Development')" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
+                Web Apps
+              </button>
+              <button onclick="filterProjects('E-Commerce')" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
+                E-Commerce
+              </button>
+              <button onclick="filterProjects('Landing Page')" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
+                Landing Pages
+              </button>
+            </div>
+          </div>
+
+          <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 0 - Paani Boss App -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-500 dark:border-blue-400" data-category="Mobile App">
+              <div class="aspect-video overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <a href="/paaniboss/" target="_blank" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <svg class="w-20 h-20 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="p-6">
+                <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider flex items-center gap-2">
+                  <span class="animate-pulse inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                  Mobile App - Live
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Paani Boss - RO Service Management</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Complete business management solution for RO water service shops with field tracking, AMC management & billing.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs">Flutter</span>
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">Supabase</span>
+                  <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs">GPS Tracking</span>
+                </div>
+                <a href="/paaniboss/" target="_blank" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-sm transition-colors">
+                  View App Details 
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="E-Commerce">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/1.webp" alt="E-Shop Pro" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-purple-600 dark:text-purple-400 text-sm font-semibold uppercase tracking-wider">E-Commerce</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">E-Shop Pro</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Full-featured e-commerce platform with payment integration and admin dashboard.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">React</span>
+                  <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs">Node.js</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="Web Development">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/2.webp" alt="Analytics Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider">Web Development</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Analytics Dashboard</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Real-time analytics dashboard with data visualization and reporting features.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">Next.js</span>
+                  <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs">Charts</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="Landing Page">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/3.webp" alt="Fitness Landing" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-green-600 dark:text-green-400 text-sm font-semibold uppercase tracking-wider">Landing Page</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Fitness Landing</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Modern landing page for fitness startup with smooth animations.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">HTML/CSS</span>
+                  <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-xs">JS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="Web Development">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/4.webp" alt="Real Estate Portal" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider">Web Development</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Real Estate Portal</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Property listing website with advanced search filters and map integration.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">React</span>
+                  <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs">Maps</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="Landing Page">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/5.webp" alt="Fashion Brand" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-pink-600 dark:text-pink-400 text-sm font-semibold uppercase tracking-wider">Landing Page</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Fashion Brand</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Elegant landing page for fashion brand with product showcase.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-xs">Tailwind</span>
+                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs">Animations</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-item group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-slate-700" data-category="Web Development">
+              <div class="aspect-video overflow-hidden">
+                <img src="/images/6.webp" alt="Corporate Website" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div class="p-6">
+                <span class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold uppercase tracking-wider">Web Development</span>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-2 mb-2">Corporate Website</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Professional corporate website for finance company with CMS.</p>
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-xs">WordPress</span>
+                  <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs">PHP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-20 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-700 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%221%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+          <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Ready to Start Your Project?</h2>
+          <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Let's turn your ideas into reality. I'm here to help you build something amazing that your users will love.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="scrollToSection('contact')" class="bg-white text-purple-600 px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
+              Get Started Now
+            </button>
+            <button onclick="scrollToSection('portfolio')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all">
+              View Portfolio
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 bg-white dark:bg-slate-800/30">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
+            <p class="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
+              Have a project in mind? Let's discuss how I can help bring your ideas to life.
+            </p>
+          </div>
+
+          <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <!-- Email Card -->
+              <a href="mailto:raogyy@gmail.com" class="group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-8 rounded-2xl border border-purple-200 dark:border-purple-700/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Email Me</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Send me an email anytime</p>
+                <p class="text-purple-600 dark:text-purple-400 font-medium">raogyy@gmail.com</p>
+              </a>
+
+              <!-- WhatsApp Card -->
+              <a href="https://wa.me/916300163216" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 rounded-2xl border border-green-200 dark:border-green-700/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Chat with me instantly</p>
+                <p class="text-green-600 dark:text-green-400 font-medium">+91 6300163216</p>
+              </a>
+
+              <!-- GitHub Card -->
+              <a href="https://github.com/RAOGYYY" target="_blank" rel="noopener noreferrer" class="group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-700/50 p-8 rounded-2xl border border-gray-200 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">GitHub</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Check out my repositories</p>
+                <p class="text-gray-700 dark:text-gray-300 font-medium">@RAOGYYY</p>
+              </a>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="text-center bg-gradient-to-br from-purple-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 p-10 rounded-3xl shadow-xl border border-gray-200 dark:border-slate-600">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Connect on Social Media</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">Follow me for updates and connect with my work</p>
+              
+              <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://instagram.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Instagram</p>
+                    <p class="text-sm font-bold text-gray-900 dark:text-white">@anwarul.20</p>
+                  </div>
+                </a>
+
+                <a href="https://facebook.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Facebook</p>
+                    <p class="text-sm font-bold text-gray-900 dark:text-white">@anwarul.20</p>
+                  </div>
+                </a>
+
+                <a href="https://raogy.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Website</p>
+                    <p class="text-sm font-bold text-gray-900 dark:text-white">raogy.com</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-10 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-2xl font-bold gradient-text">RAOGY</div>
+            <p class="text-gray-600 dark:text-gray-400 text-center">
+              © <span id="year"></span> RAOGY. Crafted with ❤️ and passion for web development.
+            </p>
+            <div class="flex gap-3">
+              <a href="/privacy" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
+              <span class="text-gray-400">•</span>
+              <a href="/terms" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Scroll to Top Button -->
+      <button id="scrollToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 touch-target" aria-label="Scroll to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+      </button>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+            
+            if (isDark) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme from localStorage
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+
+        // Scroll to Top Button
+        const scrollButton = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            // Show/hide scroll to top button
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('show');
+            } else {
+                scrollButton.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll to section
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            }
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Filter projects
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-item');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                if (btn.textContent.trim() === category || 
+                    (category === 'Web Development' && btn.textContent.trim() === 'Web Apps') ||
+                    (category === 'E-Commerce' && btn.textContent.trim() === 'E-Commerce') ||
+                    (category === 'Landing Page' && btn.textContent.trim() === 'Landing Pages')) {
+                    btn.className = 'filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg';
+                } else {
+                    btn.className = 'filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600';
+                }
+            });
+            
+            projects.forEach(project => {
+                if (category === 'All' || project.dataset.category === category) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
