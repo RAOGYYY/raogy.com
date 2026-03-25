@@ -1,14 +1,23 @@
 # Enable URL Rewriting
 RewriteEngine On
 
-# Remove .html extension
+# Remove .html extension for root files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-# Redirect .html to clean URLs
+# Remove .html extension for screenscribe subdirectory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^screenscribe/([^\.]+)$ screenscribe/$1.html [NC,L]
+
+# Redirect .html to clean URLs for root files
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
 RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+# Redirect .html to clean URLs for screenscribe subdirectory
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /screenscribe/([^.]+)\.html\ HTTP
+RewriteRule ^screenscribe/([^.]+)\.html$ /screenscribe/$1 [R=301,L]
 
 # Force HTTPS (uncomment when you have SSL)
 # RewriteCond %{HTTPS} off
