@@ -7,6 +7,30 @@
     {
       "source": "/terms",
       "destination": "/terms.html"
+    },
+    {
+      "source": "/screenscribe/privacy",
+      "destination": "/screenscribe/privacy.html"
+    },
+    {
+      "source": "/screenscribe/terms",
+      "destination": "/screenscribe/terms.html"
+    },
+    {
+      "source": "/screenscribe/delete-data",
+      "destination": "/screenscribe/delete-data.html"
+    },
+    {
+      "source": "/paaniboss/privacy",
+      "destination": "/paaniboss/privacy.html"
+    },
+    {
+      "source": "/paaniboss/terms",
+      "destination": "/paaniboss/terms.html"
+    },
+    {
+      "source": "/paaniboss/delete-account",
+      "destination": "/paaniboss/delete-account.html"
     }
   ],
   "headers": [
