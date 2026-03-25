@@ -3,281 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - RAOGY</title>
+    <title>Privacy Policy | ScreenScribe - Offline Screenshot Manager</title>
+    <meta name="description" content="Privacy Policy for ScreenScribe - 100% Offline Screenshot Manager. No data collection, no internet access, complete privacy.">
+    <link rel="canonical" href="https://raogy.com/screenscribe/privacy">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#7c3aed',
-                        secondary: '#2563eb',
+                        primary: '#7C3AED',
+                        secondary: '#06B6D4',
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        #scrollToTop {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-        }
-        #scrollToTop.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .touch-target {
-            min-width: 44px;
-            min-height: 44px;
-        }
-    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 text-gray-900 dark:text-white transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800">
+    
     <!-- Header -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm py-4">
-            <div class="container mx-auto px-6 flex justify-between items-center">
-                <a href="/" class="flex items-center gap-3 cursor-pointer">
-                    <img src="/images/logo.svg" alt="RAOGY Logo" class="w-10 h-10">
-                    <div class="text-2xl font-bold gradient-text">RAOGY</div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/screenscribe/" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">ScreenScribe</span>
                 </a>
+                <a href="/screenscribe/" class="text-primary hover:text-purple-700 font-medium">← Back to App</a>
+            </div>
+        </div>
+    </header>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/#home" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Home</a>
-                    <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">About</a>
-                    <a href="/#services" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Services</a>
-                    <a href="/#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Portfolio</a>
-                    <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">Contact</a>
-                    
-                    <!-- Theme Toggle -->
-                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
-                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    
-                    <a href="/#contact" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-lg">Hire Me</a>
+    <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        
+        <!-- Page Header -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h1 class="text-4xl font-bold text-primary mb-3">Privacy Policy</h1>
+            <p class="text-lg text-gray-600">ScreenScribe - Offline Screenshot Manager</p>
+            <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">100% Offline</span>
+                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">No Data Collection</span>
+                <span>Last Updated: March 25, 2026</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 space-y-10">
+            
+            <!-- Privacy Highlight Box -->
+            <div class="bg-green-50 border-2 border-green-200 p-6 rounded-xl">
+                <div class="flex items-start gap-3">
+                    <svg class="w-8 h-8 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <div>
+                        <h3 class="text-xl font-bold text-green-700 mb-2">✓ Complete Privacy Guarantee</h3>
+                        <p class="text-green-800 font-medium text-lg">
+                            ScreenScribe does NOT have internet permission. The app literally cannot send any data anywhere. All processing happens 100% on your device.
+                        </p>
+                    </div>
                 </div>
+            </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center gap-2">
-                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
-                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <button onclick="toggleMenu()" class="text-gray-700 dark:text-white p-2">
-                        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Section 1: Introduction -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+                    Introduction
+                </h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Welcome to <strong>ScreenScribe</strong> ("we," "our," or "us"). This Privacy Policy explains our data practices for the ScreenScribe mobile application (the "App").
+                </p>
+                <p class="text-gray-700 leading-relaxed mt-3">
+                    ScreenScribe is a <strong>100% offline screenshot management application</strong> that uses on-device OCR (Optical Character Recognition) to extract and organize text from your screenshots. The app is designed with privacy as its core principle.
+                </p>
+                <div class="bg-purple-50 border-l-4 border-primary p-4 rounded-r-lg mt-4">
+                    <p class="text-gray-700">
+                        <strong>Key Point:</strong> ScreenScribe does not include the INTERNET permission in its Android manifest. This means the app is technically incapable of connecting to the internet or transmitting any data.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 2: Data We Do NOT Collect -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+                    Data We Do NOT Collect
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Unlike most apps, ScreenScribe collects <strong>absolutely no data</strong> from you. Here's what we explicitly do NOT do:
+                </p>
+                <div class="grid gap-3">
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
-                    </button>
+                        <span class="text-gray-700"><strong>No Personal Information:</strong> We don't collect names, emails, or any identifiers</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No Screenshot Data:</strong> Your screenshots never leave your device</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No OCR Text:</strong> Extracted text stays in local database only</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No Analytics:</strong> No usage tracking, no telemetry, no metrics</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No Crash Reports:</strong> No automatic error reporting to servers</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No Location Data:</strong> We don't access your location</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong>No Advertising IDs:</strong> No ad tracking whatsoever</span>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Mobile Menu Dropdown -->
-            <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-800 w-full border-t border-gray-200 dark:border-slate-700 hidden">
-                <div class="flex flex-col p-4 space-y-2">
-                    <a href="/#home" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Home</a>
-                    <a href="/#about" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">About</a>
-                    <a href="/#services" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Services</a>
-                    <a href="/#portfolio" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Portfolio</a>
-                    <a href="/#contact" class="text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
+            <!-- Section 3: Data Stored Locally -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+                    Data Stored Locally on Your Device
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    ScreenScribe stores the following data <strong>locally on your device only</strong> in an encrypted SQLite database:
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border border-gray-200 px-4 py-3 text-left font-semibold">Data Type</th>
+                                <th class="border border-gray-200 px-4 py-3 text-left font-semibold">Purpose</th>
+                                <th class="border border-gray-200 px-4 py-3 text-left font-semibold">Storage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-200 px-4 py-3">Screenshot metadata</td>
+                                <td class="border border-gray-200 px-4 py-3">File path, date, category</td>
+                                <td class="border border-gray-200 px-4 py-3">Local Room DB</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-200 px-4 py-3">Extracted OCR text</td>
+                                <td class="border border-gray-200 px-4 py-3">Search and organization</td>
+                                <td class="border border-gray-200 px-4 py-3">Local Room DB</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-200 px-4 py-3">User notes & tags</td>
+                                <td class="border border-gray-200 px-4 py-3">Personal organization</td>
+                                <td class="border border-gray-200 px-4 py-3">Local Room DB</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-200 px-4 py-3">Transaction records</td>
+                                <td class="border border-gray-200 px-4 py-3">Financial tracking</td>
+                                <td class="border border-gray-200 px-4 py-3">Local Room DB</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-200 px-4 py-3">App preferences</td>
+                                <td class="border border-gray-200 px-4 py-3">Settings & customization</td>
+                                <td class="border border-gray-200 px-4 py-3">DataStore</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-        </nav>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 max-w-4xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Privacy Policy</h1>
-        <p class="text-gray-600 dark:text-gray-400 mb-8">Last updated: December 8, 2025</p>
-
-        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 space-y-8">
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Introduction</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Welcome to RAOGY's Privacy Policy. Your privacy is important to us. This policy explains how we collect, use, and protect your personal information when you visit our website or use our services.
+                <p class="text-gray-600 text-sm mt-4">
+                    All this data remains exclusively on your device and is never transmitted anywhere.
                 </p>
             </section>
 
+            <!-- Section 4: Permissions -->
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Information We Collect</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                    We may collect the following types of information:
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">4</span>
+                    App Permissions
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    ScreenScribe requests only the minimum permissions necessary:
                 </p>
-                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-                    <li><strong>Contact Information:</strong> Name, email address, phone number when you reach out to us</li>
-                    <li><strong>Usage Data:</strong> Information about how you interact with our website</li>
-                    <li><strong>Device Information:</strong> Browser type, IP address, operating system</li>
-                    <li><strong>Cookies:</strong> We use cookies to enhance your browsing experience and remember your preferences</li>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">📁 Storage Access (READ_EXTERNAL_STORAGE / READ_MEDIA_IMAGES)</h4>
+                        <p class="text-gray-700">Required to read screenshot images from your device storage for OCR processing.</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">🔔 Notification Access (Optional)</h4>
+                        <p class="text-gray-700">Optional permission to read banking notifications for automatic transaction detection. You can deny this permission.</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">🔐 Biometric (USE_BIOMETRIC)</h4>
+                        <p class="text-gray-700">Optional permission for fingerprint/face unlock to secure the app and vault.</p>
+                    </div>
+                </div>
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg mt-4">
+                    <p class="text-gray-700">
+                        <strong>Note:</strong> We explicitly do NOT request INTERNET permission. This is intentional and ensures your data cannot be transmitted.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 5: OCR Processing -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">5</span>
+                    On-Device OCR Processing
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    ScreenScribe uses <strong>Google ML Kit Text Recognition V2</strong> for OCR. Here's how it works:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                    <li>ML Kit models are downloaded once via Google Play Services</li>
+                    <li>All text recognition runs <strong>entirely on your device</strong></li>
+                    <li>No images or text are sent to Google or any server</li>
+                    <li>Supports Latin, Devanagari (Hindi), Chinese, Japanese, and Korean scripts</li>
                 </ul>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">How We Use Your Information</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                    We use the collected information for:
-                </p>
-                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-                    <li>Providing and improving our services</li>
-                    <li>Responding to your inquiries and requests</li>
-                    <li>Communicating with you about projects and updates</li>
-                    <li>Analyzing website usage to enhance user experience</li>
-                    <li>Protecting against unauthorized access and ensuring security</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Data Protection</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.
+                <p class="text-gray-600 text-sm mt-4">
+                    Google's ML Kit on-device processing is designed for privacy. Learn more at <a href="https://developers.google.com/ml-kit/vision/text-recognition" class="text-primary hover:underline" target="_blank">ML Kit Documentation</a>.
                 </p>
             </section>
 
+            <!-- Section 6: Data Security -->
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Third-Party Services</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Our website may contain links to third-party services (social media, GitHub, etc.). We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">6</span>
+                    Data Security
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Your data is protected by multiple layers of security:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">🔒 App Lock</h4>
+                        <p class="text-gray-600 text-sm">Biometric or passcode protection for app access</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">🗄️ Secret Vault</h4>
+                        <p class="text-gray-600 text-sm">Additional protection for sensitive screenshots</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">🗑️ Auto-Delete</h4>
+                        <p class="text-gray-600 text-sm">Automatic deletion of sensitive data (OTPs, passwords)</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">📱 Device Security</h4>
+                        <p class="text-gray-600 text-sm">Data protected by your device's built-in encryption</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Your Rights -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">7</span>
+                    Your Data Rights
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Since all data is stored locally on your device, you have complete control:
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p class="text-gray-700"><strong>Access:</strong> View all your data anytime within the app</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p class="text-gray-700"><strong>Export:</strong> Export your data from Settings</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p class="text-gray-700"><strong>Delete:</strong> Clear all data from Settings → Clear Data</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p class="text-gray-700"><strong>Uninstall:</strong> Uninstalling the app removes all app data</p>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg mt-4">
+                    <p class="text-gray-700">
+                        <strong>Note:</strong> Since we don't have your data on any server, there's nothing for us to delete. All deletion happens locally on your device.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 8: Children's Privacy -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">8</span>
+                    Children's Privacy
+                </h2>
+                <p class="text-gray-700 leading-relaxed">
+                    ScreenScribe does not collect any personal information from anyone, including children under 13. Since the app works entirely offline and stores data only on the user's device, there are no COPPA compliance concerns.
                 </p>
             </section>
 
+            <!-- Section 9: Changes -->
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Your Rights</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                    You have the right to:
-                </p>
-                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-                    <li>Access your personal data</li>
-                    <li>Request correction of inaccurate data</li>
-                    <li>Request deletion of your data</li>
-                    <li>Object to processing of your data</li>
-                    <li>Request data portability</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Cookies Policy</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    We use cookies and similar technologies to store your theme preferences (dark/light mode) and improve your browsing experience. You can control cookies through your browser settings.
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">9</span>
+                    Changes to This Policy
+                </h2>
+                <p class="text-gray-700 leading-relaxed">
+                    We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically.
                 </p>
             </section>
 
+            <!-- Section 10: Contact -->
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Updates to This Policy</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last updated" date. We encourage you to review this policy periodically.
-                </p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Contact Us</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">10</span>
+                    Contact Us
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
                     If you have any questions about this Privacy Policy, please contact us:
                 </p>
-                <div class="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><strong>Email:</strong> <a href="mailto:raogyy@gmail.com" class="text-purple-600 dark:text-purple-400 hover:underline">raogyy@gmail.com</a></p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/916300163216" target="_blank" class="text-purple-600 dark:text-purple-400 hover:underline">+91 6300163216</a></p>
-                    <p><strong>Website:</strong> <a href="https://raogy.com" class="text-purple-600 dark:text-purple-400 hover:underline">raogy.com</a></p>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-gray-700"><strong>Developer:</strong> RAOGY</p>
+                    <p class="text-gray-700"><strong>Website:</strong> <a href="https://raogy.com" class="text-primary hover:underline">https://raogy.com</a></p>
+                    <p class="text-gray-700"><strong>App Page:</strong> <a href="https://raogy.com/screenscribe/" class="text-primary hover:underline">https://raogy.com/screenscribe/</a></p>
                 </div>
             </section>
+
         </div>
 
-        <!-- Back to Home -->
-        <div class="mt-8 text-center">
-            <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Related Links -->
+        <div class="mt-8 flex flex-wrap gap-4">
+            <a href="terms" class="inline-flex items-center bg-white px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition text-gray-700 font-medium">
+                <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Terms of Service
+            </a>
+            <a href="delete-data" class="inline-flex items-center bg-white px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition text-gray-700 font-medium">
+                <svg class="w-5 h-5 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+                Delete My Data
+            </a>
+            <a href="/screenscribe/" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition font-medium">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
-                Back to Home
+                Back to App
             </a>
         </div>
-    </main>
+
+    </div>
 
     <!-- Footer -->
-    <footer class="py-8 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-600 dark:text-gray-400">
-                © <span id="year"></span> RAOGY. All rights reserved.
-            </p>
+    <footer class="bg-gray-900 text-white py-8 px-4 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-gray-400">© 2026 ScreenScribe. Developed by <a href="https://raogy.com" class="text-primary hover:text-purple-400">RAOGY</a></p>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white p-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 touch-target" aria-label="Scroll to top">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
-
-    <script>
-        // Set current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Theme Toggle
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = localStorage.getItem('theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            
-            menu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        }
-
-        // Scroll to Top Button
-        const scrollButton = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollButton.classList.add('show');
-            } else {
-                scrollButton.classList.remove('show');
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Initialize theme
-        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
-    </script>
 </body>
 </html>
