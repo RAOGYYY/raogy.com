@@ -1,0 +1,145 @@
+{
+  "rewrites": [
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/snapscribe/privacy",
+      "destination": "/snapscribe/privacy.html"
+    },
+    {
+      "source": "/snapscribe/terms",
+      "destination": "/snapscribe/terms.html"
+    },
+    {
+      "source": "/snapscribe/delete-data",
+      "destination": "/snapscribe/delete-data.html"
+    },
+    {
+      "source": "/paaniboss/privacy",
+      "destination": "/paaniboss/privacy.html"
+    },
+    {
+      "source": "/paaniboss/terms",
+      "destination": "/paaniboss/terms.html"
+    },
+    {
+      "source": "/paaniboss/delete-account",
+      "destination": "/paaniboss/delete-account.html"
+    },
+    {
+      "source": "/tagglo/privacy",
+      "destination": "/tagglo/privacy.html"
+    },
+    {
+      "source": "/tagglo/terms",
+      "destination": "/tagglo/terms.html"
+    },
+    {
+      "source": "/tagglo/delete-account",
+      "destination": "/tagglo/delete-account.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).svg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).webp",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "image/webp"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).jpg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).gif",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
