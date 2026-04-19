@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - RAOGY | Web &amp; Mobile App Development Articles</title>
+    <meta name="description" content="Thoughts on mobile app development, Flutter, Supabase, web engineering, and shipping real products. Written by RAOGY.">
+    <meta name="author" content="RAOGY">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <link rel="canonical" href="https://raogy.com/blog/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raogy.com/blog/">
+    <meta property="og:title" content="Blog - RAOGY">
+    <meta property="og:description" content="Articles on mobile app development, Flutter, Supabase, web engineering and shipping real products.">
+    <meta property="og:image" content="https://raogy.com/images/raogy.jpg">
+
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        };
+    </script>
+    <style>
+        * { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .post-card {
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease;
+        }
+        .post-card:hover {
+            box-shadow: 0 30px 60px -20px rgba(99,102,241,0.35), 0 20px 30px -10px rgba(0,0,0,0.15);
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .tag-chip { transition: all 0.2s ease; }
+        .tag-chip.active {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139,92,246,0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Shared site shell: navbar + starfield + theme -->
+    <div id="site-shell-header"></div>
+
+    <!-- Header -->
+    <header class="pt-32 pb-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1.5 mb-5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700/50 text-purple-700 dark:text-purple-300 text-xs font-medium">
+                📖 Journal
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                The <span class="gradient-text">RAOGY</span> Blog
+            </h1>
+            <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Notes from shipping mobile apps and websites. Flutter, Supabase, Kotlin, and the messy middle of real projects.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filters -->
+    <section class="pb-6">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+                <!-- Search -->
+                <div class="relative flex-1 max-w-md">
+                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input id="search-input" type="search" placeholder="Search articles…" class="w-full pl-10 pr-3 py-2.5 rounded-full bg-white/80 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 backdrop-blur">
+                </div>
+
+                <!-- Tag chips -->
+                <div id="tag-chips" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <main class="pb-20">
+        <div class="container mx-auto px-6">
+            <div id="post-count" class="text-xs text-gray-500 dark:text-gray-400 mb-4"></div>
+            <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="text-center col-span-full py-12 text-gray-500 dark:text-gray-400">Loading articles…</div>
+            </div>
+            <div id="empty-state" class="hidden text-center py-16">
+                <div class="text-6xl mb-4">📝</div>
+                <h3 class="text-xl font-bold text-gray-700 dark:text-gray-300 mb-2">No articles match your search</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm">Try a different keyword or clear the tag filter.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared footer -->
+    <div id="site-shell-footer"></div>
+    <script src="/assets/shell.js" data-active="blog"></script>
+
+    <script>
+        // State
+        let allPosts = [];
+        let activeTag = 'All';
+        let searchQuery = '';
+
+        const grid = document.getElementById('posts-grid');
+        const empty = document.getElementById('empty-state');
+        const countEl = document.getElementById('post-count');
+        const tagChipsEl = document.getElementById('tag-chips');
+        const searchInput = document.getElementById('search-input');
+
+        function formatDate(iso) {
+            return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function renderPosts() {
+            const q = searchQuery.trim().toLowerCase();
+            const filtered = allPosts.filter(p => {
+                if (p.published === false) return false;
+                if (activeTag !== 'All' && !(p.tags || []).includes(activeTag)) return false;
+                if (!q) return true;
+                const hay = `${p.title} ${p.excerpt} ${(p.tags || []).join(' ')}`.toLowerCase();
+                return hay.includes(q);
+            });
+
+            countEl.textContent = filtered.length === 1 ? '1 article' : `${filtered.length} articles`;
+
+            if (!filtered.length) {
+                grid.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(p => {
+                const gradient = p.coverGradient || 'from-purple-500 via-blue-500 to-pink-500';
+                const coverHTML = p.cover
+                    ? `<img src="${p.cover}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">`
+                    : '';
+                return `
+                <a href="/blog/post.html?slug=${encodeURIComponent(p.slug)}" class="post-card group block bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-2xl">
+                    <div class="h-40 bg-gradient-to-br ${gradient} relative overflow-hidden">
+                        ${coverHTML}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        <div class="absolute top-2 left-2 flex flex-wrap gap-1">
+                            ${(p.tags || []).slice(0,3).map(t => `<span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-white/90 dark:bg-slate-900/80 text-gray-800 dark:text-gray-200 backdrop-blur">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-[11px] uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1.5 flex items-center gap-2 flex-wrap">
+                            <span>${formatDate(p.date)}</span>
+                            <span>•</span>
+                            <span>${p.readTime || '3 min read'}</span>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1.5 leading-snug group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-3">${p.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">${p.excerpt || ''}</p>
+                    </div>
+                </a>`;
+            }).join('');
+        }
+
+        function renderTags() {
+            const tagSet = new Set();
+            allPosts.forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
+            const tags = ['All', ...[...tagSet].sort()];
+            tagChipsEl.innerHTML = tags.map(t => `
+                <button onclick="selectTag('${t.replace(/'/g, "\\'")}')" class="tag-chip px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600 ${t === activeTag ? 'active' : ''}" data-tag="${t}">${t}</button>
+            `).join('');
+        }
+
+        function selectTag(tag) {
+            activeTag = tag;
+            renderTags();
+            renderPosts();
+        }
+        window.selectTag = selectTag;
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderPosts();
+        });
+
+        // Load posts
+        fetch('/blog/posts.json', { cache: 'no-cache' })
+            .then(r => r.ok ? r.json() : Promise.reject(r.status))
+            .then(data => {
+                allPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderTags();
+                renderPosts();
+            })
+            .catch(() => {
+                grid.innerHTML = '<div class="text-center col-span-full py-12 text-red-500 dark:text-red-400">Could not load articles. Please try again.</div>';
+            });
+    </script>
+</body>
+</html>

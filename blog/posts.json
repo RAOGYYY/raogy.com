@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-19T14:30:00Z",
+  "posts": [
+    {
+      "slug": "building-paani-boss-ro-service-management",
+      "title": "Building Paani Boss: From Idea to Play Store in 6 Weeks",
+      "excerpt": "How I shipped a complete RO water service management app with field tracking, AMC scheduling and billing using Flutter and Supabase.",
+      "cover": "",
+      "coverGradient": "from-blue-500 via-purple-500 to-indigo-600",
+      "date": "2026-04-18",
+      "author": "RAOGY",
+      "tags": ["Flutter", "Supabase", "Mobile Apps", "Case Study"],
+      "readTime": "6 min read",
+      "published": true,
+      "content": "# Building Paani Boss\n\nWhen a local RO water service owner complained about juggling pen-and-paper customer records, manual billing, and missed AMC renewals, I saw an opportunity.\n\n## The Problem\n\nSmall RO water service businesses in India run on chaos:\n\n- **Customer data** scattered across notebooks\n- **AMC renewals** tracked mentally (and often missed)\n- **Field technicians** with no route planning\n- **Billing** done in cash with handwritten receipts\n\n## The Stack\n\n| Layer | Tech |\n|-------|------|\n| App | Flutter (cross-platform iOS + Android) |\n| Backend | Supabase (Postgres + Auth + Storage) |\n| Realtime | Supabase Realtime |\n| Maps | Google Maps + Geolocator |\n\n## Key Features Shipped\n\n1. Customer CRM with searchable history\n2. AMC auto-reminder via scheduled push notifications\n3. GPS field tracking for technicians\n4. One-tap invoice generation with WhatsApp share\n5. Owner dashboard with revenue charts\n\n## Lessons Learned\n\n- **Offline-first is non-negotiable** for field apps in India. Hive cache saved us when reps drove into low-signal areas.\n- **Supabase Row Level Security** eliminated hundreds of lines of auth code.\n- **Keep the UI painfully simple**. First version had tabs, second version scrapped them for a single scrolling feed. Daily active usage doubled.\n\n## What's Next\n\nv2 will add technician performance scoring and customer self-service chat. Check out the [app page](/paaniboss/) for more details.\n"
+    },
+    {
+      "slug": "why-flutter-still-wins-in-2026",
+      "title": "Why Flutter Still Wins for Indie Mobile Developers in 2026",
+      "excerpt": "After shipping four apps across iOS and Android with a solo team, here's my honest take on Flutter vs native in 2026.",
+      "cover": "",
+      "coverGradient": "from-sky-500 via-blue-600 to-cyan-500",
+      "date": "2026-04-10",
+      "author": "RAOGY",
+      "tags": ["Flutter", "Opinion", "Mobile Apps"],
+      "readTime": "4 min read",
+      "published": true,
+      "content": "# Why Flutter Still Wins\n\nThere's a fresh wave of native hype — Kotlin Multiplatform is maturing, SwiftUI is better than ever, and AI-generated UI code is tempting.\n\nBut for a **solo developer shipping real products**, Flutter still takes the cake in 2026. Here's why.\n\n## 1. One Codebase, Real Parity\n\nI ship **Paani Boss** and **TagGlo** from a single Flutter codebase and both run identically on iOS and Android. Zero platform-specific bugs, zero re-implementation.\n\n## 2. The Widget System Ages Well\n\nFour years in, my 2022 widgets still compile, still render pixel-perfect. Meanwhile, my UIKit code from 2021 needed 3 rewrites.\n\n## 3. Supabase + Flutter = Ship Speed\n\nPaired with Supabase, I can go from idea to App Store in 6 weeks:\n\n```dart\nfinal customers = await supabase\n  .from('customers')\n  .select()\n  .order('created_at');\n```\n\nThat's it. No backend boilerplate.\n\n## Where Flutter Loses\n\nBe honest — it's not perfect:\n\n- **iOS polish** still lags Swift for ultra-premium apps\n- **Build sizes** are larger than native\n- **Platform channels** for obscure APIs get painful\n\n## Verdict\n\nFor the **business value per hour** ratio, nothing beats Flutter in 2026. Your mileage may vary, but four shipped apps later, I'm still all in.\n"
+    },
+    {
+      "slug": "supabase-row-level-security-cheatsheet",
+      "title": "The Supabase RLS Cheatsheet I Wish I Had Earlier",
+      "excerpt": "Row Level Security is Supabase's killer feature but the docs assume you know Postgres. Here's the practical cheatsheet for app devs.",
+      "cover": "",
+      "coverGradient": "from-emerald-500 via-teal-500 to-cyan-600",
+      "date": "2026-04-03",
+      "author": "RAOGY",
+      "tags": ["Supabase", "Postgres", "Backend"],
+      "readTime": "5 min read",
+      "published": true,
+      "content": "# Supabase RLS Cheatsheet\n\nRow Level Security (RLS) is what lets you expose Supabase directly to your app without writing a backend. But the first time I set it up, I locked myself out for two hours.\n\n## The Mental Model\n\nThink of RLS as a bouncer at every row:\n\n> \"Hey `auth.uid()`, can you read / write this row? Show me the policy.\"\n\nNo policy → no access. Always enable RLS first.\n\n## Pattern 1: Users Own Their Rows\n\n```sql\nalter table posts enable row level security;\n\ncreate policy \"Users can read own posts\"\n  on posts for select\n  using (auth.uid() = user_id);\n\ncreate policy \"Users can insert own posts\"\n  on posts for insert\n  with check (auth.uid() = user_id);\n```\n\n## Pattern 2: Public Read, Auth Write\n\nPerfect for blogs and comments:\n\n```sql\ncreate policy \"Anyone can read\"\n  on posts for select using (true);\n\ncreate policy \"Only owner can update\"\n  on posts for update\n  using (auth.uid() = user_id);\n```\n\n## Pattern 3: Team-based Access\n\n```sql\ncreate policy \"Team members can read team data\"\n  on invoices for select\n  using (\n    auth.uid() in (\n      select user_id from team_members\n      where team_id = invoices.team_id\n    )\n  );\n```\n\n## Debugging Tips\n\n- Use the **SQL Editor's \"Run as authenticated user\"** — saved me hours\n- `select auth.uid();` to verify JWT is decoded\n- Check `auth.role()` to distinguish `anon`, `authenticated`, `service_role`\n\n## Gotchas\n\n1. Service role bypasses RLS — never expose it client-side\n2. `insert` policies need `with check`, not `using`\n3. Storage has its own policies (different table)\n\nBookmark this. You'll need it.\n"
+    },
+    {
+      "slug": "3d-web-effects-without-threejs",
+      "title": "Stunning 3D Web Effects Without Three.js",
+      "excerpt": "You don't always need WebGL. Here's how I added tilt, parallax, and perspective to this very portfolio using nothing but CSS and 30 lines of JavaScript.",
+      "cover": "",
+      "coverGradient": "from-purple-500 via-pink-500 to-rose-500",
+      "date": "2026-03-28",
+      "author": "RAOGY",
+      "tags": ["CSS", "JavaScript", "Web Dev"],
+      "readTime": "3 min read",
+      "published": true,
+      "content": "# 3D Web Effects Without Three.js\n\nLook at this portfolio. The cards tilt, the portrait follows your cursor, the stars drift — all without a single WebGL context.\n\n## The Core Trick: `transform-style: preserve-3d`\n\n```css\nbody { perspective: 1400px; }\n\n.card {\n  transform-style: preserve-3d;\n  transition: transform 0.4s cubic-bezier(.22,1,.36,1);\n}\n```\n\nThat's it. Now every child with `translateZ()` lives in 3D space.\n\n## Mouse Tilt in 20 Lines\n\n```js\ncard.addEventListener('mousemove', e => {\n  const r = card.getBoundingClientRect();\n  const x = (e.clientX - r.left) / r.width;\n  const y = (e.clientY - r.top) / r.height;\n  const rx = (y - 0.5) * -10;\n  const ry = (x - 0.5) *  10;\n  card.style.transform = \n    `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;\n});\n\ncard.addEventListener('mouseleave', () => {\n  card.style.transform = '';\n});\n```\n\nDone. Fluid, 60fps, zero dependencies.\n\n## Keep It Honest\n\n- Respect `prefers-reduced-motion`\n- Disable on touch devices (no hover)\n- Keep rotations under ±10° — more feels cheap\n\n## When You DO Need Three.js\n\nActual 3D geometry, shaders, particle physics, scene graphs. Not tilt. Not parallax. Not glow.\n\nSimple = better.\n"
+    },
+    {
+      "slug": "control-panel-raogy-dot-com",
+      "title": "I Built a Control Panel for My Own Blog in One Evening",
+      "excerpt": "Meet control.raogy.com — a tiny admin dashboard that lets me publish articles, swap featured images, and update live copy without touching a Git commit.",
+      "cover": "",
+      "coverGradient": "from-amber-500 via-orange-500 to-red-500",
+      "date": "2026-04-19",
+      "author": "RAOGY",
+      "tags": ["Announcement", "Tooling"],
+      "readTime": "2 min read",
+      "published": true,
+      "content": "# Meet the Control Panel\n\nEvery static-site developer eventually hits this wall: you want to publish a quick post but your blog needs a `git commit` + `npm run build` + `git push`. That friction kills momentum.\n\nSo I built **control.raogy.com**.\n\n## What It Does\n\n- Create, edit, delete posts\n- Swap cover images (or pick a gradient)\n- Preview before publishing\n- Toggle draft / published\n- Works from my phone\n\n## The Stack\n\nTwo modes baked in:\n\n1. **Local mode** (default) — edits live in `localStorage`, export/import JSON anytime. Zero setup.\n2. **Cloud mode** — plug in your Supabase URL + anon key and it's real-time across devices.\n\n## What's Next\n\n- Markdown paste from clipboard with auto-image upload\n- AI-assisted draft summaries\n- Analytics tiny-graphs right on the dashboard\n\nIf you want the source, ping me.\n"
+    }
+  ]
+}

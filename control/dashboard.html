@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard · RAOGY Control Panel</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } };
+    </script>
+    <style>
+        html { background: #f8fafc; }
+        html.dark { background: #050816; }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bg-stage { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .aurora {
+            position: absolute; inset: -10%;
+            background:
+                radial-gradient(ellipse 40% 30% at 10% 20%, rgba(139,92,246,0.2), transparent 60%),
+                radial-gradient(ellipse 50% 40% at 90% 80%, rgba(59,130,246,0.18), transparent 60%);
+            filter: blur(40px);
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .row:hover { background: rgba(139,92,246,0.04); }
+        .dark .row:hover { background: rgba(139,92,246,0.08); }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Tab buttons */
+        .tab-btn {
+            color: rgb(71, 85, 105);
+        }
+        .dark .tab-btn { color: rgb(148, 163, 184); }
+        .tab-btn:hover { color: rgb(31, 41, 55); }
+        .dark .tab-btn:hover { color: rgb(226, 232, 240); }
+        .tab-btn.tab-active {
+            background: white;
+            color: rgb(109, 40, 217);
+            box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1);
+        }
+        .dark .tab-btn.tab-active {
+            background: rgb(30, 41, 59);
+            color: rgb(196, 181, 253);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-900 dark:text-white transition-colors duration-300">
+
+    <div class="bg-stage" aria-hidden="true"><div class="aurora"></div></div>
+
+    <!-- Top bar -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800">
+        <div class="container mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="/control/dashboard.html" class="flex items-center gap-3 min-w-0">
+                <img src="/images/logo.svg" alt="RAOGY" class="w-9 h-9 flex-shrink-0">
+                <div class="min-w-0">
+                    <div class="text-base font-bold gradient-text truncate">RAOGY Control</div>
+                    <div class="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wider">Dashboard</div>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <a href="/blog/" target="_blank" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    View Blog
+                </a>
+                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors" aria-label="Theme">
+                    <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg class="w-4 h-4 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button onclick="RAOGY.logout()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-5 py-8 max-w-6xl">
+
+        <!-- Tabs -->
+        <div class="flex items-center gap-1 mb-6 p-1 rounded-xl bg-gray-100 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 w-fit">
+            <button id="tab-posts" onclick="switchTab('posts')" class="tab-btn tab-active px-4 py-2 rounded-lg text-xs font-semibold transition-all inline-flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                Blog Posts
+            </button>
+            <button id="tab-portfolio" onclick="switchTab('portfolio')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all inline-flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                Portfolio
+            </button>
+        </div>
+
+        <!-- ================================
+             POSTS TAB
+             ================================ -->
+        <section id="section-posts" class="tab-section">
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Total Posts</div>
+                <div class="text-2xl font-bold mt-1" id="stat-total">0</div>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Published</div>
+                <div class="text-2xl font-bold mt-1 text-emerald-600 dark:text-emerald-400" id="stat-published">0</div>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Drafts</div>
+                <div class="text-2xl font-bold mt-1 text-amber-500" id="stat-drafts">0</div>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Last Updated</div>
+                <div class="text-sm font-bold mt-1.5" id="stat-updated">–</div>
+            </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between mb-5">
+            <div class="flex items-center gap-2 flex-1 max-w-md">
+                <div class="relative flex-1">
+                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input id="search" type="search" placeholder="Search posts…" class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-white/80 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 backdrop-blur">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <button onclick="RAOGY.exportPostsJson()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Export JSON
+                </button>
+
+                <label class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    Import JSON
+                    <input type="file" accept="application/json,.json" class="hidden" onchange="handleImport(event)">
+                </label>
+
+                <button onclick="handleReset()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-amber-600 dark:text-amber-400 transition-colors" title="Reset local drafts to current live posts.json">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    Reset
+                </button>
+
+                <a href="/control/editor.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md hover:shadow-lg transition-all">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    New Post
+                </a>
+            </div>
+        </div>
+
+        <!-- Posts table -->
+        <div class="bg-white/90 dark:bg-slate-800/70 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-lg">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50 dark:bg-slate-900/50 border-b border-gray-200 dark:border-slate-700">
+                        <tr class="text-left text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+                            <th class="px-4 py-3">Post</th>
+                            <th class="px-4 py-3 hidden md:table-cell">Tags</th>
+                            <th class="px-4 py-3 hidden sm:table-cell">Date</th>
+                            <th class="px-4 py-3">Status</th>
+                            <th class="px-4 py-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="posts-body" class="divide-y divide-gray-100 dark:divide-slate-700/50"></tbody>
+                </table>
+            </div>
+            <div id="empty" class="hidden text-center py-16 px-4">
+                <div class="text-5xl mb-3">✍️</div>
+                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200">No posts yet</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-5">Create your first article to see it here.</p>
+                <a href="/control/editor.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md">
+                    Create first post
+                </a>
+            </div>
+        </div>
+
+        <!-- Deploy reminder -->
+        <div class="mt-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/50 text-xs text-amber-800 dark:text-amber-200">
+            <div class="flex items-start gap-2">
+                <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+                <div>
+                    <b>Local mode:</b> Your changes live in this browser only. To publish changes to the live site,
+                    click <b>Export JSON</b> and replace <code class="font-mono bg-amber-100 dark:bg-amber-900/40 px-1 rounded">/blog/posts.json</code> in the repo.
+                    For true real-time multi-device sync, set up Supabase (see <code class="font-mono">CONTROL_PANEL_SETUP.md</code>).
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- ================================
+             PORTFOLIO TAB
+             ================================ -->
+        <section id="section-portfolio" class="tab-section hidden">
+            <!-- Portfolio stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                    <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Total Projects</div>
+                    <div class="text-2xl font-bold mt-1" id="pf-stat-total">0</div>
+                </div>
+                <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                    <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Published</div>
+                    <div class="text-2xl font-bold mt-1 text-emerald-600 dark:text-emerald-400" id="pf-stat-published">0</div>
+                </div>
+                <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                    <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Featured</div>
+                    <div class="text-2xl font-bold mt-1 text-purple-600 dark:text-purple-400" id="pf-stat-featured">0</div>
+                </div>
+                <div class="bg-white/80 dark:bg-slate-800/70 backdrop-blur border border-gray-200 dark:border-slate-700 rounded-xl p-4">
+                    <div class="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Last Updated</div>
+                    <div class="text-sm font-bold mt-1.5" id="pf-stat-updated">–</div>
+                </div>
+            </div>
+
+            <!-- Portfolio toolbar -->
+            <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between mb-5">
+                <div class="flex items-center gap-2 flex-1 max-w-md">
+                    <div class="relative flex-1">
+                        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <input id="pf-search" type="search" placeholder="Search projects…" class="w-full pl-10 pr-3 py-2.5 rounded-xl bg-white/80 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 backdrop-blur">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="RAOGY.exportProjectsJson()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Export JSON
+                    </button>
+
+                    <label class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        Import JSON
+                        <input type="file" accept="application/json,.json" class="hidden" onchange="handleImportProjects(event)">
+                    </label>
+
+                    <button onclick="handleResetProjects()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-amber-600 dark:text-amber-400 transition-colors" title="Reset local drafts to current live projects.json">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        Reset
+                    </button>
+
+                    <a href="/control/portfolio-editor.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md hover:shadow-lg transition-all">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        New Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projects table -->
+            <div class="bg-white/90 dark:bg-slate-800/70 backdrop-blur-sm border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-lg">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50 dark:bg-slate-900/50 border-b border-gray-200 dark:border-slate-700">
+                            <tr class="text-left text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+                                <th class="px-4 py-3">Project</th>
+                                <th class="px-4 py-3 hidden md:table-cell">Category</th>
+                                <th class="px-4 py-3 hidden lg:table-cell">Tags</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projects-body" class="divide-y divide-gray-100 dark:divide-slate-700/50"></tbody>
+                    </table>
+                </div>
+                <div id="pf-empty" class="hidden text-center py-16 px-4">
+                    <div class="text-5xl mb-3">🎨</div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200">No projects yet</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-5">Add your first portfolio project.</p>
+                    <a href="/control/portfolio-editor.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md">
+                        Create first project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deploy reminder -->
+            <div class="mt-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/50 text-xs text-amber-800 dark:text-amber-200">
+                <div class="flex items-start gap-2">
+                    <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+                    <div>
+                        <b>To publish portfolio changes:</b> click <b>Export JSON</b> and replace
+                        <code class="font-mono bg-amber-100 dark:bg-amber-900/40 px-1 rounded">/portfolio/projects.json</code> in the repo, then commit and push.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/control/config.js"></script>
+    <script src="/control/app.js"></script>
+    <script>
+        if (!RAOGY.requireAuth()) throw new Error('not authed');
+
+        let allPosts = [];
+        let searchQ = '';
+
+        const tbody = document.getElementById('posts-body');
+        const emptyEl = document.getElementById('empty');
+        const searchInput = document.getElementById('search');
+
+        async function refresh() {
+            const data = await RAOGY.loadPosts();
+            allPosts = data.posts || [];
+            document.getElementById('stat-total').textContent = allPosts.length;
+            document.getElementById('stat-published').textContent = allPosts.filter(p => p.published !== false).length;
+            document.getElementById('stat-drafts').textContent = allPosts.filter(p => p.published === false).length;
+            document.getElementById('stat-updated').textContent = data.updatedAt ? RAOGY.formatDate(data.updatedAt) : '–';
+            render();
+        }
+
+        function render() {
+            const q = searchQ.trim().toLowerCase();
+            const filtered = allPosts
+                .filter(p => !q || `${p.title} ${p.excerpt || ''} ${(p.tags || []).join(' ')}`.toLowerCase().includes(q))
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            if (!filtered.length) {
+                tbody.innerHTML = '';
+                emptyEl.classList.remove('hidden');
+                return;
+            }
+            emptyEl.classList.add('hidden');
+
+            tbody.innerHTML = filtered.map(p => {
+                const isPublished = p.published !== false;
+                return `
+                <tr class="row transition-colors">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 flex-shrink-0 rounded-lg bg-gradient-to-br ${p.coverGradient || 'from-purple-500 via-blue-500 to-pink-500'} overflow-hidden">
+                                ${p.cover ? `<img src="${RAOGY.escapeHtml(p.cover)}" class="w-full h-full object-cover" onerror="this.style.display='none'">` : ''}
+                            </div>
+                            <div class="min-w-0">
+                                <div class="font-semibold text-gray-900 dark:text-white truncate max-w-xs" title="${RAOGY.escapeHtml(p.title)}">${RAOGY.escapeHtml(p.title)}</div>
+                                <div class="text-[11px] text-gray-500 dark:text-gray-400 font-mono truncate max-w-xs">/${RAOGY.escapeHtml(p.slug)}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 hidden md:table-cell">
+                        <div class="flex flex-wrap gap-1">
+                            ${(p.tags || []).slice(0, 3).map(t => `<span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300">${RAOGY.escapeHtml(t)}</span>`).join('')}
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 hidden sm:table-cell text-xs text-gray-600 dark:text-gray-400">${RAOGY.formatDate(p.date)}</td>
+                    <td class="px-4 py-3">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-semibold ${isPublished ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300'}">
+                            <span class="status-dot ${isPublished ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                            ${isPublished ? 'Live' : 'Draft'}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                        <div class="inline-flex items-center gap-1">
+                            <a href="/blog/post.html?slug=${encodeURIComponent(p.slug)}" target="_blank" class="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-600 dark:text-gray-300" title="Preview">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </a>
+                            <a href="/control/editor.html?slug=${encodeURIComponent(p.slug)}" class="p-1.5 rounded-md hover:bg-purple-100 dark:hover:bg-purple-900/30 text-purple-600 dark:text-purple-400" title="Edit">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            </a>
+                            <button onclick="togglePublish('${RAOGY.escapeHtml(p.slug)}')" class="p-1.5 rounded-md hover:bg-amber-100 dark:hover:bg-amber-900/30 text-amber-600 dark:text-amber-400" title="${isPublished ? 'Unpublish' : 'Publish'}">
+                                ${isPublished
+                                    ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>'
+                                    : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+                                }
+                            </button>
+                            <button onclick="handleDelete('${RAOGY.escapeHtml(p.slug)}', '${RAOGY.escapeHtml(p.title)}')" class="p-1.5 rounded-md hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400" title="Delete">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/></svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        async function togglePublish(slug) {
+            const p = await RAOGY.getPost(slug);
+            if (!p) return;
+            p.published = p.published === false ? true : false;
+            await RAOGY.savePost(p);
+            RAOGY.toast(p.published ? 'Post published' : 'Post unpublished', 'success');
+            refresh();
+        }
+        window.togglePublish = togglePublish;
+
+        async function handleDelete(slug, title) {
+            if (!confirm(`Delete "${title}"? This can't be undone locally.`)) return;
+            await RAOGY.deletePost(slug);
+            RAOGY.toast('Post deleted', 'info');
+            refresh();
+        }
+        window.handleDelete = handleDelete;
+
+        async function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            try {
+                await RAOGY.importPostsJson(file);
+                RAOGY.toast('Imported successfully', 'success');
+                refresh();
+            } catch (err) {
+                RAOGY.toast('Invalid JSON file', 'error');
+            } finally {
+                event.target.value = '';
+            }
+        }
+        window.handleImport = handleImport;
+
+        async function handleReset() {
+            if (!confirm('Reset your local drafts to the current live posts.json? Local changes will be lost.')) return;
+            await RAOGY.resetToLiveJson();
+            RAOGY.toast('Reset to live posts', 'success');
+            refresh();
+        }
+        window.handleReset = handleReset;
+
+        searchInput.addEventListener('input', e => {
+            searchQ = e.target.value;
+            render();
+        });
+
+        // ==================================================
+        // Tab switching
+        // ==================================================
+        function switchTab(which) {
+            const postsBtn = document.getElementById('tab-posts');
+            const pfBtn    = document.getElementById('tab-portfolio');
+            const postsSec = document.getElementById('section-posts');
+            const pfSec    = document.getElementById('section-portfolio');
+            if (which === 'portfolio') {
+                postsBtn.classList.remove('tab-active');
+                pfBtn.classList.add('tab-active');
+                postsSec.classList.add('hidden');
+                pfSec.classList.remove('hidden');
+                history.replaceState(null, '', '#portfolio');
+                refreshPortfolio();
+            } else {
+                pfBtn.classList.remove('tab-active');
+                postsBtn.classList.add('tab-active');
+                pfSec.classList.add('hidden');
+                postsSec.classList.remove('hidden');
+                history.replaceState(null, '', '#posts');
+            }
+        }
+        window.switchTab = switchTab;
+
+        if (window.location.hash === '#portfolio') {
+            setTimeout(() => switchTab('portfolio'), 0);
+        }
+
+        refresh();
+    </script>
+
+    <!-- ================================================================
+         Portfolio dashboard logic (separate script for clarity)
+         ================================================================ -->
+    <script>
+        let allProjects = [];
+        let pfSearchQ = '';
+        const pfTbody = document.getElementById('projects-body');
+        const pfEmptyEl = document.getElementById('pf-empty');
+        const pfSearchInput = document.getElementById('pf-search');
+
+        async function refreshPortfolio() {
+            const data = await RAOGY.loadProjects();
+            allProjects = data.projects || [];
+            document.getElementById('pf-stat-total').textContent = allProjects.length;
+            document.getElementById('pf-stat-published').textContent = allProjects.filter(p => p.published !== false).length;
+            document.getElementById('pf-stat-featured').textContent = allProjects.filter(p => p.featured === true).length;
+            document.getElementById('pf-stat-updated').textContent = data.updatedAt ? RAOGY.formatDate(data.updatedAt) : '–';
+            renderPortfolio();
+        }
+        window.refreshPortfolio = refreshPortfolio;
+
+        function renderPortfolio() {
+            const q = pfSearchQ.trim().toLowerCase();
+            const list = allProjects
+                .filter(p => !q || `${p.title} ${p.description || ''} ${p.category || ''} ${(p.tags || []).map(t => typeof t === 'string' ? t : t.label).join(' ')}`.toLowerCase().includes(q))
+                .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+
+            if (!list.length) {
+                pfTbody.innerHTML = '';
+                pfEmptyEl.classList.remove('hidden');
+                return;
+            }
+            pfEmptyEl.classList.add('hidden');
+
+            pfTbody.innerHTML = list.map(p => {
+                const isPublished = p.published !== false;
+                const isFeatured  = p.featured === true;
+                const gradient = p.gradient || 'from-purple-500 via-blue-500 to-pink-500';
+                const tags = (p.tags || []).slice(0, 3).map(t => {
+                    const label = typeof t === 'string' ? t : t.label;
+                    return `<span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">${RAOGY.escapeHtml(label)}</span>`;
+                }).join('');
+
+                const previewBtn = p.link
+                    ? `<a href="${RAOGY.escapeHtml(p.link)}" target="_blank" class="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-600 dark:text-gray-300" title="Visit link">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                       </a>`
+                    : '';
+
+                return `
+                <tr class="row transition-colors">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 flex-shrink-0 rounded-lg bg-gradient-to-br ${gradient} overflow-hidden">
+                                ${p.image ? `<img src="${RAOGY.escapeHtml(p.image)}" class="w-full h-full object-cover" onerror="this.style.display='none'">` : ''}
+                            </div>
+                            <div class="min-w-0">
+                                <div class="font-semibold text-gray-900 dark:text-white truncate max-w-xs flex items-center gap-1.5" title="${RAOGY.escapeHtml(p.title)}">
+                                    ${RAOGY.escapeHtml(p.title)}
+                                    ${isFeatured ? '<span class="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-gradient-to-r from-purple-600 to-blue-600 text-white">Featured</span>' : ''}
+                                </div>
+                                <div class="text-[11px] text-gray-500 dark:text-gray-400 font-mono truncate max-w-xs">/${RAOGY.escapeHtml(p.slug)}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 hidden md:table-cell text-xs text-gray-600 dark:text-gray-400">
+                        ${RAOGY.escapeHtml(p.category || '–')}
+                    </td>
+                    <td class="px-4 py-3 hidden lg:table-cell">
+                        <div class="flex flex-wrap gap-1">${tags}</div>
+                    </td>
+                    <td class="px-4 py-3">
+                        <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-semibold ${isPublished ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300'}">
+                            <span class="status-dot ${isPublished ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                            ${isPublished ? 'Live' : 'Draft'}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                        <div class="inline-flex items-center gap-1">
+                            ${previewBtn}
+                            <a href="/control/portfolio-editor.html?slug=${encodeURIComponent(p.slug)}" class="p-1.5 rounded-md hover:bg-purple-100 dark:hover:bg-purple-900/30 text-purple-600 dark:text-purple-400" title="Edit">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            </a>
+                            <button onclick="toggleProjectPublish('${RAOGY.escapeHtml(p.slug)}')" class="p-1.5 rounded-md hover:bg-amber-100 dark:hover:bg-amber-900/30 text-amber-600 dark:text-amber-400" title="${isPublished ? 'Unpublish' : 'Publish'}">
+                                ${isPublished
+                                    ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>'
+                                    : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
+                                }
+                            </button>
+                            <button onclick="handleDeleteProject('${RAOGY.escapeHtml(p.slug)}', '${RAOGY.escapeHtml(p.title)}')" class="p-1.5 rounded-md hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400" title="Delete">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/></svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        async function toggleProjectPublish(slug) {
+            const p = await RAOGY.getProject(slug);
+            if (!p) return;
+            p.published = p.published === false ? true : false;
+            await RAOGY.saveProject(p);
+            RAOGY.toast(p.published ? 'Project published' : 'Project unpublished', 'success');
+            refreshPortfolio();
+        }
+        window.toggleProjectPublish = toggleProjectPublish;
+
+        async function handleDeleteProject(slug, title) {
+            if (!confirm(`Delete "${title}"? This can't be undone locally.`)) return;
+            await RAOGY.deleteProject(slug);
+            RAOGY.toast('Project deleted', 'info');
+            refreshPortfolio();
+        }
+        window.handleDeleteProject = handleDeleteProject;
+
+        async function handleImportProjects(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            try {
+                await RAOGY.importProjectsJson(file);
+                RAOGY.toast('Imported successfully', 'success');
+                refreshPortfolio();
+            } catch (err) {
+                RAOGY.toast('Invalid JSON file', 'error');
+            } finally {
+                event.target.value = '';
+            }
+        }
+        window.handleImportProjects = handleImportProjects;
+
+        async function handleResetProjects() {
+            if (!confirm('Reset your local drafts to the current live projects.json? Local changes will be lost.')) return;
+            await RAOGY.resetProjectsToLive();
+            RAOGY.toast('Reset to live projects', 'success');
+            refreshPortfolio();
+        }
+        window.handleResetProjects = handleResetProjects;
+
+        pfSearchInput.addEventListener('input', e => {
+            pfSearchQ = e.target.value;
+            renderPortfolio();
+        });
+    </script>
+</body>
+</html>
