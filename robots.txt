@@ -4,9 +4,9 @@
 User-agent: *
 Allow: /
 
-# Disallow admin or private directories if any
-# Disallow: /admin/
-# Disallow: /private/
+# Block the control panel from search indexes
+Disallow: /control/
+Disallow: /control.raogy.com/
 
 # Sitemap location
 Sitemap: https://raogy.com/sitemap.xml

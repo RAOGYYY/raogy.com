@@ -62,7 +62,45 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    
+
+    <!-- Blog -->
+    <url>
+        <loc>https://raogy.com/blog/</loc>
+        <lastmod>2026-04-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://raogy.com/blog/post.html?slug=building-paani-boss-ro-service-management</loc>
+        <lastmod>2026-04-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://raogy.com/blog/post.html?slug=why-flutter-still-wins-in-2026</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://raogy.com/blog/post.html?slug=supabase-row-level-security-cheatsheet</loc>
+        <lastmod>2026-04-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://raogy.com/blog/post.html?slug=3d-web-effects-without-threejs</loc>
+        <lastmod>2026-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://raogy.com/blog/post.html?slug=control-panel-raogy-dot-com</loc>
+        <lastmod>2026-04-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- Snapscribe App -->
     <url>
         <loc>https://raogy.com/snapscribe/</loc>

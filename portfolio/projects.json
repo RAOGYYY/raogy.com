@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-19T20:30:00Z",
+  "projects": [
+    {
+      "slug": "paaniboss",
+      "title": "Paani Boss — RO Service Management",
+      "category": "Mobile App",
+      "categoryLabel": "Mobile App • Live",
+      "description": "Complete business management for RO water shops with field tracking, AMC & billing.",
+      "longDescription": "",
+      "image": "",
+      "gradient": "from-blue-500 to-purple-600",
+      "accent": "blue",
+      "borderClass": "border-blue-500 dark:border-blue-400",
+      "icon": "phone",
+      "link": "/paaniboss/",
+      "linkLabel": "View App Details",
+      "linkTarget": "_blank",
+      "tags": [
+        { "label": "Flutter",   "color": "blue"   },
+        { "label": "Supabase",  "color": "purple" },
+        { "label": "GPS",       "color": "green"  }
+      ],
+      "featured": true,
+      "published": true,
+      "order": 1
+    },
+    {
+      "slug": "snapscribe",
+      "title": "Snapscribe — Offline Screenshot Manager",
+      "category": "Mobile App",
+      "categoryLabel": "Mobile App • Live",
+      "description": "100% offline screenshots with on-device OCR, smart categorization & QR scanning.",
+      "longDescription": "",
+      "image": "",
+      "gradient": "from-purple-500 to-cyan-500",
+      "accent": "purple",
+      "borderClass": "border-purple-500 dark:border-purple-400",
+      "icon": "image",
+      "link": "/snapscribe/",
+      "linkLabel": "View App Details",
+      "linkTarget": "_blank",
+      "tags": [
+        { "label": "Kotlin",  "color": "purple" },
+        { "label": "Compose", "color": "cyan"   },
+        { "label": "ML Kit",  "color": "green"  },
+        { "label": "Offline", "color": "red"    }
+      ],
+      "featured": false,
+      "published": true,
+      "order": 2
+    },
+    {
+      "slug": "tagglo",
+      "title": "TagGlo — YouTube Tag Generator",
+      "category": "Mobile App",
+      "categoryLabel": "Mobile App • Live",
+      "description": "AI-powered YouTube tags with trending keywords, competitor analysis & title creator.",
+      "longDescription": "",
+      "image": "",
+      "gradient": "from-red-500 to-red-700",
+      "accent": "red",
+      "borderClass": "border-red-500 dark:border-red-400",
+      "icon": "lightning",
+      "link": "/tagglo/",
+      "linkLabel": "View App Details",
+      "linkTarget": "_blank",
+      "tags": [
+        { "label": "Flutter",  "color": "blue"   },
+        { "label": "Supabase", "color": "green"  },
+        { "label": "YT API",   "color": "red"    },
+        { "label": "AI",       "color": "amber"  }
+      ],
+      "featured": false,
+      "published": true,
+      "order": 3
+    },
+    {
+      "slug": "rewardnest",
+      "title": "RewardNest — Spin, Quiz & Earn",
+      "category": "Mobile App",
+      "categoryLabel": "Mobile App • Live",
+      "description": "Free-to-play rewards app with spin wheel, 500+ quizzes, scratch cards & referrals.",
+      "longDescription": "",
+      "image": "",
+      "gradient": "from-emerald-500 to-amber-500",
+      "accent": "emerald",
+      "borderClass": "border-emerald-500 dark:border-emerald-400",
+      "icon": "coin",
+      "link": "/rewardnest/",
+      "linkLabel": "View App Details",
+      "linkTarget": "_blank",
+      "tags": [
+        { "label": "Flutter",  "color": "blue"    },
+        { "label": "Supabase", "color": "purple"  },
+        { "label": "Google",   "color": "emerald" },
+        { "label": "AdMob",    "color": "amber"   }
+      ],
+      "featured": false,
+      "published": true,
+      "order": 4
+    }
+  ]
+}
