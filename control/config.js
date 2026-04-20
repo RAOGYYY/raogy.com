@@ -14,16 +14,15 @@
 window.RAOGY_CONFIG = {
     // 'local'  → localStorage only (default, works offline, browser-specific)
     // 'supabase' → live cloud sync across all devices
-    mode: 'local',
+    mode: 'supabase',  // 'local' | 'supabase'
 
-    // Local auth passphrase (change this immediately!)
-    // When mode === 'supabase', Supabase Auth is used instead.
+    // Local auth passphrase — only used when mode === 'local'
     localPassword: 'raogy-admin-2026',
 
-    // Supabase settings (ignored in local mode)
+    // Supabase settings — paste your values here after creating the project
     supabase: {
-        url: '',          // e.g. 'https://xxxx.supabase.co'
-        anonKey: '',      // e.g. 'eyJhbGc...'
+        url: '',          // TODO: paste 'https://xxxx.supabase.co'
+        anonKey: '',      // TODO: paste your anon public key 'eyJhbGc...'
         bucket: 'blog-images'
     },
 
