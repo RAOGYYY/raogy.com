@@ -69,92 +69,225 @@ async function logout() {
     } else {
         sessionStorage.removeItem(SESSION_KEY);
     }
-    window.location.href = '/control/';
+    window.location.href = '/';
 }
 
 function requireAuth() {
     if (!isLoggedIn()) {
-        window.location.href = '/control/';
+        window.location.href = '/';
         return false;
     }
     return true;
 }
 
-/* ------------- Store (local mode) ------------- */
+/* ------------- Posts: DB ↔ JS field mapping ------------- */
+// Supabase uses snake_case columns; our app uses camelCase
+function postFromRow(row) {
+    if (!row) return null;
+    return {
+        slug:      row.slug,
+        title:     row.title,
+        date:      row.date,
+        excerpt:   row.excerpt,
+        content:   row.content,
+        image:     row.image,
+        cover:     row.cover,
+        tags:      row.tags || [],
+        gradient:  row.gradient,
+        accent:    row.accent,
+        readTime:  row.read_time,
+        featured:  !!row.featured,
+        published: row.published !== false
+    };
+}
+function postToRow(post) {
+    return {
+        slug:      post.slug,
+        title:     post.title,
+        date:      post.date,
+        excerpt:   post.excerpt,
+        content:   post.content,
+        image:     post.image,
+        cover:     post.cover,
+        tags:      post.tags || [],
+        gradient:  post.gradient,
+        accent:    post.accent,
+        read_time: post.readTime,
+        featured:  !!post.featured,
+        published: post.published !== false
+    };
+}
+
+/* ------------- Posts: CRUD (dual-mode) ------------- */
 async function loadPosts() {
-    // Try localStorage first
+    // ── Supabase mode ──
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { data, error } = await sb.from('posts')
+                .select('*')
+                .order('date', { ascending: false });
+            if (error) {
+                console.error('loadPosts supabase error:', error);
+                return { version: 1, updatedAt: new Date().toISOString(), posts: [] };
+            }
+            return {
+                version: 1,
+                updatedAt: new Date().toISOString(),
+                posts: (data || []).map(postFromRow)
+            };
+        }
+    }
+    // ── Local mode ──
     const local = localStorage.getItem(STORAGE_KEY);
     if (local) {
         try {
-            const data = JSON.parse(local);
-            if (data && Array.isArray(data.posts)) return data;
+            const d = JSON.parse(local);
+            if (d && Array.isArray(d.posts)) return d;
         } catch {}
     }
-    // Fallback: fetch current posts.json as seed
     try {
         const res = await fetch(CFG.postsJsonPath, { cache: 'no-cache' });
         if (res.ok) {
-            const data = await res.json();
-            savePosts(data);
-            return data;
+            const d = await res.json();
+            savePosts(d);
+            return d;
         }
     } catch {}
-    // Empty default
     const empty = { version: 1, updatedAt: new Date().toISOString(), posts: [] };
     savePosts(empty);
     return empty;
 }
 
 function savePosts(data) {
+    // Local cache snapshot — only used in local mode (and as a cache in supabase mode)
     data.updatedAt = new Date().toISOString();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
 async function savePost(post) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { data, error } = await sb.from('posts')
+                .upsert(postToRow(post), { onConflict: 'slug' })
+                .select()
+                .single();
+            if (error) throw new Error(error.message);
+            return postFromRow(data);
+        }
+    }
     const data = await loadPosts();
     const idx = data.posts.findIndex(p => p.slug === post.slug);
-    if (idx >= 0) {
-        data.posts[idx] = { ...data.posts[idx], ...post };
-    } else {
-        data.posts.unshift(post);
-    }
+    if (idx >= 0) data.posts[idx] = { ...data.posts[idx], ...post };
+    else data.posts.unshift(post);
     savePosts(data);
     return post;
 }
 
 async function deletePost(slug) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { error } = await sb.from('posts').delete().eq('slug', slug);
+            if (error) throw new Error(error.message);
+            return;
+        }
+    }
     const data = await loadPosts();
     data.posts = data.posts.filter(p => p.slug !== slug);
     savePosts(data);
 }
 
 async function getPost(slug) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { data, error } = await sb.from('posts')
+                .select('*').eq('slug', slug).maybeSingle();
+            if (error) { console.error(error); return null; }
+            return postFromRow(data);
+        }
+    }
     const data = await loadPosts();
     return data.posts.find(p => p.slug === slug) || null;
 }
 
-/* ------------- Portfolio Store (local mode) ------------- */
+/* ------------- Projects: DB ↔ JS field mapping ------------- */
 const PORTFOLIO_KEY = 'raogy_portfolio';
 
+function projectFromRow(row) {
+    if (!row) return null;
+    return {
+        slug:           row.slug,
+        title:          row.title,
+        category:       row.category,
+        categoryLabel:  row.category_label,
+        description:    row.description,
+        tech:           row.tech || [],
+        image:          row.image,
+        icon:           row.icon,
+        gradient:       row.gradient,
+        accent:         row.accent,
+        link:           row.link,
+        featured:       !!row.featured,
+        published:      row.published !== false,
+        order:          row.order
+    };
+}
+function projectToRow(project) {
+    return {
+        slug:            project.slug,
+        title:           project.title,
+        category:        project.category,
+        category_label:  project.categoryLabel,
+        description:     project.description,
+        tech:            project.tech || [],
+        image:           project.image,
+        icon:            project.icon,
+        gradient:        project.gradient,
+        accent:          project.accent,
+        link:            project.link,
+        featured:        !!project.featured,
+        published:       project.published !== false,
+        order:           project.order ?? 0
+    };
+}
+
+/* ------------- Projects: CRUD (dual-mode) ------------- */
 async function loadProjects() {
-    // Try localStorage first
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { data, error } = await sb.from('projects')
+                .select('*')
+                .order('order', { ascending: true });
+            if (error) {
+                console.error('loadProjects supabase error:', error);
+                return { version: 1, updatedAt: new Date().toISOString(), projects: [] };
+            }
+            return {
+                version: 1,
+                updatedAt: new Date().toISOString(),
+                projects: (data || []).map(projectFromRow)
+            };
+        }
+    }
     const local = localStorage.getItem(PORTFOLIO_KEY);
     if (local) {
         try {
-            const data = JSON.parse(local);
-            if (data && Array.isArray(data.projects)) return data;
+            const d = JSON.parse(local);
+            if (d && Array.isArray(d.projects)) return d;
         } catch {}
     }
-    // Fallback: fetch current projects.json as seed
     try {
         const res = await fetch(CFG.portfolioJsonPath || '/portfolio/projects.json', { cache: 'no-cache' });
         if (res.ok) {
-            const data = await res.json();
-            saveProjects(data);
-            return data;
+            const d = await res.json();
+            saveProjects(d);
+            return d;
         }
     } catch {}
-    // Empty default
     const empty = { version: 1, updatedAt: new Date().toISOString(), projects: [] };
     saveProjects(empty);
     return empty;
@@ -166,12 +299,29 @@ function saveProjects(data) {
 }
 
 async function saveProject(project) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            // Assign next order if new + missing
+            if (project.order == null) {
+                const { data: existing } = await sb.from('projects').select('slug, order').eq('slug', project.slug).maybeSingle();
+                if (!existing) {
+                    const { data: maxRow } = await sb.from('projects').select('order').order('order', { ascending: false }).limit(1).maybeSingle();
+                    project.order = ((maxRow && maxRow.order) || 0) + 1;
+                }
+            }
+            const { data, error } = await sb.from('projects')
+                .upsert(projectToRow(project), { onConflict: 'slug' })
+                .select()
+                .single();
+            if (error) throw new Error(error.message);
+            return projectFromRow(data);
+        }
+    }
     const data = await loadProjects();
     const idx = data.projects.findIndex(p => p.slug === project.slug);
-    if (idx >= 0) {
-        data.projects[idx] = { ...data.projects[idx], ...project };
-    } else {
-        // Assign next order if none
+    if (idx >= 0) data.projects[idx] = { ...data.projects[idx], ...project };
+    else {
         if (project.order == null) {
             const maxOrder = data.projects.reduce((m, p) => Math.max(m, p.order || 0), 0);
             project.order = maxOrder + 1;
@@ -183,12 +333,29 @@ async function saveProject(project) {
 }
 
 async function deleteProject(slug) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { error } = await sb.from('projects').delete().eq('slug', slug);
+            if (error) throw new Error(error.message);
+            return;
+        }
+    }
     const data = await loadProjects();
     data.projects = data.projects.filter(p => p.slug !== slug);
     saveProjects(data);
 }
 
 async function getProject(slug) {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            const { data, error } = await sb.from('projects')
+                .select('*').eq('slug', slug).maybeSingle();
+            if (error) { console.error(error); return null; }
+            return projectFromRow(data);
+        }
+    }
     const data = await loadProjects();
     return data.projects.find(p => p.slug === slug) || null;
 }

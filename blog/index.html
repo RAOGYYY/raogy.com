@@ -21,6 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="/js/supabase-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -196,11 +198,14 @@
             renderPosts();
         });
 
-        // Load posts
-        fetch('/blog/posts.json', { cache: 'no-cache' })
-            .then(r => r.ok ? r.json() : Promise.reject(r.status))
-            .then(data => {
-                allPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Load posts from Supabase (with posts.json fallback)
+        window.raogyLoadPublishedPosts()
+            .then(posts => {
+                allPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                if (!allPosts.length) {
+                    grid.innerHTML = '<div class="text-center col-span-full py-12 text-gray-500 dark:text-gray-400">No articles published yet.</div>';
+                    return;
+                }
                 renderTags();
                 renderPosts();
             })

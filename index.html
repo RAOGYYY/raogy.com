@@ -34,6 +34,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="/js/supabase-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -1671,13 +1673,12 @@
         (function loadBlogPreview() {
             const grid = document.getElementById('blog-preview-grid');
             if (!grid) return;
-            fetch('/blog/posts.json', { cache: 'no-cache' })
-                .then(r => r.ok ? r.json() : Promise.reject(r.status))
-                .then(data => {
-                    const posts = (data.posts || [])
-                        .filter(p => p.published !== false)
+            window.raogyLoadPublishedPosts()
+                .then(all => {
+                    const posts = all
                         .sort((a, b) => new Date(b.date) - new Date(a.date))
                         .slice(0, 3);
+                    const data = { posts };
                     if (!posts.length) {
                         grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">No articles yet — check back soon.</div>';
                         return;
@@ -1792,17 +1793,13 @@
                   </div>`;
             }
 
-            fetch('/portfolio/projects.json', { cache: 'no-cache' })
-                .then(r => r.ok ? r.json() : Promise.reject(r.status))
-                .then(data => {
-                    const projects = (data.projects || [])
-                        .filter(p => p.published !== false)
-                        .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+            window.raogyLoadPublishedProjects()
+                .then(projects => {
                     if (!projects.length) return; // keep fallback HTML
                     grid.innerHTML = projects.map(renderCard).join('');
                 })
                 .catch(err => {
-                    console.warn('[portfolio] Could not load projects.json, keeping fallback HTML.', err);
+                    console.warn('[portfolio] Could not load projects, keeping fallback HTML.', err);
                 });
         })();
 
