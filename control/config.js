@@ -26,10 +26,11 @@ window.RAOGY_CONFIG = {
         bucket: 'blog-images'
     },
 
-    // Site URLs
-    publicBlogUrl: '/blog/',
-    postsJsonPath: '/blog/posts.json',
-    portfolioJsonPath: '/portfolio/projects.json',
+    // Site URLs — public site where blog is live
+    publicSiteUrl: 'https://raogy.com',
+    publicBlogUrl: 'https://raogy.com/blog/',
+    postsJsonPath: 'https://raogy.com/blog/posts.json',
+    portfolioJsonPath: 'https://raogy.com/portfolio/projects.json',
 
     // Branding
     siteName: 'RAOGY Control Panel',
