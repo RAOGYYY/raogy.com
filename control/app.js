@@ -217,6 +217,45 @@ async function resetProjectsToLive() {
     return loadProjects();
 }
 
+/* ------------- Supabase Storage image upload ------------- */
+/**
+ * Upload an image File to Supabase Storage (supabase mode)
+ * or fall back to compressed base64 data URL (local mode).
+ * Returns: { url: string } on success, { error: string } on failure.
+ */
+async function uploadImageToStorage(file, folder = 'blog') {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) {
+            // Compress first (max 1400px, 82% JPEG)
+            let uploadFile = file;
+            try {
+                const dataUrl = await fileToCompressedDataUrl(file, 1400, 0.82);
+                const res = await fetch(dataUrl);
+                const blob = await res.blob();
+                uploadFile = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' });
+            } catch { /* use original file if compression fails */ }
+
+            const ext = uploadFile.name.split('.').pop();
+            const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+            const { error } = await sb.storage.from(CFG.supabase.bucket).upload(path, uploadFile, {
+                cacheControl: '31536000',
+                upsert: false
+            });
+            if (error) return { error: error.message };
+            const { data } = sb.storage.from(CFG.supabase.bucket).getPublicUrl(path);
+            return { url: data.publicUrl };
+        }
+    }
+    // Local mode fallback — compress to base64 data URL
+    try {
+        const url = await fileToCompressedDataUrl(file, 1400, 0.82);
+        return { url };
+    } catch (err) {
+        return { error: err.message };
+    }
+}
+
 /* ------------- Slug + image helpers ------------- */
 function slugify(text) {
     return text.toString().toLowerCase().trim()
@@ -347,6 +386,6 @@ window.RAOGY = {
     loadProjects, saveProject, deleteProject, getProject, saveProjects,
     exportProjectsJson, importProjectsJson, resetProjectsToLive,
     // Common
-    slugify, fileToCompressedDataUrl,
+    slugify, fileToCompressedDataUrl, uploadImageToStorage,
     formatDate, estimateReadTime, escapeHtml, toast
 };

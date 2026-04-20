@@ -21,8 +21,8 @@ window.RAOGY_CONFIG = {
 
     // Supabase settings — paste your values here after creating the project
     supabase: {
-        url: '',          // TODO: paste 'https://xxxx.supabase.co'
-        anonKey: '',      // TODO: paste your anon public key 'eyJhbGc...'
+        url: 'https://efklrqzvafzvwmegmvcw.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVma2xycXp2YWZ6dndtZWdtdmN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2NTc4NTUsImV4cCI6MjA5MjIzMzg1NX0.qZAh1AVEOnQemJ0Ym8XAHarD4PvyMSRYjimsfThopIU',
         bucket: 'blog-images'
     },
 
