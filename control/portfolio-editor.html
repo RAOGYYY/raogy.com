@@ -136,6 +136,7 @@
             </div>
 
             <div class="flex items-center gap-2">
+                <span id="current-status" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold" title="Current status"></span>
                 <button onclick="handleSave(false)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
                     Save Draft
                 </button>
@@ -294,28 +295,16 @@
             <!-- Right: Sidebar -->
             <aside class="space-y-4">
 
-                <!-- Status + featured -->
+                <!-- Featured flag -->
                 <div class="bg-white/90 dark:bg-slate-800/70 backdrop-blur rounded-xl border border-gray-200 dark:border-slate-700 p-5">
-                    <label class="label">Status</label>
-                    <div class="flex gap-2">
-                        <label class="flex-1">
-                            <input type="radio" name="status" value="published" class="peer sr-only" checked>
-                            <div class="px-3 py-2 rounded-lg border-2 border-gray-200 dark:border-slate-700 peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 text-center text-xs font-semibold cursor-pointer">
-                                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1"></span> Live
-                            </div>
-                        </label>
-                        <label class="flex-1">
-                            <input type="radio" name="status" value="draft" class="peer sr-only">
-                            <div class="px-3 py-2 rounded-lg border-2 border-gray-200 dark:border-slate-700 peer-checked:border-amber-500 peer-checked:bg-amber-50 dark:peer-checked:bg-amber-900/20 text-center text-xs font-semibold cursor-pointer">
-                                <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span> Draft
-                            </div>
-                        </label>
-                    </div>
-
-                    <label class="flex items-center gap-2 mt-4 cursor-pointer text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer text-xs">
                         <input type="checkbox" id="featured" class="rounded">
                         <span><b>Featured</b> — highlight with "Featured" ribbon on card</span>
                     </label>
+                    <div class="mt-3 text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Use <b class="text-gray-700 dark:text-gray-200">Save Draft</b> to save privately,
+                        or <b class="text-purple-600 dark:text-purple-400">Publish</b> to show on raogy.com.
+                    </div>
                 </div>
 
                 <!-- Live preview -->
@@ -566,6 +555,20 @@
             $('preview-link').innerHTML = `${RAOGY.escapeHtml(linkLabelEl.value.trim() || 'View Details')} <span>→</span>`;
         }
 
+        // Show "Live" / "Draft" badge in top bar
+        function updateStatusBadge(isPublished) {
+            const el = $('current-status');
+            if (!el) return;
+            el.classList.remove('hidden');
+            if (isPublished) {
+                el.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300';
+                el.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Live';
+            } else {
+                el.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300';
+                el.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Draft';
+            }
+        }
+
         // ---------- Save ----------
         async function handleSave(publish) {
             const title = titleEl.value.trim();
@@ -575,7 +578,8 @@
             const description = descEl.value.trim();
             if (!description) { RAOGY.toast('Description is required', 'error'); descEl.focus(); return; }
 
-            const published = publish ? true : (document.querySelector('input[name="status"]:checked').value === 'published');
+            // Buttons are the single source of truth
+            const published = !!publish;
 
             const project = {
                 slug,
@@ -605,10 +609,14 @@
             await RAOGY.saveProject(project);
             RAOGY.toast(publish ? 'Saved and published!' : 'Draft saved', 'success');
 
-            if (!editSlug || editSlug !== slug) {
-                setTimeout(() => {
-                    window.location.href = `/control/portfolio-editor.html?slug=${encodeURIComponent(slug)}`;
-                }, 600);
+            currentProject = { ...(currentProject || {}), ...project };
+            editSlug = slug;
+            updateStatusBadge(published);
+            $('danger-zone').style.display = '';
+
+            const newUrl = `${location.pathname}?slug=${encodeURIComponent(slug)}`;
+            if (location.pathname + location.search !== newUrl) {
+                history.replaceState(null, '', newUrl);
             }
         }
         window.handleSave = handleSave;
@@ -672,9 +680,7 @@
                 pickIcon(selectedIcon);
                 pickAccent(selectedAccent);
 
-                if (currentProject.published === false) {
-                    document.querySelector('input[name="status"][value="draft"]').checked = true;
-                }
+                updateStatusBadge(currentProject.published !== false);
                 $('danger-zone').style.display = '';
             }
             updatePreview();
