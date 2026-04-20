@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Code+Pro&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="/js/supabase-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
@@ -298,17 +300,17 @@
         if (!slug) {
             showError('No article specified. Please go back and pick an article.');
         } else {
-            fetch('/blog/posts.json', { cache: 'no-cache' })
-                .then(r => r.ok ? r.json() : Promise.reject(r.status))
-                .then(data => {
-                    const post = (data.posts || []).find(p => p.slug === slug);
-                    if (!post) {
-                        showError('This article does not exist or has been removed.');
-                        return;
-                    }
-                    render(post, data.posts || []);
-                })
-                .catch(() => showError('Could not load article. Please try again.'));
+            // Load post + all others for related-posts section
+            Promise.all([
+                window.raogyLoadPost(slug),
+                window.raogyLoadPublishedPosts()
+            ]).then(([post, allPosts]) => {
+                if (!post) {
+                    showError('This article does not exist or has been removed.');
+                    return;
+                }
+                render(post, allPosts || []);
+            }).catch(() => showError('Could not load article. Please try again.'));
         }
     </script>
 </body>
