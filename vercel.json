@@ -1,5 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/blog/post",
+      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>.*)" }],
+      "destination": "/blog/:slug",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/blog/:slug((?!posts\\.json|index)[^/]+)",
+      "destination": "/blog/post.html"
+    },
     {
       "source": "/privacy",
       "destination": "/privacy.html"

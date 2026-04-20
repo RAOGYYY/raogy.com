@@ -154,7 +154,7 @@
                     ? `<img src="${p.cover}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">`
                     : '';
                 return `
-                <a href="/blog/post.html?slug=${encodeURIComponent(p.slug)}" class="post-card group block bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-2xl">
+                <a href="/blog/${encodeURIComponent(p.slug)}" class="post-card group block bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-2xl">
                     <div class="h-40 bg-gradient-to-br ${gradient} relative overflow-hidden">
                         ${coverHTML}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
