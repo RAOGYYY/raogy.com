@@ -9,8 +9,29 @@ const CFG = window.RAOGY_CONFIG;
 const STORAGE_KEY = 'raogy_posts';
 const SESSION_KEY = 'raogy_session';
 
+/* ------------- Supabase client (lazy-init) ------------- */
+let _sb = null;
+function getSB() {
+    if (_sb) return _sb;
+    if (CFG.mode !== 'supabase') return null;
+    if (!CFG.supabase.url || !CFG.supabase.anonKey) return null;
+    if (typeof supabase === 'undefined') return null;
+    _sb = supabase.createClient(CFG.supabase.url, CFG.supabase.anonKey);
+    return _sb;
+}
+
 /* ------------- Auth ------------- */
 function isLoggedIn() {
+    if (CFG.mode === 'supabase') {
+        // Supabase mode: check localStorage for persisted session token
+        try {
+            const raw = localStorage.getItem('raogy_sb_session');
+            if (!raw) return false;
+            const { expiresAt } = JSON.parse(raw);
+            return expiresAt > Date.now();
+        } catch { return false; }
+    }
+    // Local mode: sessionStorage short-lived token
     const s = sessionStorage.getItem(SESSION_KEY);
     if (!s) return false;
     try {
@@ -19,15 +40,35 @@ function isLoggedIn() {
     } catch { return false; }
 }
 
+// Local-mode only (called directly from legacy doLogin)
 function login(password) {
+    if (CFG.mode === 'supabase') return false; // use loginWithEmail instead
     if (password !== CFG.localPassword) return false;
-    const session = { expiresAt: Date.now() + 4 * 60 * 60 * 1000 }; // 4 hours
+    const session = { expiresAt: Date.now() + 4 * 60 * 60 * 1000 };
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
     return true;
 }
 
-function logout() {
-    sessionStorage.removeItem(SESSION_KEY);
+// Supabase-mode login — returns { error } or {}
+async function loginWithEmail(email, password) {
+    const sb = getSB();
+    if (!sb) return { error: 'Supabase not configured. Check config.js.' };
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) return { error: error.message };
+    // Persist lightweight session marker (actual JWT stays in Supabase storage)
+    const expiresAt = Date.now() + (data.session.expires_in || 3600) * 1000;
+    localStorage.setItem('raogy_sb_session', JSON.stringify({ expiresAt }));
+    return {};
+}
+
+async function logout() {
+    if (CFG.mode === 'supabase') {
+        const sb = getSB();
+        if (sb) await sb.auth.signOut();
+        localStorage.removeItem('raogy_sb_session');
+    } else {
+        sessionStorage.removeItem(SESSION_KEY);
+    }
     window.location.href = '/control/';
 }
 
@@ -298,7 +339,7 @@ window.toggleTheme = toggleTheme;
 
 /* ------------- Expose ------------- */
 window.RAOGY = {
-    isLoggedIn, login, logout, requireAuth,
+    isLoggedIn, login, loginWithEmail, logout, requireAuth,
     // Posts
     loadPosts, savePost, deletePost, getPost, savePosts,
     exportPostsJson, importPostsJson, resetToLiveJson,
