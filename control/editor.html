@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
@@ -639,16 +640,17 @@
         async function handleCoverUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
-            try {
-                const dataUrl = await RAOGY.fileToCompressedDataUrl(file, 1400, 0.82);
-                coverDataUrl = dataUrl;
+            RAOGY.toast('Uploading cover…', 'info');
+            const result = await RAOGY.uploadImageToStorage(file, 'covers');
+            if (result.error) {
+                RAOGY.toast('Upload failed: ' + result.error, 'error');
+            } else {
+                coverDataUrl = result.url;
                 const img = $('cover-preview-img');
-                img.src = dataUrl;
+                img.src = result.url;
                 img.style.display = '';
                 $('cover-preview-hint').style.display = 'none';
-                RAOGY.toast('Cover image loaded', 'success');
-            } catch (err) {
-                RAOGY.toast('Could not read image', 'error');
+                RAOGY.toast('Cover image uploaded ✓', 'success');
             }
             e.target.value = '';
         }
@@ -896,17 +898,16 @@
                 RAOGY.toast('Not an image file', 'error');
                 return;
             }
-            RAOGY.toast('Processing image…', 'info');
-            try {
-                const dataUrl = await RAOGY.fileToCompressedDataUrl(file, 1200, 0.82);
-                const alt = escapeHtml(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ').trim() || 'image');
-                // Insert a real <img> so user sees it immediately — no raw base64 text!
-                insertHTMLAt(`<img src="${dataUrl}" alt="${alt}"><p><br></p>`);
-                RAOGY.toast('Image inserted', 'success');
-            } catch (err) {
-                console.error('Image embed failed:', err);
-                RAOGY.toast('Could not embed image', 'error');
+            RAOGY.toast('Uploading image…', 'info');
+            const result = await RAOGY.uploadImageToStorage(file, 'inline');
+            if (result.error) {
+                console.error('Image upload failed:', result.error);
+                RAOGY.toast('Could not upload image', 'error');
+                return;
             }
+            const alt = escapeHtml(file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ').trim() || 'image');
+            insertHTMLAt(`<img src="${result.url}" alt="${alt}"><p><br></p>`);
+            RAOGY.toast('Image inserted ✓', 'success');
         }
 
         // Drag-drop image directly into the editor

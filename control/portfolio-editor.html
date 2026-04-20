@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } };
@@ -480,18 +481,18 @@
         async function handleImageUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
-            RAOGY.toast('Processing image…', 'info');
-            try {
-                const url = await RAOGY.fileToCompressedDataUrl(file, 900, 0.82);
-                imageDataUrl = url;
+            RAOGY.toast('Uploading image…', 'info');
+            const result = await RAOGY.uploadImageToStorage(file, 'portfolio');
+            if (result.error) {
+                RAOGY.toast('Upload failed: ' + result.error, 'error');
+            } else {
+                imageDataUrl = result.url;
                 const img = $('image-preview-img');
-                img.src = url;
+                img.src = result.url;
                 img.style.display = '';
                 $('image-preview-hint').style.display = 'none';
                 updatePreview();
-                RAOGY.toast('Image added', 'success');
-            } catch (err) {
-                RAOGY.toast('Could not process image', 'error');
+                RAOGY.toast('Image uploaded ✓', 'success');
             }
             e.target.value = '';
         }
