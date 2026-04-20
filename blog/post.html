@@ -13,6 +13,8 @@
     <meta id="og-title" property="og:title" content="RAOGY Blog">
     <meta id="og-desc" property="og:description" content="">
     <meta id="og-image" property="og:image" content="https://raogy.com/images/raogy.jpg">
+    <meta id="og-url" property="og:url" content="">
+    <link id="canonical" rel="canonical" href="">
 
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
 
@@ -183,9 +185,12 @@
             progressEl.style.width = Math.min(100, Math.max(0, scrolled)) + '%';
         }, { passive: true });
 
-        // Get slug
+        // Get slug — supports clean URL /blog/:slug and legacy ?slug= query param
         const params = new URLSearchParams(window.location.search);
-        const slug = params.get('slug');
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const slug = (pathParts[0] === 'blog' && pathParts[1] && pathParts[1] !== 'post.html')
+            ? pathParts[1]
+            : params.get('slug');
 
         function formatDate(iso) {
             return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -217,6 +222,9 @@
             document.getElementById('page-desc').setAttribute('content', post.excerpt || '');
             document.getElementById('og-title').setAttribute('content', post.title);
             document.getElementById('og-desc').setAttribute('content', post.excerpt || '');
+            const canonicalUrl = `https://raogy.com/blog/${post.slug}`;
+            document.getElementById('og-url').setAttribute('content', canonicalUrl);
+            document.getElementById('canonical').setAttribute('href', canonicalUrl);
 
             // Cover
             const cover = document.getElementById('cover');
@@ -278,7 +286,7 @@
             const relatedFinal = related.length ? related : fallbackRelated;
 
             document.getElementById('related-grid').innerHTML = relatedFinal.map(p => `
-                <a href="/blog/post.html?slug=${encodeURIComponent(p.slug)}" class="group block bg-white/80 dark:bg-slate-800/70 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all backdrop-blur">
+                <a href="/blog/${encodeURIComponent(p.slug)}" class="group block bg-white/80 dark:bg-slate-800/70 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all backdrop-blur">
                     <div class="h-32 bg-gradient-to-br ${p.coverGradient || 'from-purple-500 via-blue-500 to-pink-500'}"></div>
                     <div class="p-4">
                         <div class="text-[10px] uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1">${formatDate(p.date)} • ${p.readTime || ''}</div>
