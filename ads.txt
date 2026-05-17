@@ -1,14 +1,5 @@
-# ads.txt file for raogy.com
-# This file is used to declare authorized digital sellers
+# ads.txt for raogy.com
+# Authorized digital sellers for https://raogy.com
+# App page: https://raogy.com/tagglo
 
-# Google AdSense
-# Replace pub-0000000000000000 with your actual AdSense publisher ID
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-
-# Instructions:
-# 1. Get your AdSense Publisher ID from your AdSense account
-# 2. Uncomment the line above and replace pub-0000000000000000 with your actual ID
-# 3. Add other ad networks here if needed
-
-# Example for other networks:
-# network.com, publisherid, DIRECT/RESELLER, certificationid
+google.com, pub-9572833379410399, DIRECT, f08c47fec0942fa0
