@@ -1,5 +1,5 @@
 # ads.txt for raogy.com
 # Authorized digital sellers for https://raogy.com
-# App page: https://raogy.com/tagglo
+# App page: https://raogy.com/krexo
 
 google.com, pub-9572833379410399, DIRECT, f08c47fec0942fa0

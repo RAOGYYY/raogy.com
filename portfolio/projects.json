@@ -52,8 +52,8 @@
       "order": 2
     },
     {
-      "slug": "tagglo",
-      "title": "TagGlo — YouTube Tag Generator",
+      "slug": "krexo",
+      "title": "Krexo — YouTube Tag Generator",
       "category": "Mobile App",
       "categoryLabel": "Mobile App • Live",
       "description": "AI-powered YouTube tags with trending keywords, competitor analysis & title creator.",
@@ -63,7 +63,7 @@
       "accent": "red",
       "borderClass": "border-red-500 dark:border-red-400",
       "icon": "lightning",
-      "link": "/tagglo/",
+      "link": "/krexo/",
       "linkLabel": "View App Details",
       "linkTarget": "_blank",
       "tags": [
