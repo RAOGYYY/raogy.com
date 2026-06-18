@@ -41,7 +41,7 @@ A modern, responsive portfolio website built with HTML, CSS (Tailwind), and Java
 
 ## 📱 Contact
 
-- **Email**: raogyy@gmail.com
+- **Email**: contact@raogy.com
 - **WhatsApp**: +91 6300163216
 - **GitHub**: [@RAOGYYY](https://github.com/RAOGYYY)
 - **Instagram**: [@anwarul.20](https://instagram.com/anwarul.20)
