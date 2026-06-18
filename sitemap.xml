@@ -156,27 +156,27 @@
         <priority>0.6</priority>
     </url>
     
-    <!-- TagGlo App -->
+    <!-- Krexo App -->
     <url>
-        <loc>https://raogy.com/tagglo/</loc>
+        <loc>https://raogy.com/krexo/</loc>
         <lastmod>2026-03-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://raogy.com/tagglo/privacy</loc>
+        <loc>https://raogy.com/krexo/privacy</loc>
         <lastmod>2026-03-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://raogy.com/tagglo/terms</loc>
+        <loc>https://raogy.com/krexo/terms</loc>
         <lastmod>2026-03-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://raogy.com/tagglo/delete-account</loc>
+        <loc>https://raogy.com/krexo/delete-account</loc>
         <lastmod>2026-03-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -190,19 +190,19 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://raogy.com/rewardnest/privacy.html</loc>
+        <loc>https://raogy.com/rewardnest/privacy</loc>
         <lastmod>2026-04-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://raogy.com/rewardnest/terms.html</loc>
+        <loc>https://raogy.com/rewardnest/terms</loc>
         <lastmod>2026-04-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://raogy.com/rewardnest/delete-account.html</loc>
+        <loc>https://raogy.com/rewardnest/delete-account</loc>
         <lastmod>2026-04-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

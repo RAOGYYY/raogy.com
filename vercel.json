@@ -45,16 +45,28 @@
       "destination": "/paaniboss/delete-account.html"
     },
     {
-      "source": "/tagglo/privacy",
-      "destination": "/tagglo/privacy.html"
+      "source": "/krexo/privacy",
+      "destination": "/krexo/privacy.html"
     },
     {
-      "source": "/tagglo/terms",
-      "destination": "/tagglo/terms.html"
+      "source": "/krexo/terms",
+      "destination": "/krexo/terms.html"
     },
     {
-      "source": "/tagglo/delete-account",
-      "destination": "/tagglo/delete-account.html"
+      "source": "/krexo/delete-account",
+      "destination": "/krexo/delete-account.html"
+    },
+    {
+      "source": "/rewardnest/privacy",
+      "destination": "/rewardnest/privacy.html"
+    },
+    {
+      "source": "/rewardnest/terms",
+      "destination": "/rewardnest/terms.html"
+    },
+    {
+      "source": "/rewardnest/delete-account",
+      "destination": "/rewardnest/delete-account.html"
     }
   ],
   "headers": [

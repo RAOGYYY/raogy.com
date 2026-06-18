@@ -9,15 +9,15 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 # Remove .html extension for subdirectories
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|tagglo)/([^\.]+)$ $1/$2.html [NC,L]
+RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo)/([^\.]+)$ $1/$2.html [NC,L]
 
 # Redirect .html to clean URLs for root files
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
 RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
 
 # Redirect .html to clean URLs for subdirectories
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(screenscribe|paaniboss|rewardnest|snapscribe|tagglo)/([^.]+)\.html\ HTTP
-RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|tagglo)/([^.]+)\.html$ /$1/$2 [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(screenscribe|paaniboss|rewardnest|snapscribe|krexo)/([^.]+)\.html\ HTTP
+RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo)/([^.]+)\.html$ /$1/$2 [R=301,L]
 
 # Force HTTPS (uncomment when you have SSL)
 # RewriteCond %{HTTPS} off
