@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About RAOGY - Web, iOS & Android App Developer</title>
+    <meta name="description" content="Learn about RAOGY - a full-stack web developer and mobile app creator building modern websites, iOS apps, and Android apps from Jaipur, India.">
+    <meta name="author" content="RAOGY">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <link rel="canonical" href="https://raogy.com/about">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+    <link rel="apple-touch-icon" href="/images/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { scroll-behavior: smooth; }
+        html { background: #f8fafc; }
+        html.dark { background: #050816; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .tilt-3d { transition: transform 0.3s ease-out; }
+    </style>
+</head>
+<body class="font-sans text-gray-900 dark:text-gray-100 transition-colors duration-500 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-slate-800/50 transition-colors">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="text-2xl font-bold gradient-text">RAOGY</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Home</a>
+                <a href="/about" class="text-sm font-medium text-purple-600 dark:text-white transition-colors">About</a>
+                <a href="/isellback" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">iSellBack</a>
+                <a href="/#contact" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Contact</a>
+            </div>
+            <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+                <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
+                <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <div class="container mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">About <span class="gradient-text">Me</span></h1>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div class="animate-fade-in-up">
+                    <!-- Profile Image -->
+                    <div class="w-48 h-48 mx-auto lg:mx-0 mb-8 rounded-full bg-gradient-to-br from-purple-400 via-blue-500 to-purple-600 p-1 shadow-2xl">
+                        <div class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                            <img src="/images/raogy.jpg" alt="RAOGY - Web, iOS & Android App Developer" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+
+                    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Web &amp; Mobile App Craftsman</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                        I build complete digital products across <span class="font-semibold text-gray-800 dark:text-gray-200">web, iOS, and Android</span>.
+                        From scalable back-ends to pixel-perfect mobile UIs, I care about performance, polish, and delightful micro-interactions.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                        My shipped apps — <a href="/paaniboss/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Paani Boss</a>,
+                        <a href="/snapscribe/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Snapscribe</a>,
+                        <a href="/krexo/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Krexo</a> and
+                        <a href="/rewardnest/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">RewardNest</a> — run in real businesses and on real devices.
+                        Whether it's a landing page, an internal tool or a full Play Store / App Store launch, I bring the same obsession for detail.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full text-sm font-medium">Flutter</span>
+                        <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Kotlin</span>
+                        <span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Jetpack Compose</span>
+                        <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">React</span>
+                        <span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Node.js</span>
+                        <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">Supabase</span>
+                        <span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 animate-fade-in-up">
+                    <div class="tilt-3d bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-700/50">
+                        <div class="text-4xl mb-3">📱</div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">iOS &amp; Android</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Native-feel cross-platform apps</p>
+                    </div>
+                    <div class="tilt-3d bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-700/50">
+                        <div class="text-4xl mb-3">⚡</div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Performance</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">60fps UI &amp; optimized builds</p>
+                    </div>
+                    <div class="tilt-3d bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 p-6 rounded-2xl border border-green-200 dark:border-green-700/50">
+                        <div class="text-4xl mb-3">🎨</div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">UI / UX</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Interfaces that feel effortless</p>
+                    </div>
+                    <div class="tilt-3d bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/20 dark:to-pink-800/20 p-6 rounded-2xl border border-pink-200 dark:border-pink-700/50">
+                        <div class="text-4xl mb-3">🚀</div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Ship &amp; Scale</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">From prototype to Play/App Store</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <div class="text-center mt-16">
+                <a href="/" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm border-t border-gray-200 dark:border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+                <div class="text-2xl font-bold gradient-text">RAOGY</div>
+                <div class="flex gap-3 text-sm">
+                    <a href="/privacy" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
+                    <span class="text-gray-400">•</span>
+                    <a href="/terms" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200/50 dark:border-slate-800/50 pt-6 text-center">
+                <p class="text-gray-600 dark:text-gray-400 text-xs">
+                    © <span id="year"></span> RAOGY. Crafted with ❤️ for web, iOS &amp; Android.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) { html.classList.remove('dark'); localStorage.setItem('theme', 'light'); }
+            else { html.classList.add('dark'); localStorage.setItem('theme', 'dark'); }
+        }
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+        })();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
