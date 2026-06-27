@@ -8,23 +8,23 @@
     <meta name="google-site-verification" content="cvHOg_E5N9mN7QBxOxtEQhNl-eEr8pM9hOWLvBB_8kw" />
 
     <!-- Primary SEO -->
-    <title>RAOGY - Web, iOS & Android App Developer | Full-Stack & Mobile Solutions</title>
-    <meta name="description" content="RAOGY - Full-stack web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js, UI/UX design & custom solutions.">
-    <meta name="keywords" content="RAOGY, web developer, iOS developer, Android developer, mobile app developer, Flutter developer, Kotlin developer, React developer, full stack developer, UI UX designer, Paani Boss, Snapscribe, Krexo, RewardNest">
+    <title>RAOGY - Web, iOS & Android App Developer | iSellBack — Smartest Way to Sell Your MacBook & iPad</title>
+    <meta name="description" content="RAOGY - Full-stack web developer and mobile app creator. Building iSellBack — a premium B2C buyback and recommerce platform for Apple devices like MacBooks and iPads.">
+    <meta name="keywords" content="RAOGY, web developer, iOS developer, Android developer, iSellBack, MacBook buyback, iPad sell, Apple device recommerce, gadget valuation, sell MacBook, sell iPad, recommerce platform">
     <meta name="author" content="RAOGY">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="https://raogy.com/">
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raogy.com/">
-    <meta property="og:title" content="RAOGY - Web, iOS & Android App Developer">
-    <meta property="og:description" content="Full-stack web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js & UI/UX design.">
+    <meta property="og:title" content="RAOGY - iSellBack | The Smartest Way to Sell Your MacBook & iPad">
+    <meta property="og:description" content="Premium B2C buyback and recommerce platform for Apple devices. Get instant price valuations and sell seamlessly.">
     <meta property="og:image" content="https://raogy.com/images/raogy.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAOGY - Web, iOS & Android App Developer">
-    <meta name="twitter:description" content="Full-stack web & mobile app developer building modern sites and apps.">
+    <meta name="twitter:title" content="RAOGY - iSellBack | Smartest Way to Sell Your MacBook & iPad">
+    <meta name="twitter:description" content="Premium B2C buyback and recommerce platform for Apple devices.">
     <meta name="twitter:image" content="https://raogy.com/images/raogy.jpg">
 
     <!-- Favicon -->
@@ -34,105 +34,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-    <script src="/js/supabase-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script defer src="/js/supabase-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1' } }
                 }
             }
         }
     </script>
     <style>
-        * {
-            scroll-behavior: smooth;
-        }
-
-        html { background: #f8fafc; }
+        * { scroll-behavior: smooth; }
+        html { background: #f8fafc; transition: background-color 0.5s; }
         html.dark { background: #050816; }
 
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .dark .glass-effect {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        #scrollToTop {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-        }
-        #scrollToTop.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        @keyframes bounce-up {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .cta-gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #60a5fa 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
 
-        /* =========================
-           BACKGROUND ATMOSPHERE
-           ========================= */
-        .bg-stage {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        /* --- DARK MODE: Rolls-Royce starry sky --- */
-        .stars-layer {
-            position: absolute;
-            inset: -50%;
-            width: 200%;
-            height: 200%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            background-repeat: repeat;
-        }
+        /* === Background Atmosphere === */
+        .bg-stage { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .stars-layer { position: absolute; inset: -50%; width: 200%; height: 200%; background-repeat: repeat; opacity: 0; transition: opacity 0.8s ease; }
         .dark .stars-layer { opacity: 1; }
         .stars-layer.s1 {
             background-image:
-                radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
+                radial-gradient(1px 1px at 20px 30px, #fff, transparent),
                 radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.85), transparent),
                 radial-gradient(1px 1px at 90px 40px, #fff, transparent),
                 radial-gradient(1.5px 1.5px at 130px 80px, rgba(255,255,255,0.9), transparent),
                 radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.7), transparent),
                 radial-gradient(1px 1px at 200px 50px, #fff, transparent),
                 radial-gradient(1.2px 1.2px at 240px 160px, rgba(255,255,255,0.9), transparent),
-                radial-gradient(1px 1px at 280px 90px, rgba(255,255,255,0.6), transparent),
-                radial-gradient(1px 1px at 320px 30px, #fff, transparent);
+                radial-gradient(1px 1px at 280px 90px, rgba(255,255,255,0.6), transparent);
             background-size: 350px 200px;
             animation: twinkle 4s ease-in-out infinite, drift 180s linear infinite;
         }
@@ -141,718 +87,381 @@
                 radial-gradient(1px 1px at 60px 20px, rgba(255,255,255,0.8), transparent),
                 radial-gradient(1.5px 1.5px at 120px 140px, #fff, transparent),
                 radial-gradient(1px 1px at 180px 60px, rgba(200,220,255,0.9), transparent),
-                radial-gradient(1px 1px at 250px 110px, #fff, transparent),
-                radial-gradient(2px 2px at 330px 40px, rgba(255,255,255,0.95), transparent),
-                radial-gradient(1px 1px at 400px 180px, rgba(255,255,255,0.7), transparent);
+                radial-gradient(2px 2px at 330px 40px, rgba(255,255,255,0.95), transparent);
             background-size: 500px 260px;
             animation: twinkle 6s ease-in-out infinite 1s, drift 260s linear infinite reverse;
-            opacity: 0;
         }
-        .dark .stars-layer.s2 { opacity: 0.9; }
         .stars-layer.s3 {
             background-image:
                 radial-gradient(2.5px 2.5px at 100px 80px, #fff, transparent),
                 radial-gradient(2px 2px at 300px 220px, rgba(180,200,255,0.95), transparent),
-                radial-gradient(2.5px 2.5px at 500px 120px, #fff, transparent),
-                radial-gradient(2px 2px at 700px 50px, rgba(255,230,200,0.9), transparent);
+                radial-gradient(2.5px 2.5px at 500px 120px, #fff, transparent);
             background-size: 800px 400px;
             animation: twinkle 3s ease-in-out infinite 0.5s;
-            opacity: 0;
         }
-        .dark .stars-layer.s3 { opacity: 1; }
+        @keyframes twinkle { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.6); } }
+        @keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-350px,-200px,0); } }
 
-        @keyframes twinkle {
-            0%, 100% { filter: brightness(1); }
-            50%      { filter: brightness(1.6); }
-        }
-        @keyframes drift {
-            from { transform: translate3d(0,0,0); }
-            to   { transform: translate3d(-350px, -200px, 0); }
-        }
-
-        /* Shooting stars — broken/falling star with sparky disintegrating trail */
         .shooting-star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            opacity: 0;
-            transform-origin: center;
-            /* Glowing head */
-            background: radial-gradient(circle, #ffffff 0%, #fff8dc 40%, rgba(255,200,150,0.6) 70%, transparent 100%);
-            box-shadow:
-                0 0 10px 2px rgba(255,255,255,0.95),
-                0 0 22px 5px rgba(255,210,160,0.55),
-                0 0 40px 10px rgba(255,180,120,0.25);
-            filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+            position: absolute; width: 3px; height: 3px; border-radius: 50%; opacity: 0;
+            background: radial-gradient(circle, #fff 0%, #fff8dc 40%, transparent 100%);
+            box-shadow: 0 0 10px 2px rgba(255,255,255,0.95), 0 0 22px 5px rgba(255,210,160,0.55);
         }
-        /* Primary bright gradient trail */
         .shooting-star::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 1px;
-            width: 180px;
-            height: 2px;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg,
-                rgba(255,255,255,0.95) 0%,
-                rgba(255,230,180,0.75) 15%,
-                rgba(255,180,120,0.45) 35%,
-                rgba(180,160,255,0.25) 60%,
-                transparent 100%);
-            border-radius: 2px;
-            filter: blur(0.6px);
+            content: ''; position: absolute; top: 50%; right: 1px; width: 180px; height: 2px; transform: translateY(-50%);
+            background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,230,180,0.75) 15%, rgba(255,200,140,0.45) 40%, transparent 100%);
         }
-        /* Disintegrating sparks behind — scattered particles */
-        .shooting-star::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            width: 220px;
-            height: 8px;
-            transform: translateY(-50%);
-            background-image:
-                radial-gradient(1px 1px at 20px 2px, #fff, transparent 60%),
-                radial-gradient(1px 1px at 50px 6px, rgba(255,220,180,0.9), transparent 60%),
-                radial-gradient(1.5px 1.5px at 90px 3px, #fff, transparent 60%),
-                radial-gradient(1px 1px at 130px 5px, rgba(255,200,150,0.85), transparent 60%),
-                radial-gradient(1px 1px at 170px 1px, #fff, transparent 60%),
-                radial-gradient(1px 1px at 210px 4px, rgba(255,230,200,0.7), transparent 60%);
-            filter: blur(0.4px);
-            animation: sparkle 1.2s ease-out infinite;
-            opacity: 0.9;
+        .dark .shooting-star.s1 { top: 15%; left: 90%; animation: shootStar1 12s linear infinite 2s; }
+        .dark .shooting-star.s2 { top: 30%; left: 95%; animation: shootStar2 15s linear infinite 7s; }
+        @keyframes shootStar1 {
+            0%{opacity:0;transform:translate3d(0,0,0) rotate(215deg) scale(0.6)} 5%{opacity:1;transform:translate3d(-60px,45px,0) rotate(215deg) scale(1)}
+            22%{opacity:0.8;transform:translate3d(-320px,230px,0) rotate(224deg) scale(0.9)} 40%,100%{opacity:0;transform:translate3d(-540px,385px,0) rotate(230deg) scale(0.3)}
         }
-        @keyframes sparkle {
-            0%   { opacity: 0.4; transform: translateY(-50%) translateX(0); }
-            50%  { opacity: 0.95; transform: translateY(-55%) translateX(-4px); }
-            100% { opacity: 0.4; transform: translateY(-50%) translateX(0); }
-        }
-        .dark .shooting-star { animation: shoot 9s cubic-bezier(.55,.05,.85,.4) infinite; }
-        .shooting-star.s-a { top: 15%; left: 85%; animation-delay: 1s; }
-        .shooting-star.s-b { top: 32%; left: 65%; animation-delay: 5s; }
-        .shooting-star.s-c { top: 55%; left: 92%; animation-delay: 10s; }
-        @keyframes shoot {
-            0%   { opacity: 0;   transform: translate3d(0,0,0)         rotate(218deg) scale(0.6); }
-            4%   { opacity: 1;   transform: translate3d(-40px,28px,0)  rotate(218deg) scale(1); }
-            12%  { opacity: 0.95;transform: translate3d(-160px,115px,0)rotate(220deg) scale(1.1); }
-            22%  { opacity: 0.8; transform: translate3d(-320px,230px,0)rotate(224deg) scale(0.9); }
-            32%  { opacity: 0.3; transform: translate3d(-460px,330px,0)rotate(228deg) scale(0.6); }
-            40%  { opacity: 0;   transform: translate3d(-540px,385px,0)rotate(230deg) scale(0.3); }
-            100% { opacity: 0;   transform: translate3d(-540px,385px,0)rotate(230deg) scale(0.3); }
+        @keyframes shootStar2 {
+            0%{opacity:0;transform:translate3d(0,0,0) rotate(200deg) scale(0.4)} 4%{opacity:1;transform:translate3d(-50px,30px,0) rotate(202deg) scale(0.9)}
+            20%{opacity:0.6;transform:translate3d(-310px,195px,0) rotate(210deg) scale(0.8)} 35%,100%{opacity:0;transform:translate3d(-500px,310px,0) rotate(214deg) scale(0.2)}
         }
 
-        /* =====================================================
-         * Cosmic CTA section (Ready to Launch Something Great)
-         * Always dark/starry regardless of theme.
-         * ===================================================== */
-        .cta-cosmic {
-            background:
-                radial-gradient(ellipse at top, #1e1b4b 0%, #0a0618 60%, #050309 100%);
-            isolation: isolate;
+        /* --- LIGHT MODE: soft mesh gradient --- */
+        .light-orbs { position: absolute; inset: 0; opacity: 1; transition: opacity 0.8s ease; }
+        .dark .light-orbs { opacity: 0; }
+        .light-orbs .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; }
+        .light-orbs .orb:nth-child(1) { width: 500px; height: 500px; top: -15%; left: -10%; background: #c4b5fd; animation: float 12s ease-in-out infinite; }
+        .light-orbs .orb:nth-child(2) { width: 400px; height: 400px; top: 30%;  right: -5%; background: #93c5fd; animation: float 15s ease-in-out infinite 2s; }
+        .light-orbs .orb:nth-child(3) { width: 350px; height: 350px; bottom: 5%; left: 20%;  background: #fbcfe8; animation: float 18s ease-in-out infinite 4s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+
+        /* === 3D Apple Devices === */
+        .devices-showcase {
+            perspective: 1200px;
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            height: 380px;
+            margin: 0 auto;
         }
-        .cta-cosmic::before {
+
+        /* MacBook */
+        .macbook-3d {
+            position: absolute;
+            left: 0; top: 20px;
+            width: 320px; height: 210px;
+            transform-style: preserve-3d;
+            animation: macbookFloat 6s ease-in-out infinite;
+        }
+        .macbook-screen {
+            width: 100%; height: 100%;
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 12px 12px 0 0;
+            border: 2px solid rgba(255,255,255,0.08);
+            box-shadow: 0 0 40px rgba(139,92,246,0.15), inset 0 0 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .macbook-screen::before {
             content: '';
-            position: absolute; inset: 0;
+            position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 4px rgba(255,255,255,0.1);
+        }
+        .macbook-screen-content {
+            position: absolute; top: 22px; left: 10px; right: 10px; bottom: 10px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #0a0a1a, #111128);
+            overflow: hidden;
+        }
+        .macbook-screen-content::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(139,92,246,0.08) 50%, transparent 60%);
+            animation: screenShimmer 4s ease-in-out infinite;
+        }
+        /* iSellBack UI mockup inside screen */
+        .screen-ui {
+            padding: 12px;
+            height: 100%;
+        }
+        .screen-ui-bar {
+            display: flex; gap: 4px; margin-bottom: 10px;
+        }
+        .screen-ui-dot { width: 5px; height: 5px; border-radius: 50%; }
+        .screen-ui-line {
+            height: 4px; border-radius: 2px; margin-bottom: 6px;
+            background: rgba(255,255,255,0.06);
+        }
+        .screen-ui-card {
+            background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 6px; padding: 8px; margin-top: 8px;
+        }
+        .screen-ui-price {
+            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+            color: #a78bfa; letter-spacing: -0.5px;
+        }
+        .screen-ui-label { font-size: 7px; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif; }
+
+        .macbook-base {
+            width: 110%; height: 12px; margin-left: -5%;
+            background: linear-gradient(180deg, #3a3a4a 0%, #2a2a3a 100%);
+            border-radius: 0 0 4px 4px;
+            position: relative;
+        }
+        .macbook-base::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 3px; border-radius: 0 0 3px 3px;
+            background: rgba(255,255,255,0.06);
+        }
+        .macbook-base::after {
+            content: ''; position: absolute; bottom: -3px; left: 5%; right: 5%;
+            height: 3px; border-radius: 0 0 6px 6px;
+            background: linear-gradient(180deg, #222233 0%, #1a1a2a 100%);
+        }
+
+        @keyframes macbookFloat {
+            0%, 100% { transform: rotateY(-12deg) rotateX(5deg) translateY(0); }
+            50% { transform: rotateY(-8deg) rotateX(3deg) translateY(-15px); }
+        }
+        @keyframes screenShimmer {
+            0%, 100% { opacity: 0.3; } 50% { opacity: 1; }
+        }
+
+        /* iPad */
+        .ipad-3d {
+            position: absolute;
+            right: 0; top: 50px;
+            width: 180px; height: 260px;
+            transform-style: preserve-3d;
+            animation: ipadFloat 7s ease-in-out infinite 1s;
+        }
+        .ipad-body {
+            width: 100%; height: 100%;
+            background: linear-gradient(160deg, #1a1a2e 0%, #111128 100%);
+            border-radius: 18px;
+            border: 2px solid rgba(255,255,255,0.08);
+            box-shadow: 0 0 40px rgba(236,72,153,0.12), 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            padding: 12px;
+        }
+        .ipad-camera {
+            position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+            width: 5px; height: 5px; border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+        }
+        .ipad-screen {
+            width: 100%; height: 100%; margin-top: 4px;
+            background: linear-gradient(135deg, #0a0a1a, #111128);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ipad-screen::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(236,72,153,0.06) 50%, transparent 60%);
+            animation: screenShimmer 5s ease-in-out infinite 2s;
+        }
+        .ipad-ui {
+            padding: 10px; height: 100%;
+        }
+        .ipad-ui-header {
+            height: 3px; width: 40%; border-radius: 2px; margin-bottom: 8px;
+            background: rgba(255,255,255,0.08);
+        }
+        .ipad-ui-card {
+            background: rgba(236,72,153,0.1); border: 1px solid rgba(236,72,153,0.15);
+            border-radius: 6px; padding: 8px; margin-bottom: 6px;
+        }
+        .ipad-ui-text { height: 3px; border-radius: 2px; margin-bottom: 4px; background: rgba(255,255,255,0.05); }
+
+        .ipad-home-indicator {
+            position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
+            width: 36px; height: 3px; border-radius: 2px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        @keyframes ipadFloat {
+            0%, 100% { transform: rotateY(15deg) rotateX(-3deg) translateY(0); }
+            50% { transform: rotateY(10deg) rotateX(-5deg) translateY(-18px); }
+        }
+
+        /* Glow behind devices */
+        .devices-glow {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; height: 400px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.08) 40%, transparent 70%);
+            filter: blur(40px);
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* === iSellBack Section — Light/Dark Aware === */
+        .isb-section {
+            background: linear-gradient(135deg, #f8f0ff 0%, #eef2ff 40%, #f0f9ff 100%);
+            position: relative;
+        }
+        .dark .isb-section {
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, #0a0618 60%, #050309 100%);
+        }
+        .isb-section::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
             background:
                 radial-gradient(ellipse 60% 45% at 20% 35%, rgba(139,92,246,0.25), transparent 60%),
                 radial-gradient(ellipse 55% 40% at 85% 65%, rgba(236,72,153,0.18), transparent 60%),
                 radial-gradient(ellipse 45% 35% at 50% 100%, rgba(59,130,246,0.22), transparent 60%);
-            pointer-events: none;
         }
-        .cta-cosmic::after {
-            /* Subtle vignette */
-            content: '';
-            position: absolute; inset: 0;
+        .dark .isb-section::before { opacity: 1; }
+        .isb-section::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
             background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
-            pointer-events: none;
         }
-        /* Star layers (three parallax densities for depth) */
-        .cta-stars-1, .cta-stars-2, .cta-stars-3 {
-            background-repeat: repeat;
-            background-size: 280px 160px;
-        }
+        .dark .isb-section::after { opacity: 1; }
+        /* Dark-only stars */
+        .isb-stars { opacity: 0; transition: opacity 0.5s; }
+        .dark .isb-stars { opacity: 1; }
+        .cta-stars-1, .cta-stars-2, .cta-stars-3 { background-repeat: repeat; background-size: 280px 160px; }
         .cta-stars-1 {
-            background-image:
-                radial-gradient(1px 1px at 25px 15px, #ffffff, transparent 60%),
-                radial-gradient(1px 1px at 90px 80px, rgba(255,255,255,0.9), transparent 60%),
-                radial-gradient(1.2px 1.2px at 160px 120px, #fff, transparent 60%),
-                radial-gradient(1px 1px at 230px 40px, rgba(255,255,255,0.7), transparent 60%),
-                radial-gradient(1.5px 1.5px at 55px 140px, #fff, transparent 60%);
-            animation: cta-twinkle-a 3s ease-in-out infinite alternate,
-                       cta-drift-slow 200s linear infinite;
+            background-image: radial-gradient(1px 1px at 25px 15px, #fff, transparent 60%), radial-gradient(1.2px 1.2px at 160px 120px, #fff, transparent 60%), radial-gradient(1.5px 1.5px at 55px 140px, #fff, transparent 60%);
+            animation: cta-twinkle-a 3s ease-in-out infinite alternate, cta-drift 200s linear infinite;
         }
         .cta-stars-2 {
             background-size: 340px 200px;
-            background-image:
-                radial-gradient(1px 1px at 50px 60px, rgba(255,230,180,0.95), transparent 60%),
-                radial-gradient(1.2px 1.2px at 180px 30px, #fff, transparent 60%),
-                radial-gradient(1px 1px at 280px 160px, rgba(200,220,255,0.85), transparent 60%),
-                radial-gradient(2px 2px at 100px 180px, #fff, transparent 60%);
-            animation: cta-twinkle-b 4.5s ease-in-out infinite alternate,
-                       cta-drift-slow 350s linear infinite reverse;
+            background-image: radial-gradient(1px 1px at 50px 60px, rgba(255,230,180,0.95), transparent 60%), radial-gradient(1.2px 1.2px at 180px 30px, #fff, transparent 60%), radial-gradient(2px 2px at 100px 180px, #fff, transparent 60%);
+            animation: cta-twinkle-b 4.5s ease-in-out infinite alternate, cta-drift 350s linear infinite reverse;
             opacity: 0.85;
         }
         .cta-stars-3 {
             background-size: 500px 300px;
-            background-image:
-                radial-gradient(2.5px 2.5px at 120px 80px, #fff, transparent 60%),
-                radial-gradient(2px 2px at 380px 220px, rgba(255,200,150,0.9), transparent 60%),
-                radial-gradient(1.5px 1.5px at 220px 260px, #fff, transparent 60%);
-            animation: cta-twinkle-c 2s ease-in-out infinite alternate;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
+            background-image: radial-gradient(2.5px 2.5px at 120px 80px, #fff, transparent 60%), radial-gradient(2px 2px at 380px 220px, rgba(255,200,150,0.9), transparent 60%);
+            animation: cta-twinkle-c 2s ease-in-out infinite alternate; opacity: 0.9;
         }
         @keyframes cta-twinkle-a { 0% { opacity: 0.55; } 100% { opacity: 1; } }
-        @keyframes cta-twinkle-b { 0% { opacity: 0.4; }  100% { opacity: 0.95; } }
-        @keyframes cta-twinkle-c { 0% { opacity: 0.6; filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); } 100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)); } }
-        @keyframes cta-drift-slow {
-            from { background-position: 0 0; }
-            to   { background-position: -280px -160px; }
-        }
+        @keyframes cta-twinkle-b { 0% { opacity: 0.4; } 100% { opacity: 0.95; } }
+        @keyframes cta-twinkle-c { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+        @keyframes cta-drift { from { background-position: 0 0; } to { background-position: -280px -160px; } }
 
-        /* Nebula glow over the stars */
         .cta-nebula {
-            background:
-                radial-gradient(circle at 30% 40%, rgba(139,92,246,0.20), transparent 45%),
-                radial-gradient(circle at 75% 60%, rgba(236,72,153,0.15), transparent 45%);
-            animation: cta-breathe 8s ease-in-out infinite alternate;
-            pointer-events: none;
+            background: radial-gradient(circle at 30% 40%, rgba(139,92,246,0.20), transparent 45%), radial-gradient(circle at 75% 60%, rgba(236,72,153,0.15), transparent 45%);
+            animation: cta-breathe 8s ease-in-out infinite alternate; pointer-events: none; opacity: 0;
         }
-        @keyframes cta-breathe {
-            0%   { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-
-        /* Shooting star inside the CTA */
+        .dark .cta-nebula { opacity: 1; }
+        @keyframes cta-breathe { 0% { opacity: 0.7; } 100% { opacity: 1; } }
         .cta-shoot {
-            position: absolute;
-            top: 18%; left: 85%;
-            width: 3px; height: 3px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #fff 0%, #fff8dc 40%, transparent 100%);
-            box-shadow:
-                0 0 10px 2px rgba(255,255,255,0.95),
-                0 0 22px 5px rgba(255,210,160,0.5);
-            opacity: 0;
-            animation: cta-shoot 11s linear infinite;
-            animation-delay: 3s;
-            pointer-events: none;
+            position: absolute; top: 18%; left: 85%; width: 3px; height: 3px; border-radius: 50%;
+            background: radial-gradient(circle, #fff, #fff8dc 40%, transparent);
+            box-shadow: 0 0 10px 2px rgba(255,255,255,0.95), 0 0 22px 5px rgba(255,210,160,0.5);
+            opacity: 0; pointer-events: none;
         }
+        .dark .cta-shoot { animation: cta-shoot 11s linear infinite 3s; }
         .cta-shoot::before {
-            content: '';
-            position: absolute; top: 50%; right: 1px;
-            width: 160px; height: 2px;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg,
-                rgba(255,255,255,0.95) 0%,
-                rgba(255,220,170,0.6) 30%,
-                rgba(180,160,255,0.25) 60%,
-                transparent 100%);
-            border-radius: 2px;
-            filter: blur(0.6px);
+            content: ''; position: absolute; top: 50%; right: 1px; width: 160px; height: 2px; transform: translateY(-50%);
+            background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,220,170,0.6) 30%, transparent);
         }
         @keyframes cta-shoot {
-            0%   { opacity: 0;   transform: translate3d(0,0,0)          rotate(220deg) scale(0.6); }
-            3%   { opacity: 1;   transform: translate3d(-30px,22px,0)   rotate(220deg) scale(1); }
-            10%  { opacity: 0.95;transform: translate3d(-140px,100px,0) rotate(222deg) scale(1.05); }
-            18%  { opacity: 0.6; transform: translate3d(-260px,190px,0) rotate(226deg) scale(0.85); }
-            25%  { opacity: 0;   transform: translate3d(-360px,260px,0) rotate(230deg) scale(0.3); }
-            100% { opacity: 0;   transform: translate3d(-360px,260px,0) rotate(230deg) scale(0.3); }
+            0%{opacity:0;transform:translate3d(0,0,0) rotate(215deg) scale(0.5)} 5%{opacity:1;transform:translate3d(-80px,60px,0) rotate(217deg) scale(1)}
+            18%{opacity:0.7;transform:translate3d(-280px,200px,0) rotate(222deg) scale(0.8)} 28%,100%{opacity:0;transform:translate3d(-420px,310px,0) rotate(226deg) scale(0.3)}
         }
+        /* Light mode decorative blobs for iSellBack section */
+        .isb-light-decor { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+        .dark .isb-light-decor { opacity: 0; }
 
-        /* CTA headline gradient */
-        .cta-gradient-text {
-            background: linear-gradient(120deg, #a78bfa 0%, #f0abfc 40%, #60a5fa 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-            filter: drop-shadow(0 2px 10px rgba(167,139,250,0.35));
+        .shimmer-badge {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            background-size: 200% 100%; animation: shimmer 3s ease-in-out infinite;
         }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
-        /* =====================================================
-         * Premium Service Cards
-         * ===================================================== */
-        .svc-card {
-            position: relative;
-            padding: 1.75rem 1.5rem;
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(229, 231, 235, 1);
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(.22,1,.36,1),
-                        box-shadow 0.4s ease,
-                        border-color 0.3s ease;
-            transform-style: preserve-3d;
-            backdrop-filter: blur(8px);
-        }
-        .dark .svc-card {
-            background: rgba(30, 41, 59, 0.7);
-            border-color: rgba(51, 65, 85, 1);
-        }
-        .svc-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px -15px var(--svc-shadow, rgba(99, 102, 241, 0.25));
-            border-color: var(--svc-accent, rgb(139, 92, 246));
-        }
+        .feature-card-hover { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .feature-card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px -15px rgba(139, 92, 246, 0.25); }
 
-        /* Gradient accent bar (top) */
-        .svc-card::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 auto 0;
-            height: 3px;
-            background: var(--svc-gradient, linear-gradient(90deg, #8b5cf6, #3b82f6));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .svc-card:hover::before { opacity: 1; }
+        .notify-btn { transition: all 0.3s ease; }
+        .notify-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.6); }
 
-        /* Decorative big number in background */
-        .svc-card .svc-num {
-            position: absolute;
-            top: 0.5rem;
-            right: 1rem;
-            font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 1;
-            color: transparent;
-            -webkit-text-stroke: 1.5px var(--svc-accent-soft, rgba(139, 92, 246, 0.12));
-            pointer-events: none;
-            transition: transform 0.4s ease, -webkit-text-stroke-color 0.3s ease;
-        }
-        .svc-card:hover .svc-num {
-            transform: translate(-4px, 2px) scale(1.05);
-            -webkit-text-stroke-color: var(--svc-accent-medium, rgba(139, 92, 246, 0.25));
-        }
+        .tilt-3d { transition: transform 0.3s ease-out; }
 
-        /* Animated glow ring behind icon */
-        .svc-card .svc-icon-wrap {
-            position: relative;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--svc-gradient, linear-gradient(135deg, #8b5cf6, #3b82f6));
-            box-shadow: 0 8px 20px -4px var(--svc-shadow, rgba(99, 102, 241, 0.3));
-            transition: transform 0.35s cubic-bezier(.22,1,.36,1);
-            z-index: 1;
+        .hero-portrait { perspective: 1200px; }
+        .hero-portrait .ring-glow {
+            position: absolute; inset: -10px; border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0%, #667eea 25%, transparent 50%, #764ba2 75%, transparent 100%);
+            opacity: 0.3; animation: ring-spin 8s linear infinite; filter: blur(20px);
         }
-        .svc-card .svc-icon-wrap::after {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 1rem;
-            background: var(--svc-gradient, linear-gradient(135deg, #8b5cf6, #3b82f6));
-            opacity: 0;
-            filter: blur(16px);
-            transition: opacity 0.35s ease;
-            z-index: -1;
-        }
-        .svc-card:hover .svc-icon-wrap { transform: rotate(-6deg) scale(1.1); }
-        .svc-card:hover .svc-icon-wrap::after { opacity: 0.7; }
+        @keyframes ring-spin { to { transform: rotate(360deg); } }
+        .floaty { animation: floaty 4s ease-in-out infinite; }
+        .floaty.delay-1 { animation-delay: 1.3s; }
+        .floaty.delay-2 { animation-delay: 2.6s; }
+        @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* Category pill */
-        .svc-card .svc-pill {
-            display: inline-block;
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.2rem 0.55rem;
-            border-radius: 999px;
-            background: var(--svc-accent-soft, rgba(139, 92, 246, 0.12));
-            color: var(--svc-accent, rgb(139, 92, 246));
-            margin-bottom: 0.875rem;
-        }
-
-        /* "Learn more" reveal */
-        .svc-card .svc-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--svc-accent, rgb(139, 92, 246));
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .svc-card:hover .svc-cta {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .svc-card .svc-cta svg {
-            transition: transform 0.3s ease;
-        }
-        .svc-card:hover .svc-cta svg {
-            transform: translateX(3px);
-        }
-
-        /* Featured ribbon */
-        .svc-featured {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6, #ec4899);
-            color: white;
-            box-shadow: 0 6px 18px -4px rgba(139, 92, 246, 0.5);
-            z-index: 2;
-        }
-
-        /* Shine sweep on hover */
-        .svc-card .svc-shine {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            border-radius: inherit;
-        }
-        .svc-card .svc-shine::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            left: -60%;
-            width: 40%;
-            height: 180%;
-            background: linear-gradient(115deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 100%);
-            transform: skewX(-20deg);
-            transition: left 0.7s cubic-bezier(.22,1,.36,1);
-        }
-        .dark .svc-card .svc-shine::before {
-            background: linear-gradient(115deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.08) 50%,
-                transparent 100%);
-        }
-        .svc-card:hover .svc-shine::before { left: 140%; }
-
-        /* Feature badges */
-        .svc-card .svc-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-top: 0.875rem;
-        }
-        .svc-card .svc-tags span {
-            font-size: 0.625rem;
-            font-weight: 600;
-            padding: 0.2rem 0.55rem;
-            border-radius: 0.375rem;
-            background: rgba(0,0,0,0.04);
-            color: rgb(55, 65, 81);
-        }
-        .dark .svc-card .svc-tags span {
-            background: rgba(255,255,255,0.05);
-            color: rgb(203, 213, 225);
-        }
-
-        /* Nebula glow in dark mode (behind stars) */
-        .nebula {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1s ease;
-            background:
-                radial-gradient(ellipse 60% 40% at 15% 20%, rgba(139,92,246,0.18), transparent 60%),
-                radial-gradient(ellipse 50% 40% at 85% 70%, rgba(14,165,233,0.15), transparent 60%),
-                radial-gradient(ellipse 40% 30% at 50% 100%, rgba(236,72,153,0.12), transparent 60%);
-        }
-        .dark .nebula { opacity: 1; }
-
-        /* --- LIGHT MODE: gentle drifting orbs --- */
-        .light-orbs {
-            position: absolute;
-            inset: 0;
-            opacity: 1;
-            transition: opacity 0.8s ease;
-        }
-        .dark .light-orbs { opacity: 0; }
-        .light-orbs .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.35;
-            will-change: transform;
-        }
-        .light-orbs .orb.o1 {
-            width: 380px; height: 380px; top: 8%; left: -60px;
-            background: radial-gradient(circle, #c4b5fd, transparent 70%);
-            animation: orb-float 22s ease-in-out infinite;
-        }
-        .light-orbs .orb.o2 {
-            width: 460px; height: 460px; top: 40%; right: -100px;
-            background: radial-gradient(circle, #93c5fd, transparent 70%);
-            animation: orb-float 28s ease-in-out infinite reverse;
-        }
-        .light-orbs .orb.o3 {
-            width: 320px; height: 320px; bottom: -80px; left: 40%;
-            background: radial-gradient(circle, #fbcfe8, transparent 70%);
-            animation: orb-float 34s ease-in-out infinite 4s;
-        }
-        @keyframes orb-float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33%      { transform: translate(40px, -30px) scale(1.08); }
-            66%      { transform: translate(-30px, 40px) scale(0.95); }
-        }
-
-        /* Soft grid lines in light mode */
-        .grid-lines {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 70%);
-            transition: opacity 0.6s ease;
-        }
-        .dark .grid-lines { opacity: 0.15; }
-
-        /* Blob animations used in hero */
-        @keyframes blob {
-            0%, 100% { transform: translate(0,0) scale(1); }
-            33%      { transform: translate(30px,-20px) scale(1.1); }
-            66%      { transform: translate(-20px,30px) scale(0.95); }
-        }
-        .animate-blob { animation: blob 18s ease-in-out infinite; }
+        .animate-blob { animation: blob 7s infinite; }
+        @keyframes blob { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-50px) scale(1.1)} 66%{transform:translate(-20px,20px) scale(0.9)} }
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
 
-        /* =========================
-           3D DEPTH SYSTEM
-           ========================= */
-        body { perspective: 1400px; }
+        #scrollToTop { opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        #scrollToTop.show { opacity: 1; visibility: visible; }
 
-        .tilt-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease;
-            will-change: transform;
-        }
-        .tilt-3d:hover {
-            box-shadow: 0 30px 60px -20px rgba(99,102,241,0.35), 0 20px 30px -10px rgba(0,0,0,0.15);
-        }
-        .tilt-3d > * { transform: translateZ(20px); }
-        .tilt-3d .depth-layer { transform: translateZ(40px); }
-
-        /* Hero portrait 3D ring */
-        .hero-portrait {
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease-out;
-        }
-        .hero-portrait .ring-glow {
-            position: absolute;
-            inset: -20px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #8b5cf6, #3b82f6, #ec4899, #8b5cf6);
-            filter: blur(30px);
-            opacity: 0.45;
-            transform: translateZ(-60px);
-            animation: spin-slow 12s linear infinite;
-        }
-        @keyframes spin-slow {
-            from { transform: translateZ(-60px) rotate(0deg); }
-            to   { transform: translateZ(-60px) rotate(360deg); }
+        @media (max-width: 640px) {
+            .devices-showcase { height: 300px; }
+            .macbook-3d { width: 220px; height: 145px; left: -10px; }
+            .ipad-3d { width: 130px; height: 190px; right: -10px; top: 30px; }
         }
 
-        /* 3D floating badges in hero */
-        .floaty {
-            animation: floaty 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-        }
-        .floaty.delay-1 { animation-delay: 1.5s; }
-        .floaty.delay-2 { animation-delay: 3s; }
-        @keyframes floaty {
-            0%, 100% { transform: translateY(0) translateZ(40px); }
-            50%      { transform: translateY(-12px) translateZ(40px); }
-        }
-
-        /* Gradient text glow in dark mode */
-        .dark .gradient-text {
-            filter: drop-shadow(0 0 18px rgba(139,92,246,0.35));
-        }
-
-        /* Section cards: subtle 3D on hover */
-        .service-card, .project-item, .contact-card {
-            transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(.22,1,.36,1), box-shadow 0.5s ease;
-        }
-
-        /* Navbar subtle elevation */
-        #navbar {
-            box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 10px 30px -15px rgba(15,23,42,0.25);
-        }
-        .dark #navbar {
-            box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 10px 30px -10px rgba(0,0,0,0.6);
-        }
-
-        /* Respect reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .stars-layer, .shooting-star, .light-orbs .orb, .floaty, .animate-blob, .hero-portrait .ring-glow {
-                animation: none !important;
-            }
-            .tilt-3d, .service-card, .project-item, .hero-portrait {
-                transform: none !important;
-            }
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .mobile-menu-item {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-            }
-            .touch-target {
-                min-width: 44px;
-                min-height: 44px;
-            }
-            /* Disable heavy 3D on mobile for performance */
-            body { perspective: none; }
-            .tilt-3d, .hero-portrait { transform: none !important; }
+            .stars-layer, .shooting-star, .floaty, .animate-blob, .hero-portrait .ring-glow,
+            .macbook-3d, .ipad-3d, .devices-glow { animation: none !important; }
         }
     </style>
-
-    <!-- JSON-LD Structured Data Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "RAOGY — Web & Mobile App Developer",
-      "description": "Professional web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js & UI/UX design.",
-      "url": "https://raogy.com/",
-      "logo": "https://raogy.com/images/logo.svg",
-      "image": "https://raogy.com/images/raogy.jpg",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://github.com/RAOGYYY",
-        "https://instagram.com/anwarul.20",
-        "https://facebook.com/anwarul.20",
-        "https://linkedin.com/in/raogy"
-      ]
-    }
-    </script>
 </head>
-<body class="min-h-screen text-gray-900 dark:text-white font-sans transition-colors duration-300 relative">
+<body class="font-sans text-gray-900 dark:text-gray-100 bg-[#f8fafc] dark:bg-[#050816] transition-colors duration-500 antialiased overflow-x-hidden">
 
-      <!-- =========================
-           Background Atmosphere
-           - Dark mode: starry night (Rolls-Royce style)
-           - Light mode: gentle orbs + soft grid
-           ========================= -->
-      <div class="bg-stage" aria-hidden="true">
-        <div class="nebula"></div>
-        <div class="stars-layer s1"></div>
-        <div class="stars-layer s2"></div>
-        <div class="stars-layer s3"></div>
-        <div class="shooting-star s-a"></div>
-        <div class="shooting-star s-b"></div>
-        <div class="shooting-star s-c"></div>
-
-        <div class="grid-lines"></div>
-        <div class="light-orbs">
-          <div class="orb o1"></div>
-          <div class="orb o2"></div>
-          <div class="orb o3"></div>
-        </div>
+    <!-- Background Atmosphere -->
+    <div class="bg-stage" aria-hidden="true">
+      <div class="stars-layer s1"></div>
+      <div class="stars-layer s2"></div>
+      <div class="stars-layer s3"></div>
+      <div class="shooting-star s1"></div>
+      <div class="shooting-star s2"></div>
+      <div class="light-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
       </div>
+    </div>
 
-      <!-- Navbar -->
-      <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-          <a href="/" class="flex items-center gap-3 cursor-pointer">
-            <img src="/images/logo.svg" alt="RAOGY Logo" class="w-10 h-10">
-            <div class="text-2xl font-bold gradient-text">RAOGY</div>
-          </a>
-
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="/#home" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              Home
-            </a>
-            <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              About
-            </a>
-            <a href="/#services" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              Services
-            </a>
-            <a href="/#portfolio" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              Portfolio
-            </a>
-            <a href="/blog/" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              Blog
-            </a>
-            <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-              Contact
-            </a>
-            
-            <!-- Theme Toggle -->
-            <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
-              <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-              </svg>
-              <svg id="theme-toggle-light-icon" class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-              </svg>
-            </button>
-            
-            <a href="/#contact" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-lg">
-              Hire Me
-            </a>
+    <main>
+      <!-- Navigation -->
+      <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-slate-800/50 transition-colors">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="/" class="text-2xl font-bold gradient-text">RAOGY</a>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="#home" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Home</a>
+            <a href="/about" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">About</a>
+            <a href="/isellback" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">iSellBack</a>
+            <a href="#contact" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Contact</a>
           </div>
-
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden flex items-center gap-2">
-            <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors">
-              <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-              </svg>
-              <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-              </svg>
+          <div class="flex items-center gap-3">
+            <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+              <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
+              <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
             </button>
-            <button onclick="toggleMenu()" class="text-gray-700 dark:text-white p-2">
-              <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-              <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
+            <button onclick="toggleMenu()" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle menu">
+              <svg id="menu-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+              <svg id="close-icon" class="w-5 h-5 text-gray-700 dark:text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
           </div>
         </div>
-
-        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-800 w-full border-t border-gray-200 dark:border-slate-700 hidden">
           <div class="flex flex-col p-4 space-y-2">
-            <a href="/#home" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Home</a>
-            <a href="/#about" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">About</a>
-            <a href="/#services" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Services</a>
-            <a href="/#portfolio" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Portfolio</a>
-            <a href="/blog/" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Blog</a>
-            <a href="/#contact" class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
+            <a href="#home" class="mobile-menu-item text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Home</a>
+            <a href="/about" class="mobile-menu-item text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">About</a>
+            <a href="/isellback" class="mobile-menu-item text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">iSellBack</a>
+            <a href="#contact" class="mobile-menu-item text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
           </div>
         </div>
       </nav>
 
       <!-- Hero Section -->
       <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Soft Blobs (work in both themes) -->
         <div class="absolute top-20 right-10 w-72 h-72 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-30 dark:opacity-20 animate-blob pointer-events-none"></div>
         <div class="absolute top-40 left-10 w-72 h-72 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-30 dark:opacity-20 animate-blob animation-delay-2000 pointer-events-none"></div>
         <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-30 dark:opacity-20 animate-blob animation-delay-4000 pointer-events-none"></div>
@@ -872,27 +481,26 @@
                 Hi, I'm <span class="gradient-text">RAOGY</span>
               </h1>
               <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
-                Full-Stack Web &amp; <span class="gradient-text">Mobile App</span> Developer in Jaipur, India
+                Full-Stack Web &amp; <span class="gradient-text">Mobile App</span> Developer
               </h2>
               <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-8 leading-relaxed">
                 I design and build modern websites, <span class="font-semibold text-purple-600 dark:text-purple-400">iOS apps</span>, and
                 <span class="font-semibold text-blue-600 dark:text-blue-400">Android apps</span> that feel fast, look beautiful and
-                deliver real business value. From Flutter &amp; Kotlin on mobile to React &amp; Node.js on the web.
+                deliver real business value.
               </p>
 
-              <!-- Tech ticker -->
               <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-10 text-xs">
                 <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">Flutter</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">Kotlin</span>
-                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">Swift-ready</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">React</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">Node.js</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">AWS</span>
                 <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-800/70 border border-gray-200 dark:border-slate-700 backdrop-blur">Supabase</span>
               </div>
 
               <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <button onclick="scrollToSection('portfolio')" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                  View My Work
+                <button onclick="scrollToSection('isellback')" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  Discover iSellBack
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <button onclick="scrollToSection('contact')" class="px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur hover:bg-gray-50 dark:hover:bg-slate-700 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-slate-600 rounded-full font-semibold transition-all shadow-lg">
@@ -901,630 +509,278 @@
               </div>
             </div>
 
-            <!-- Right Content - 3D Profile Portrait / AI Animation Canvas -->
+            <!-- Right Content - Portrait -->
             <div class="flex-1 flex justify-center lg:justify-end">
               <div id="heroPortrait" class="hero-portrait relative w-[340px] h-[340px] lg:w-[420px] lg:h-[420px] flex items-center justify-center">
                 <div class="ring-glow"></div>
-                
-                <!-- 3D Canvas / Viewer Container (Placeholder, hidden by default) -->
-                <div id="canvas3d-container" class="absolute inset-0 z-10 hidden items-center justify-center rounded-3xl overflow-hidden glass-effect border border-white/20">
-                  <div id="animation-fallback-ui" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-xs">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500 mb-3"></div>
-                    <p class="text-gray-400 font-medium">Loading Interactive 3D Scene...</p>
-                  </div>
-                </div>
-                
-                <!-- Static Portrait View (Default & Fallback) -->
-                <div id="portrait-static-view" class="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-purple-400 via-blue-500 to-purple-600 p-1 shadow-2xl transition-all duration-500">
+                <div class="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-purple-400 via-blue-500 to-purple-600 p-1 shadow-2xl">
                   <div class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                    <img src="/images/raogy.jpg" alt="RAOGY - Web, iOS & Android App Developer" class="w-full h-full object-cover" />
+                    <img src="/images/raogy.jpg" alt="RAOGY" fetchpriority="high" class="w-full h-full object-cover" />
                   </div>
                 </div>
-
-                <!-- Floating Badges -->
-                <div class="absolute -top-4 -right-4 bg-yellow-400 dark:bg-yellow-500 text-yellow-900 px-4 py-2 rounded-full font-bold shadow-lg floaty z-20">
-                  ✨ Available
-                </div>
-                <div class="absolute top-1/2 -left-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg floaty delay-1 z-20">
-                  🤖 Android
-                </div>
-                <div class="absolute -bottom-2 right-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg floaty delay-2 z-20">
-                  🍎 iOS
-                </div>
-                
-                <!-- 3D Toggle Controller -->
-                <button onclick="toggle3dMode()" id="toggle3dBtn" class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-slate-900/95 border border-purple-500/30 text-purple-600 dark:text-purple-400 px-4 py-1.5 rounded-full text-xs font-bold shadow-md hover:scale-105 transition-all z-30 flex items-center gap-1.5 whitespace-nowrap">
-                  <span class="flex h-2 w-2 relative">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                  </span>
-                  Activate 3D AI Scene
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Stats -->
-          <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 bg-white/80 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-slate-700 tilt-3d">
-            <div class="text-center">
-              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">100+</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Projects Completed</p>
-            </div>
-            <div class="text-center">
-              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">4+</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Live Mobile Apps</p>
-            </div>
-            <div class="text-center">
-              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">50+</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Happy Clients</p>
-            </div>
-            <div class="text-center">
-              <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">24/7</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Support Available</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="py-20 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
-            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Web &amp; Mobile App Craftsman</h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
-                I build complete digital products across <span class="font-semibold text-gray-800 dark:text-gray-200">web, iOS, and Android</span>.
-                From scalable back-ends to pixel-perfect mobile UIs, I care about performance, polish, and delightful micro-interactions.
-              </p>
-              <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
-                My shipped apps — <a href="/paaniboss/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Paani Boss</a>,
-                <a href="/snapscribe/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Snapscribe</a>,
-                <a href="/krexo/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">Krexo</a> and
-                <a href="/rewardnest/" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">RewardNest</a> — run in real businesses and on real devices.
-                Whether it's a landing page, an internal tool or a full Play Store / App Store launch, I bring the same obsession for detail.
-              </p>
-              <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full text-sm font-medium">Flutter</span>
-                <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Kotlin</span>
-                <span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Jetpack Compose</span>
-                <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">React</span>
-                <span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Node.js</span>
-                <span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">Supabase</span>
-                <span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">JavaScript</span>
-                <span class="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">Tailwind CSS</span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-6">
-              <div class="tilt-3d bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-700/50">
-                <div class="text-4xl mb-3">📱</div>
-                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">iOS &amp; Android</h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">Native-feel cross-platform apps</p>
-              </div>
-              <div class="tilt-3d bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-700/50">
-                <div class="text-4xl mb-3">⚡</div>
-                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Performance</h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">60fps UI &amp; optimized builds</p>
-              </div>
-              <div class="tilt-3d bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 p-6 rounded-2xl border border-green-200 dark:border-green-700/50">
-                <div class="text-4xl mb-3">🎨</div>
-                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">UI / UX</h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">Interfaces that feel effortless</p>
-              </div>
-              <div class="tilt-3d bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/20 dark:to-pink-800/20 p-6 rounded-2xl border border-pink-200 dark:border-pink-700/50">
-                <div class="text-4xl mb-3">🚀</div>
-                <h4 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Ship &amp; Scale</h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">From prototype to Play/App Store</p>
+                <div class="absolute -top-4 -right-4 bg-yellow-400 dark:bg-yellow-500 text-yellow-900 px-4 py-2 rounded-full font-bold shadow-lg floaty z-20">✨ Available</div>
+                <div class="absolute top-1/2 -left-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg floaty delay-1 z-20">🤖 Android</div>
+                <div class="absolute -bottom-2 right-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg floaty delay-2 z-20">🍎 iOS</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Services Section -->
-      <section id="services" class="py-20 bg-gradient-to-br from-gray-50/60 to-purple-50/60 dark:from-slate-900/40 dark:to-slate-800/40 backdrop-blur-sm">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700/50 text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-widest">
-              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"/></svg>
-              What I Build
-            </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Services</span></h2>
-            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
-            <p class="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
-              End-to-end product development — mobile apps, modern websites &amp; everything around them.
-            </p>
-          </div>
-
-          <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-            <!-- Service 1: Mobile Apps -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(139, 92, 246);
-                --svc-accent-soft: rgba(139, 92, 246, 0.12);
-                --svc-accent-medium: rgba(139, 92, 246, 0.3);
-                --svc-shadow: rgba(139, 92, 246, 0.35);
-                --svc-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);">
-              <div class="svc-shine"></div>
-              <span class="svc-featured">Featured</span>
-              <div class="svc-num">01</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <span class="svc-pill">Mobile</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">iOS &amp; Android Apps</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Production-ready mobile apps with Flutter &amp; Kotlin — idea to Play/App Store launch with backend &amp; auth.
-              </p>
-              <div class="svc-tags">
-                <span>Flutter</span><span>Kotlin</span><span>Supabase</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Start a project
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-            <!-- Service 2: Web Development -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(168, 85, 247);
-                --svc-accent-soft: rgba(168, 85, 247, 0.12);
-                --svc-accent-medium: rgba(168, 85, 247, 0.3);
-                --svc-shadow: rgba(168, 85, 247, 0.35);
-                --svc-gradient: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);">
-              <div class="svc-shine"></div>
-              <div class="svc-num">02</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <span class="svc-pill">Web</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Web Development</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Custom websites &amp; web apps built with React, Next.js and Node.js. Fast, secure and SEO optimized.
-              </p>
-              <div class="svc-tags">
-                <span>React</span><span>Next.js</span><span>Node</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Build your site
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-            <!-- Service 3: Responsive Design -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(59, 130, 246);
-                --svc-accent-soft: rgba(59, 130, 246, 0.12);
-                --svc-accent-medium: rgba(59, 130, 246, 0.3);
-                --svc-shadow: rgba(59, 130, 246, 0.35);
-                --svc-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);">
-              <div class="svc-shine"></div>
-              <div class="svc-num">03</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 4h10M7 20h10M7 4v16m10-16v16M4 8h1m0 0v4H4V8zm15 0h1v4h-1V8z"/>
-                </svg>
-              </div>
-              <span class="svc-pill">UI</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Responsive Design</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Stunning layouts on every device — from mobile phones to ultra-wide desktops. Mobile-first, always.
-              </p>
-              <div class="svc-tags">
-                <span>Tailwind</span><span>Figma</span><span>A11y</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Get it pixel-perfect
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-            <!-- Service 4: E-Commerce -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(16, 185, 129);
-                --svc-accent-soft: rgba(16, 185, 129, 0.12);
-                --svc-accent-medium: rgba(16, 185, 129, 0.3);
-                --svc-shadow: rgba(16, 185, 129, 0.35);
-                --svc-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);">
-              <div class="svc-shine"></div>
-              <div class="svc-num">04</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-              </div>
-              <span class="svc-pill">Commerce</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">E-Commerce</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Full-featured online stores with payment integration, inventory management and admin dashboards.
-              </p>
-              <div class="svc-tags">
-                <span>Stripe</span><span>Razorpay</span><span>Shopify</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Launch your store
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-            <!-- Service 5: UI / UX Design -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(236, 72, 153);
-                --svc-accent-soft: rgba(236, 72, 153, 0.12);
-                --svc-accent-medium: rgba(236, 72, 153, 0.3);
-                --svc-shadow: rgba(236, 72, 153, 0.35);
-                --svc-gradient: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);">
-              <div class="svc-shine"></div>
-              <div class="svc-num">05</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                </svg>
-              </div>
-              <span class="svc-pill">Design</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">UI / UX Design</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Beautiful, intuitive interfaces — wireframing, prototyping and design systems for web &amp; mobile.
-              </p>
-              <div class="svc-tags">
-                <span>Figma</span><span>Prototype</span><span>System</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Design with me
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-            <!-- Service 6: Performance -->
-            <div class="svc-card tilt-3d group" style="
-                --svc-accent: rgb(245, 158, 11);
-                --svc-accent-soft: rgba(245, 158, 11, 0.12);
-                --svc-accent-medium: rgba(245, 158, 11, 0.3);
-                --svc-shadow: rgba(245, 158, 11, 0.35);
-                --svc-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
-              <div class="svc-shine"></div>
-              <div class="svc-num">06</div>
-              <div class="svc-icon-wrap mb-4">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-              </div>
-              <span class="svc-pill">Speed</span>
-              <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Performance</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Speed optimization, code splitting, lazy loading and caching for lightning-fast experiences.
-              </p>
-              <div class="svc-tags">
-                <span>Core Web Vitals</span><span>Lighthouse</span><span>CDN</span>
-              </div>
-              <a href="#contact" onclick="scrollToSection('contact')" class="svc-cta">
-                Audit my site
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Not sure which? CTA strip -->
-          <div class="mt-10 text-center">
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Not sure which service fits your project?</p>
-            <button onclick="scrollToSection('contact')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-white dark:bg-slate-800 text-gray-900 dark:text-white border border-gray-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-lg transition-all">
-              Tell me about your idea
-              <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="py-20 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm relative">
-        <div class="container mx-auto px-6">
-          <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-            <div>
-              <h2 class="text-4xl md:text-5xl font-bold mb-2">My <span class="gradient-text">Portfolio</span></h2>
-              <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"></div>
-              <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm">Live apps on Play Store &amp; App Store</p>
-            </div>
-
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
-              <button data-filter="All" onclick="filterProjects('All', this)" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg">
-                All
-              </button>
-              <button data-filter="Mobile App" onclick="filterProjects('Mobile App', this)" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
-                Mobile Apps
-              </button>
-              <button data-filter="Web Development" onclick="filterProjects('Web Development', this)" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
-                Web Apps
-              </button>
-              <button data-filter="E-Commerce" onclick="filterProjects('E-Commerce', this)" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600">
-                E-Commerce
-              </button>
-            </div>
-          </div>
-
-          <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- Default (fallback) content - replaced by JS from /portfolio/projects.json -->
-            <!-- Paani Boss - Real App -->
-            <div class="project-item tilt-3d group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-500 dark:border-blue-400" data-category="Mobile App">
-              <div class="h-32 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <a href="/paaniboss/" target="_blank" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="p-4">
-                <span class="text-blue-600 dark:text-blue-400 text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <span class="animate-pulse inline-block w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  Mobile App • Live
-                </span>
-                <h3 class="text-base font-bold text-gray-900 dark:text-white mt-1.5 mb-1.5 leading-snug">Paani Boss — RO Service Management</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-3 leading-relaxed">Complete business management for RO water shops with field tracking, AMC & billing.</p>
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-[10px]">Flutter</span>
-                  <span class="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-[10px]">Supabase</span>
-                  <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-[10px]">GPS</span>
-                </div>
-                <a href="/paaniboss/" target="_blank" class="inline-flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-xs transition-colors">
-                  View App Details
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <!-- ScreenScribe - Real App -->
-            <div class="project-item tilt-3d group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-purple-500 dark:border-purple-400" data-category="Mobile App">
-              <div class="h-32 overflow-hidden bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center">
-                <a href="/snapscribe/" target="_blank" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="p-4">
-                <span class="text-purple-600 dark:text-purple-400 text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <span class="animate-pulse inline-block w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  Mobile App • Live
-                </span>
-                <h3 class="text-base font-bold text-gray-900 dark:text-white mt-1.5 mb-1.5 leading-snug">Snapscribe — Offline Screenshot Manager</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-3 leading-relaxed">100% offline screenshots with on-device OCR, smart categorization & QR scanning.</p>
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-[10px]">Kotlin</span>
-                  <span class="px-2 py-0.5 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded text-[10px]">Compose</span>
-                  <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-[10px]">ML Kit</span>
-                  <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded text-[10px]">Offline</span>
-                </div>
-                <a href="/snapscribe/" target="_blank" class="inline-flex items-center gap-1.5 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold text-xs transition-colors">
-                  View App Details
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <!-- Krexo - Real App -->
-            <div class="project-item tilt-3d group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-red-500 dark:border-red-400" data-category="Mobile App">
-              <div class="h-32 overflow-hidden bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                <a href="/krexo/" target="_blank" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="p-4">
-                <span class="text-red-600 dark:text-red-400 text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <span class="animate-pulse inline-block w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  Mobile App • Live
-                </span>
-                <h3 class="text-base font-bold text-gray-900 dark:text-white mt-1.5 mb-1.5 leading-snug">Krexo — YouTube SEO &amp; AI Tools</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-3 leading-relaxed">AI-powered YouTube SEO suite with tag generator, script writer, competitor analysis &amp; thumbnail studio.</p>
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-[10px]">Flutter</span>
-                  <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-[10px]">Supabase</span>
-                  <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded text-[10px]">YT API</span>
-                  <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-[10px]">AI</span>
-                </div>
-                <a href="/krexo/" target="_blank" class="inline-flex items-center gap-1.5 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-semibold text-xs transition-colors">
-                  View App Details
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <!-- RewardNest - Real App -->
-            <div class="project-item tilt-3d group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-emerald-500 dark:border-emerald-400" data-category="Mobile App">
-              <div class="h-32 overflow-hidden bg-gradient-to-br from-emerald-500 to-amber-500 flex items-center justify-center">
-                <a href="/rewardnest/" target="_blank" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="p-4">
-                <span class="text-emerald-600 dark:text-emerald-400 text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                  <span class="animate-pulse inline-block w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                  Mobile App • Live
-                </span>
-                <h3 class="text-base font-bold text-gray-900 dark:text-white mt-1.5 mb-1.5 leading-snug">RewardNest — Spin, Quiz & Earn</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-3 leading-relaxed">Free-to-play rewards app with spin wheel, 500+ quizzes, scratch cards & referrals.</p>
-                <div class="flex flex-wrap gap-1.5 mb-3">
-                  <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-[10px]">Flutter</span>
-                  <span class="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-[10px]">Supabase</span>
-                  <span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded text-[10px]">Google</span>
-                  <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-[10px]">AdMob</span>
-                </div>
-                <a href="/rewardnest/" target="_blank" class="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-semibold text-xs transition-colors">
-                  View App Details
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Blog Preview Section -->
-      <section id="blog" class="py-20 bg-gradient-to-br from-gray-50/60 to-purple-50/60 dark:from-slate-900/40 dark:to-slate-800/40 backdrop-blur-sm">
-        <div class="container mx-auto px-6">
-          <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-            <div class="text-center md:text-left">
-              <h2 class="text-4xl md:text-5xl font-bold mb-2">Latest <span class="gradient-text">Articles</span></h2>
-              <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto md:mx-0"></div>
-              <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm">Thoughts on mobile, web &amp; shipping real products</p>
-            </div>
-            <a href="/blog/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
-              View All Articles
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          <div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- Posts injected by JS from /blog/posts.json -->
-            <div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">Loading articles…</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section — Deep space / twinkling stars -->
-      <section class="relative py-24 overflow-hidden cta-cosmic">
-        <div class="absolute inset-0 cta-stars-1"></div>
-        <div class="absolute inset-0 cta-stars-2"></div>
-        <div class="absolute inset-0 cta-stars-3"></div>
+      <!-- ===== iSellBack — Coming Soon ===== -->
+      <section id="isellback" class="relative py-28 md:py-36 overflow-hidden isb-section">
+        <!-- Light mode decorative blobs -->
+        <div class="isb-light-decor w-96 h-96 bg-purple-300/40 -top-20 -left-20" style="position:absolute"></div>
+        <div class="isb-light-decor w-80 h-80 bg-blue-300/30 top-1/3 -right-10" style="position:absolute"></div>
+        <div class="isb-light-decor w-72 h-72 bg-pink-200/30 bottom-0 left-1/3" style="position:absolute"></div>
+        <!-- Dark mode stars -->
+        <div class="isb-stars absolute inset-0 cta-stars-1"></div>
+        <div class="isb-stars absolute inset-0 cta-stars-2"></div>
+        <div class="isb-stars absolute inset-0 cta-stars-3"></div>
         <div class="absolute inset-0 cta-nebula"></div>
         <div class="cta-shoot"></div>
 
-        <div class="container mx-auto px-6 text-center relative z-10 max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/5 border border-white/10 backdrop-blur text-xs font-semibold text-white/80 tracking-widest uppercase">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Available for new projects
-          </div>
-          <h2 class="text-4xl md:text-6xl font-extrabold mb-5 text-white leading-tight">
-            Ready to Launch
-            <span class="cta-gradient-text">Something Great?</span>
-          </h2>
-          <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Let's turn your idea into a real, shipping product — website, iOS app, or Android app.
-            One message, one plan, one launch at a time.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <button onclick="scrollToSection('contact')" class="group relative px-8 py-3.5 rounded-full font-bold text-base bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white shadow-[0_10px_40px_-10px_rgba(139,92,246,0.6)] hover:shadow-[0_15px_50px_-5px_rgba(236,72,153,0.7)] hover:scale-[1.03] transition-all inline-flex items-center justify-center gap-2">
-              Start the Conversation
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </button>
-            <button onclick="scrollToSection('portfolio')" class="px-8 py-3.5 rounded-full font-semibold text-base bg-white/5 text-white border border-white/20 backdrop-blur hover:bg-white/10 hover:border-white/40 transition-all">
-              View My Work
-            </button>
-          </div>
+        <div class="container mx-auto px-6 relative z-10">
+          <div class="max-w-5xl mx-auto">
 
-          <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-12 text-xs text-gray-400">
-            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Fixed-price quotes</span>
-            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Source code included</span>
-            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Free 2-week post-launch support</span>
+            <!-- Top: Badge + Title + 3D Devices side by side -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+              <!-- Left: Text -->
+              <div class="flex-1 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-emerald-100 dark:bg-white/[0.06] border border-emerald-300 dark:border-white/[0.12] backdrop-blur-md shimmer-badge mb-8">
+                  <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                  </span>
+                  <span class="text-xs font-bold text-emerald-700 dark:text-white/90 tracking-[0.2em] uppercase">Launching Soon</span>
+                </div>
+
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-[1.1] text-gray-900 dark:text-white">
+                  iSellBack
+                </h2>
+                <p class="text-xl sm:text-2xl md:text-3xl font-semibold cta-gradient-text mb-6">
+                  The Smartest Way to Sell Your MacBook &amp; iPad
+                </p>
+                <p class="text-base md:text-lg text-gray-600 dark:text-gray-300/90 max-w-xl mb-0 leading-relaxed">
+                  Founded by <span class="font-semibold text-gray-900 dark:text-white/90">Anwar Rao</span> &amp; <span class="font-semibold text-gray-900 dark:text-white/90">Abdul Mannan</span> — turning your unused Apple devices into instant cash with AI-powered valuations.
+                </p>
+              </div>
+
+              <!-- Right: 3D Animated Devices -->
+              <div class="flex-1">
+                <div class="devices-showcase">
+                  <div class="devices-glow"></div>
+
+                  <!-- MacBook 3D -->
+                  <div class="macbook-3d">
+                    <div class="macbook-screen">
+                      <div class="macbook-screen-content">
+                        <div class="screen-ui">
+                          <div class="screen-ui-bar">
+                            <div class="screen-ui-dot" style="background:#ff5f57"></div>
+                            <div class="screen-ui-dot" style="background:#febc2e"></div>
+                            <div class="screen-ui-dot" style="background:#28c840"></div>
+                          </div>
+                          <div class="screen-ui-line" style="width:60%"></div>
+                          <div class="screen-ui-line" style="width:80%"></div>
+                          <div class="screen-ui-card">
+                            <div class="screen-ui-label">MacBook Pro 14" — Valuation</div>
+                            <div class="screen-ui-price">₹ 82,500</div>
+                          </div>
+                          <div class="screen-ui-card" style="background:rgba(59,130,246,0.12); border-color:rgba(59,130,246,0.2);">
+                            <div class="screen-ui-label">MacBook Air M2 — Valuation</div>
+                            <div class="screen-ui-price" style="color:#60a5fa">₹ 54,200</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="macbook-base"></div>
+                  </div>
+
+                  <!-- iPad 3D -->
+                  <div class="ipad-3d">
+                    <div class="ipad-body">
+                      <div class="ipad-camera"></div>
+                      <div class="ipad-screen">
+                        <div class="ipad-ui">
+                          <div class="ipad-ui-header"></div>
+                          <div class="ipad-ui-card">
+                            <div class="screen-ui-label">iPad Pro 12.9"</div>
+                            <div class="screen-ui-price" style="font-size:12px; color:#ec4899">₹ 41,800</div>
+                          </div>
+                          <div class="ipad-ui-card" style="background:rgba(16,185,129,0.1); border-color:rgba(16,185,129,0.15);">
+                            <div class="screen-ui-label">iPad Air M1</div>
+                            <div class="screen-ui-price" style="font-size:12px; color:#34d399">₹ 28,500</div>
+                          </div>
+                          <div class="ipad-ui-text" style="width:70%; margin-top:8px"></div>
+                          <div class="ipad-ui-text" style="width:50%"></div>
+                        </div>
+                      </div>
+                      <div class="ipad-home-indicator"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- About iSellBack (Crucial for AWS) -->
+            <div class="bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] backdrop-blur-lg rounded-2xl p-8 md:p-10 mb-12 shadow-sm dark:shadow-none">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">About iSellBack</h3>
+              </div>
+              <p class="text-gray-700 dark:text-gray-300/85 leading-relaxed text-[15px] md:text-base">
+                We are building a premium B2C buyback and recommerce platform specifically for Apple devices like MacBooks and iPads. Our platform allows consumers to get instant price valuations for their old gadgets and sell them seamlessly. We are leveraging secure infrastructure and ML algorithms for dynamic, real-time device valuation based on market demand.
+              </p>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-14">
+              <div class="feature-card-hover bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] backdrop-blur rounded-xl p-6 text-center shadow-sm dark:shadow-none">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-cyan-400 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h4 class="text-gray-900 dark:text-white font-bold text-sm mb-1.5">Instant Valuation</h4>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">ML-powered real-time pricing based on market demand</p>
+              </div>
+              <div class="feature-card-hover bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] backdrop-blur rounded-xl p-6 text-center shadow-sm dark:shadow-none">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-violet-400 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h4 class="text-gray-900 dark:text-white font-bold text-sm mb-1.5">Secure Infrastructure</h4>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Enterprise-grade AWS infrastructure for data safety</p>
+              </div>
+              <div class="feature-card-hover bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] backdrop-blur rounded-xl p-6 text-center shadow-sm dark:shadow-none">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h4 class="text-gray-900 dark:text-white font-bold text-sm mb-1.5">Seamless Selling</h4>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Hassle-free process from valuation to payout</p>
+              </div>
+            </div>
+
+            <!-- Founding Team -->
+            <div class="bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] backdrop-blur-lg rounded-2xl p-8 md:p-10 mb-10 shadow-sm dark:shadow-none">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Founding Team</h3>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="flex items-center gap-4 bg-slate-50 dark:bg-white/[0.04] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 hover:bg-slate-100 dark:hover:bg-white/[0.07] transition-all">
+                  <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-0.5 flex-shrink-0 shadow-lg">
+                    <img src="/assets/RAOGY.jpg" alt="Anwar Rao" loading="lazy" class="w-full h-full rounded-full object-cover" />
+                  </div>
+                  <div>
+                    <h4 class="text-gray-900 dark:text-white font-bold text-sm">Anwar Rao</h4>
+                    <p class="text-purple-600 dark:text-purple-400 text-xs font-semibold mb-1">Co-Founder &amp; CEO</p>
+                    <p class="text-gray-500 dark:text-gray-400/80 text-[11px] leading-relaxed">Strategy • Business Growth • Partnerships</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 bg-slate-50 dark:bg-white/[0.04] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 hover:bg-slate-100 dark:hover:bg-white/[0.07] transition-all">
+                  <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5 flex-shrink-0 shadow-lg">
+                    <img src="/assets/Abdul.jpg" alt="Abdul Mannan" loading="lazy" class="w-full h-full rounded-full object-cover" />
+                  </div>
+                  <div>
+                    <h4 class="text-gray-900 dark:text-white font-bold text-sm">Abdul Mannan</h4>
+                    <p class="text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-1">Co-Founder &amp; CTO</p>
+                    <p class="text-gray-500 dark:text-gray-400/80 text-[11px] leading-relaxed">Technology • Product Engineering • ML Valuations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Page link for iSellBack -->
+            <div class="text-center mb-14">
+              <a href="/isellback" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-semibold border-2 border-purple-300 dark:border-white/20 text-purple-700 dark:text-white bg-white/60 dark:bg-transparent hover:bg-purple-50 dark:hover:bg-white/10 hover:border-purple-400 dark:hover:border-white/40 transition-all shadow-sm dark:shadow-none">
+                Explore iSellBack
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+
+            <!-- Email Signup -->
+            <div class="max-w-lg mx-auto text-center">
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-medium">Enter your email to get early access</p>
+              <form id="isellback-notify-form" class="flex flex-col sm:flex-row gap-3" onsubmit="handleNotifySubmit(event)">
+                <div class="flex-1">
+                  <input type="email" id="isellback-email" placeholder="you@example.com" required
+                    class="w-full px-5 py-3.5 rounded-full bg-white dark:bg-white/[0.07] border border-gray-300 dark:border-white/[0.15] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500 dark:focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 backdrop-blur transition-all shadow-sm dark:shadow-none" />
+                </div>
+                <button type="submit" class="notify-btn px-7 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-white shadow-[0_8px_30px_-8px_rgba(139,92,246,0.5)] inline-flex items-center justify-center gap-2 whitespace-nowrap">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                  Notify Me
+                </button>
+              </form>
+              <p id="notify-success" class="hidden mt-4 text-emerald-600 dark:text-emerald-400 text-sm font-medium animate-fade-in-up">🎉 Awesome! You're on the early access list.</p>
+              <p id="notify-error" class="hidden mt-4 text-red-600 dark:text-red-400 text-sm font-medium animate-fade-in-up">Something went wrong. Please try again.</p>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-14 text-xs text-gray-500 dark:text-gray-400/80">
+              <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Apple Devices Only</span>
+              <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>ML-Powered Pricing</span>
+              <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Secure AWS Infrastructure</span>
+              <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>By Anwar Rao &amp; Abdul Mannan</span>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm">
+      <section id="contact" class="py-20 bg-gray-50 dark:bg-slate-900/40 backdrop-blur-sm">
         <div class="container mx-auto px-6">
           <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Get in <span class="gradient-text">Touch</span></h2>
             <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto rounded-full"></div>
-            <p class="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
-              Have a website, iOS or Android app idea? Let's build it together.
-            </p>
+            <p class="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">Have a website, iOS or Android app idea? Let's build it together.</p>
           </div>
 
           <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-              <!-- Email Card (address hidden from scrapers) -->
-              <a href="mailto:contact@raogy.com?subject=Project%20inquiry%20from%20raogy.com" class="contact-card tilt-3d group bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 p-5 rounded-xl border border-purple-200 dark:border-purple-700/50 hover:shadow-xl transition-all duration-300">
+              <a href="mailto:contact@raogy.com?subject=Project%20inquiry%20from%20raogy.com" class="tilt-3d group bg-white dark:bg-purple-900/20 p-5 rounded-xl border border-purple-200 dark:border-purple-700/50 hover:shadow-xl transition-all duration-300 shadow-sm">
                 <div class="w-11 h-11 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 </div>
                 <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Email Me</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-2">Drop me a line anytime</p>
-                <p class="text-purple-600 dark:text-purple-400 font-semibold text-sm inline-flex items-center gap-1.5">
-                  Send Email
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs mb-2">Drop me a line anytime</p>
+                <p class="text-purple-600 dark:text-purple-400 font-semibold text-sm inline-flex items-center gap-1.5">Send Email <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
               </a>
-
-              <!-- WhatsApp Card (number hidden from scrapers) -->
-              <a href="https://wa.me/916300163216?text=Hi%20RAOGY%2C%20I%20found%20you%20via%20your%20portfolio." target="_blank" rel="noopener noreferrer" class="contact-card tilt-3d group bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-5 rounded-xl border border-green-200 dark:border-green-700/50 hover:shadow-xl transition-all duration-300">
+              <a href="https://wa.me/916300163216?text=Hi%20RAOGY" target="_blank" rel="noopener noreferrer" class="tilt-3d group bg-white dark:bg-green-900/20 p-5 rounded-xl border border-green-200 dark:border-green-700/50 hover:shadow-xl transition-all duration-300 shadow-sm">
                 <div class="w-11 h-11 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">WhatsApp</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-2">Chat with me instantly</p>
-                <p class="text-green-600 dark:text-green-400 font-semibold text-sm inline-flex items-center gap-1.5">
-                  Open Chat
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs mb-2">Chat with me instantly</p>
+                <p class="text-green-600 dark:text-green-400 font-semibold text-sm inline-flex items-center gap-1.5">Open Chat <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
               </a>
-
-              <!-- GitHub Card -->
-              <a href="https://github.com/RAOGYYY" target="_blank" rel="noopener noreferrer" class="contact-card tilt-3d group bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-700/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+              <a href="https://github.com/RAOGYYY" target="_blank" rel="noopener noreferrer" class="tilt-3d group bg-white dark:bg-gray-800/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 shadow-sm">
                 <div class="w-11 h-11 bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">GitHub</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-xs mb-2">Peek at my open-source work</p>
-                <p class="text-gray-700 dark:text-gray-300 font-semibold text-sm inline-flex items-center gap-1.5">
-                  View Profile
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs mb-2">Open-source work</p>
+                <p class="text-gray-700 dark:text-gray-300 font-semibold text-sm inline-flex items-center gap-1.5">View Profile <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
               </a>
             </div>
 
-            <!-- Social Media Links -->
-            <div class="tilt-3d text-center bg-gradient-to-br from-purple-50/90 to-blue-50/90 dark:from-slate-800/80 dark:to-slate-700/80 backdrop-blur p-10 rounded-3xl shadow-xl border border-gray-200 dark:border-slate-600">
+            <div class="tilt-3d text-center bg-white dark:bg-slate-800/80 backdrop-blur p-10 rounded-3xl shadow-lg dark:shadow-xl border border-gray-200 dark:border-slate-600">
               <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Connect on Social Media</h3>
               <p class="text-gray-600 dark:text-gray-400 mb-8">Follow me for updates and connect with my work</p>
-              
               <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://instagram.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
-                  <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                  </div>
-                  <div class="text-left">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Instagram</p>
-                    <p class="text-sm font-bold text-pink-600 dark:text-pink-400 inline-flex items-center gap-1">Follow <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
-                  </div>
+                <a href="https://instagram.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800 px-6 py-3 rounded-xl shadow-sm dark:shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"><svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+                  <div class="text-left"><p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Instagram</p><p class="text-sm font-bold text-pink-600 dark:text-pink-400 inline-flex items-center gap-1">Follow <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p></div>
                 </a>
-
-                <a href="https://facebook.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
-                  <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  </div>
-                  <div class="text-left">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Facebook</p>
-                    <p class="text-sm font-bold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1">Connect <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
-                  </div>
+                <a href="https://facebook.com/anwarul.20" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800 px-6 py-3 rounded-xl shadow-sm dark:shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"><svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                  <div class="text-left"><p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Facebook</p><p class="text-sm font-bold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1">Connect <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p></div>
                 </a>
-
-                <a href="https://linkedin.com/in/raogy" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
-                  <div class="w-10 h-10 bg-gradient-to-br from-sky-600 to-sky-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  </div>
-                  <div class="text-left">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 font-medium">LinkedIn</p>
-                    <p class="text-sm font-bold text-sky-600 dark:text-sky-400 inline-flex items-center gap-1">Connect <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p>
-                  </div>
+                <a href="https://linkedin.com/in/raogy" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-gray-50 dark:bg-slate-800 px-6 py-3 rounded-xl shadow-sm dark:shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-slate-600">
+                  <div class="w-10 h-10 bg-gradient-to-br from-sky-600 to-sky-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"><svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+                  <div class="text-left"><p class="text-xs text-gray-500 dark:text-gray-400 font-medium">LinkedIn</p><p class="text-sm font-bold text-sky-600 dark:text-sky-400 inline-flex items-center gap-1">Connect <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></p></div>
                 </a>
               </div>
             </div>
@@ -1541,33 +797,27 @@
               <a href="/privacy" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
               <span class="text-gray-400">•</span>
               <a href="/terms" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
+              <span class="text-gray-400">•</span>
+              <a href="/about" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">About</a>
             </div>
           </div>
           <div class="border-t border-gray-200/50 dark:border-slate-800/50 pt-6 text-center">
-            <p class="text-gray-600 dark:text-gray-400 text-xs">
-              © <span id="year"></span> RAOGY. Crafted with ❤️ for web, iOS &amp; Android.
-            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-xs">© <span id="year"></span> RAOGY. Crafted with ❤️ for web, iOS &amp; Android.</p>
           </div>
         </div>
       </footer>
 
-      <!-- Scroll to Top Button (translucent, small, non-intrusive) -->
       <button id="scrollToTop" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-40 p-2 rounded-full transition-all duration-300 hover:scale-110" aria-label="Scroll to top">
         <span class="flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-slate-900/40 backdrop-blur-md border border-white/40 dark:border-white/10 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white hover:border-transparent shadow-md hover:shadow-xl transition-all">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-          </svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l-7 7m-7-7v18"></path></svg>
         </span>
       </button>
+    </main>
 
     <script>
-        // =========================
-        // Theme Toggle (dark / light)
-        // =========================
         function toggleTheme() {
             const html = document.documentElement;
-            const isDark = html.classList.contains('dark');
-            if (isDark) {
+            if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
             } else {
@@ -1578,504 +828,107 @@
 
         (function initTheme() {
             const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
             }
         })();
 
-        // =========================
-        // Scroll-to-top button (auto-hide near footer so it never covers links)
-        // =========================
+        // Scroll-to-top
         const scrollButton = document.getElementById('scrollToTop');
         function updateScrollBtn() {
             const footer = document.querySelector('footer');
-            const y = window.pageYOffset;
-            // Show only when we've scrolled enough
-            if (y <= 300) {
-                scrollButton.classList.remove('show');
-                return;
-            }
-            // If the footer is visible in viewport, hide the button so it doesn't cover links
-            if (footer) {
-                const fRect = footer.getBoundingClientRect();
-                const nearFooter = fRect.top < window.innerHeight - 40;
-                if (nearFooter) { scrollButton.classList.remove('show'); return; }
-            }
+            if (window.pageYOffset <= 300) { scrollButton.classList.remove('show'); return; }
+            if (footer) { const r = footer.getBoundingClientRect(); if (r.top < window.innerHeight - 40) { scrollButton.classList.remove('show'); return; } }
             scrollButton.classList.add('show');
         }
         window.addEventListener('scroll', updateScrollBtn, { passive: true });
-        window.addEventListener('resize', updateScrollBtn);
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        // Smooth scroll to section
         function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMenu();
-            }
+            const el = document.getElementById(id);
+            if (el) { el.scrollIntoView({ behavior: 'smooth' }); const m = document.getElementById('mobile-menu'); if (m && !m.classList.contains('hidden')) toggleMenu(); }
         }
 
         function toggleMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+            document.getElementById('menu-icon').classList.toggle('hidden');
+            document.getElementById('close-icon').classList.toggle('hidden');
         }
 
-        // =========================
-        // Portfolio filter (reliable via data-filter + button reference)
-        // =========================
-        function filterProjects(category, btn) {
-            const projects = document.querySelectorAll('.project-item');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const activeCls = 'filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg';
-            const idleCls   = 'filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-slate-600';
-            filterBtns.forEach(b => { b.className = idleCls; });
-            if (btn) btn.className = activeCls;
-            else {
-                const match = document.querySelector(`.filter-btn[data-filter="${category}"]`);
-                if (match) match.className = activeCls;
-            }
-            projects.forEach(p => {
-                p.style.display = (category === 'All' || p.dataset.category === category) ? '' : 'none';
-            });
-        }
-
-        // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // =========================
-        // On-scroll reveal animations
-        // =========================
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('animate-fade-in-up');
-            });
-        }, observerOptions);
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        // Scroll reveal
+        const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-fade-in-up'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // =========================
-        // 3D Mouse-Tilt for cards
-        // =========================
-        (function initTilt() {
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isTouch = window.matchMedia('(hover: none)').matches;
-            if (prefersReduced || isTouch) return;
-
-            const tiltEls = document.querySelectorAll('.tilt-3d');
-            const MAX = 8; // degrees
-
-            tiltEls.forEach(el => {
+        // 3D tilt
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(hover: none)').matches) return;
+            document.querySelectorAll('.tilt-3d').forEach(el => {
                 let rect = null;
-                el.addEventListener('mouseenter', () => { rect = el.getBoundingClientRect(); });
-                el.addEventListener('mousemove', (e) => {
+                el.addEventListener('mouseenter', () => rect = el.getBoundingClientRect());
+                el.addEventListener('mousemove', e => {
                     if (!rect) rect = el.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const cx = rect.width / 2;
-                    const cy = rect.height / 2;
-                    const rx = ((y - cy) / cy) * -MAX;
-                    const ry = ((x - cx) / cx) *  MAX;
+                    const rx = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -8;
+                    const ry = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 8;
                     el.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(0)`;
                 });
-                el.addEventListener('mouseleave', () => {
-                    el.style.transform = '';
-                    rect = null;
-                });
+                el.addEventListener('mouseleave', () => { el.style.transform = ''; rect = null; });
             });
         })();
 
-        // =========================
-        // Hero portrait parallax (mouse based)
-        // =========================
-        (function initHeroParallax() {
-            const portrait = document.getElementById('heroPortrait');
-            if (!portrait) return;
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isTouch = window.matchMedia('(hover: none)').matches;
-            if (prefersReduced || isTouch) return;
-
-            document.addEventListener('mousemove', (e) => {
+        // Hero parallax
+        (function() {
+            const p = document.getElementById('heroPortrait');
+            if (!p || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(hover: none)').matches) return;
+            document.addEventListener('mousemove', e => {
                 const rx = (e.clientY / window.innerHeight - 0.5) * -10;
-                const ry = (e.clientX / window.innerWidth  - 0.5) *  10;
-                portrait.style.transform =
-                    `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+                const ry = (e.clientX / window.innerWidth - 0.5) * 10;
+                p.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
             });
         })();
 
-        // =========================
-        // Blog preview loader (fetches /blog/posts.json)
-        // =========================
-        (function loadBlogPreview() {
-            const grid = document.getElementById('blog-preview-grid');
-            if (!grid) return;
-            window.raogyLoadPublishedPosts()
-                .then(all => {
-                    const posts = all
-                        .sort((a, b) => new Date(b.date) - new Date(a.date))
-                        .slice(0, 3);
-                    const data = { posts };
-                    if (!posts.length) {
-                        grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">No articles yet — check back soon.</div>';
-                        return;
-                    }
-                    grid.innerHTML = posts.map(p => `
-                        <a href="/blog/${encodeURIComponent(p.slug)}" class="tilt-3d group block bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300">
-                            <div class="h-36 bg-gradient-to-br from-purple-500 via-blue-500 to-pink-500 relative overflow-hidden">
-                                ${p.cover ? `<img src="${p.cover}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">` : ''}
-                                <div class="absolute top-2 left-2 flex flex-wrap gap-1">
-                                    ${(p.tags || []).slice(0,2).map(t => `<span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-white/90 dark:bg-slate-900/80 text-gray-800 dark:text-gray-200 backdrop-blur">${t}</span>`).join('')}
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-[11px] uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1.5 flex items-center gap-2">
-                                    <span>${new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                                    <span>•</span>
-                                    <span>${p.readTime || '3 min read'}</span>
-                                </div>
-                                <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1.5 leading-snug group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">${p.title}</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">${p.excerpt || ''}</p>
-                                <span class="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-purple-600 dark:text-purple-400">
-                                    Read more
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                            </div>
-                        </a>
-                    `).join('');
-                })
-                .catch(() => {
-                    grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">Unable to load articles right now.</div>';
-                });
-        })();
-
-        // =========================
-        // Portfolio loader (fetches /portfolio/projects.json)
-        // =========================
-        (function loadPortfolio() {
-            const grid = document.getElementById('portfolio-grid');
-            if (!grid) return;
-
-            // Inline SVG icon library for portfolio cards
-            const ICONS = {
-                phone:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>',
-                image:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
-                lightning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
-                coin:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
-                web:       '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
-                code:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>',
-                shop:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>',
-                star:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>'
-            };
-            function iconSvg(name) {
-                const path = ICONS[name] || ICONS.code;
-                return `<svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">${path}</svg>`;
-            }
-
-            // Tag color palette (matches Tailwind utility classes used elsewhere)
-            const TAG_COLORS = {
-                blue:    'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300',
-                purple:  'bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300',
-                pink:    'bg-pink-100 dark:bg-pink-900/50 text-pink-700 dark:text-pink-300',
-                red:     'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300',
-                green:   'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300',
-                emerald: 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300',
-                cyan:    'bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300',
-                amber:   'bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300',
-                yellow:  'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-300',
-                orange:  'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300',
-                slate:   'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
-            };
-            function tagCls(c) { return TAG_COLORS[c] || TAG_COLORS.slate; }
-
-            function renderCard(p) {
-                const link   = p.link || '#';
-                const target = p.linkTarget || '_blank';
-                const gradient = p.gradient || 'from-purple-500 via-blue-500 to-pink-500';
-                const border = p.borderClass || 'border-purple-500 dark:border-purple-400';
-                const tagsHtml = (p.tags || []).map(t => {
-                    const label = typeof t === 'string' ? t : t.label;
-                    const color = typeof t === 'string' ? 'slate' : (t.color || 'slate');
-                    return `<span class="text-[10px] font-semibold px-2 py-0.5 rounded ${tagCls(color)}">${label}</span>`;
-                }).join('');
-
-                // Cover area — use image if provided, else gradient with icon
-                const cover = p.image
-                    ? `<div class="h-32 overflow-hidden bg-gradient-to-br ${gradient}">
-                         <a href="${link}" target="${target}" class="block w-full h-full">
-                           <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
-                         </a>
-                       </div>`
-                    : `<div class="h-32 overflow-hidden bg-gradient-to-br ${gradient} flex items-center justify-center">
-                         <a href="${link}" target="${target}" class="w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                           ${iconSvg(p.icon || 'code')}
-                         </a>
-                       </div>`;
-
-                return `
-                  <div class="project-item tilt-3d group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 ${border}" data-category="${p.category || 'Mobile App'}">
-                    ${cover}
-                    <div class="p-4">
-                      <div class="text-[11px] uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1.5">
-                        ${p.categoryLabel || p.category || ''}
-                      </div>
-                      <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1.5 leading-snug">${p.title}</h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-xs leading-relaxed mb-2.5 line-clamp-3">${p.description || ''}</p>
-                      ${tagsHtml ? `<div class="flex flex-wrap gap-1 mb-2.5">${tagsHtml}</div>` : ''}
-                      <a href="${link}" target="${target}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
-                        ${p.linkLabel || 'View Details'}
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                      </a>
-                    </div>
-                  </div>`;
-            }
-
-            window.raogyLoadPublishedProjects()
-                .then(projects => {
-                    if (!projects.length) return; // keep fallback HTML
-                    grid.innerHTML = projects.map(renderCard).join('');
-                })
-                .catch(err => {
-                    console.warn('[portfolio] Could not load projects, keeping fallback HTML.', err);
-                });
-        })();
-
-        // =========================
-        // Extra twinkling stars — sprinkle a handful of DOM stars for variance
-        // =========================
-        (function sprinkleStars() {
+        // Dynamic stars
+        (function() {
             const stage = document.querySelector('.bg-stage');
             if (!stage) return;
-            const count = window.innerWidth < 768 ? 25 : 60;
             const frag = document.createDocumentFragment();
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < (window.innerWidth < 768 ? 25 : 60); i++) {
                 const s = document.createElement('span');
-                const size = Math.random() < 0.85 ? 1 : 2;
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                const delay = (Math.random() * 6).toFixed(2);
-                const duration = (3 + Math.random() * 5).toFixed(2);
-                s.style.cssText = `
-                    position:absolute;top:${y}%;left:${x}%;
-                    width:${size}px;height:${size}px;border-radius:50%;
-                    background:#fff;opacity:0;
-                    box-shadow:0 0 ${size * 4}px rgba(255,255,255,0.8);
-                    animation: twinkleDot ${duration}s ease-in-out ${delay}s infinite;
-                    pointer-events:none;
-                `;
-                s.className = 'dot-star';
+                const sz = Math.random() < 0.85 ? 1 : 2;
+                s.style.cssText = `position:absolute;top:${Math.random()*100}%;left:${Math.random()*100}%;width:${sz}px;height:${sz}px;border-radius:50%;background:#fff;box-shadow:0 0 ${sz*4}px rgba(255,255,255,0.8);animation:twinkleDot ${(3+Math.random()*5).toFixed(2)}s ease-in-out ${(Math.random()*6).toFixed(2)}s infinite;pointer-events:none;`;
                 frag.appendChild(s);
             }
             stage.appendChild(frag);
-
-            // Only visible in dark mode
-            const style = document.createElement('style');
-            style.textContent = `
-                .dot-star { opacity: 0 !important; }
-                .dark .dot-star { animation-play-state: running !important; }
-                @keyframes twinkleDot {
-                    0%, 100% { opacity: 0; transform: scale(0.8); }
-                    50%      { opacity: 0.9; transform: scale(1.2); }
-                }
-                .dark .dot-star { opacity: 1 !important; }
-            `;
-            document.head.appendChild(style);
+            const st = document.createElement('style');
+            st.textContent = '@keyframes twinkleDot{0%,100%{opacity:0;transform:scale(0.8)}50%{opacity:0.9;transform:scale(1.2)}}';
+            document.head.appendChild(st);
         })();
 
-        // ==========================================
-        // 3D AI Scene Loader & Controller (Phase 4)
-        // ==========================================
-        let threeJSLoaded = false;
-        let threeJSRenderer = null;
-        let splineLoaded = false;
-
-        // Config: Change these variables to swap assets
-        const CONFIG_3D = {
-            mode: 'threejs', // 'threejs', 'spline', or 'video'
-            splineUrl: '', // e.g. 'https://prod.spline.design/your-scene-id/scene.splinecode'
-            videoUrl: '', // e.g. '/assets/animation.mp4'
-            threeJsColor: 0x8b5cf6, // Purple theme accent
-        };
-
-        function toggle3dMode() {
-            const container = document.getElementById('canvas3d-container');
-            const staticView = document.getElementById('portrait-static-view');
-            const btn = document.getElementById('toggle3dBtn');
-            
-            if (container.classList.contains('hidden')) {
-                // Activate 3D Mode
-                container.classList.remove('hidden');
-                container.classList.add('flex');
-                staticView.classList.add('opacity-10', 'scale-90');
-                btn.innerHTML = `
-                   <span class="flex h-2 w-2 relative">
-                     <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                   </span>
-                   Disable 3D Scene
-                `;
-                
-                initialize3dScene();
-            } else {
-                // Deactivate 3D Mode
-                container.classList.add('hidden');
-                container.classList.remove('flex');
-                staticView.classList.remove('opacity-10', 'scale-90');
-                btn.innerHTML = `
-                   <span class="flex h-2 w-2 relative">
-                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                     <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                   </span>
-                   Activate 3D AI Scene
-                `;
-            }
+        // Notify form
+        function handleNotifySubmit(e) {
+            e.preventDefault();
+            const inp = document.getElementById('isellback-email');
+            const ok = document.getElementById('notify-success');
+            const err = document.getElementById('notify-error');
+            const email = inp.value.trim();
+            if (!email) return;
+            ok.classList.add('hidden'); err.classList.add('hidden');
+            try {
+                const list = JSON.parse(localStorage.getItem('isellback_waitlist') || '[]');
+                if (!list.includes(email)) { list.push(email); localStorage.setItem('isellback_waitlist', JSON.stringify(list)); }
+                inp.value = '';
+                ok.classList.remove('hidden');
+                setTimeout(() => ok.classList.add('hidden'), 5000);
+            } catch { err.classList.remove('hidden'); setTimeout(() => err.classList.add('hidden'), 5000); }
         }
 
-        function initialize3dScene() {
-            const container = document.getElementById('canvas3d-container');
-            const fallbackUi = document.getElementById('animation-fallback-ui');
-            
-            // Check if already initialized
-            if (container.querySelector('canvas') || container.querySelector('spline-viewer') || container.querySelector('video')) {
-                return; // Already initialized
-            }
-            
-            if (CONFIG_3D.mode === 'spline' && CONFIG_3D.splineUrl) {
-                // Load Spline Viewer
-                if (!splineLoaded) {
-                    const script = document.createElement('script');
-                    script.type = 'module';
-                    script.src = 'https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js';
-                    script.onload = () => {
-                        const viewer = document.createElement('spline-viewer');
-                        viewer.setAttribute('url', CONFIG_3D.splineUrl);
-                        viewer.classList.add('w-full', 'h-full');
-                        fallbackUi.style.display = 'none';
-                        container.appendChild(viewer);
-                    };
-                    document.head.appendChild(script);
-                    splineLoaded = true;
-                }
-            } else if (CONFIG_3D.mode === 'video' && CONFIG_3D.videoUrl) {
-                // Load high-performance looping video
-                const video = document.createElement('video');
-                video.src = CONFIG_3D.videoUrl;
-                video.autoplay = true;
-                video.loop = true;
-                video.muted = true;
-                video.playsInline = true;
-                video.className = 'w-full h-full object-cover';
-                video.onloadeddata = () => {
-                    fallbackUi.style.display = 'none';
-                };
-                container.appendChild(video);
-            } else {
-                // Fallback or default: Build interactive Three.js Particle System (Torus/Sphere)
-                if (!threeJSLoaded) {
-                    const script = document.createElement('script');
-                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-                    script.onload = () => {
-                        threeJSLoaded = true;
-                        buildThreeJsScene(container, fallbackUi);
-                    };
-                    document.head.appendChild(script);
-                } else {
-                    buildThreeJsScene(container, fallbackUi);
-                }
-            }
-        }
-
-        function buildThreeJsScene(container, fallbackUi) {
-            fallbackUi.style.display = 'none';
-            
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            
-            // Scene setup
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 1000);
-            camera.position.z = 3.0;
-            
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(width, height);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
-            
-            // Geometry - Torus knot of particles
-            const geometry = new THREE.TorusKnotGeometry(0.8, 0.25, 120, 16);
-            
-            // Particle Material
-            const pointsMaterial = new THREE.PointsMaterial({
-                color: CONFIG_3D.threeJsColor,
-                size: 0.025,
-                transparent: true,
-                opacity: 0.85,
-                blending: THREE.AdditiveBlending
-            });
-            
-            const particles = new THREE.Points(geometry, pointsMaterial);
-            scene.add(particles);
-            
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-            
-            const pointLight = new THREE.PointLight(0xffffff, 1);
-            pointLight.position.set(2, 3, 4);
-            scene.add(pointLight);
-            
-            // Interaction
-            let mouseX = 0;
-            let mouseY = 0;
-            let targetX = 0;
-            let targetY = 0;
-            
-            window.addEventListener('mousemove', (e) => {
-                const rect = container.getBoundingClientRect();
-                mouseX = ((e.clientX - rect.left) / width) - 0.5;
-                mouseY = -(((e.clientY - rect.top) / height) - 0.5);
-            });
-            
-            // Animation loop
-            const clock = new THREE.Clock();
-            
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                const elapsedTime = clock.getElapsedTime();
-                
-                // Rotations
-                particles.rotation.y = elapsedTime * 0.15;
-                particles.rotation.x = elapsedTime * 0.08;
-                
-                // Move towards mouse position (lerping for smoothness)
-                targetX = mouseX * 0.6;
-                targetY = mouseY * 0.6;
-                
-                particles.rotation.y += (targetX - particles.rotation.y) * 0.05;
-                particles.rotation.x += (targetY - particles.rotation.x) * 0.05;
-                
-                renderer.render(scene, camera);
-            }
-            
-            animate();
-            
-            // Handle resizing
-            const resizeObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    const w = entry.contentRect.width;
-                    const h = entry.contentRect.height;
-                    camera.aspect = w / h;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(w, h);
-                }
-            });
-            resizeObserver.observe(container);
-        }
+        // Mobile menu auto-close
+        document.querySelectorAll('.mobile-menu-item').forEach(item => {
+            item.addEventListener('click', () => { const m = document.getElementById('mobile-menu'); if (m && !m.classList.contains('hidden')) toggleMenu(); });
+        });
     </script>
 </body>
 </html>
