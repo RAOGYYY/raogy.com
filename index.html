@@ -408,9 +408,25 @@
         #scrollToTop.show { opacity: 1; visibility: visible; }
 
         @media (max-width: 640px) {
-            .devices-showcase { height: 300px; }
-            .macbook-3d { width: 220px; height: 145px; left: -10px; }
-            .ipad-3d { width: 130px; height: 190px; right: -10px; top: 30px; }
+            .devices-showcase {
+                height: 270px;
+                max-width: 340px;
+                transform: scale(0.95);
+                transform-origin: center;
+            }
+            .macbook-3d { width: 200px; height: 130px; left: 5px; top: 40px; }
+            .ipad-3d { width: 120px; height: 175px; right: 5px; top: 15px; }
+            .devices-glow { width: 260px; height: 260px; }
+        }
+        @media (max-width: 400px) {
+            .devices-showcase {
+                transform: scale(0.85);
+            }
+        }
+        @media (max-width: 340px) {
+            .devices-showcase {
+                transform: scale(0.72);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -574,7 +590,7 @@
               </div>
 
               <!-- Right: 3D Animated Devices -->
-              <div class="flex-1">
+              <div class="flex-1 w-full">
                 <div class="devices-showcase">
                   <div class="devices-glow"></div>
 
