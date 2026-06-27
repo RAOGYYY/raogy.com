@@ -125,7 +125,7 @@
         /* --- LIGHT MODE: soft mesh gradient --- */
         .light-orbs { position: absolute; inset: 0; opacity: 1; transition: opacity 0.8s ease; }
         .dark .light-orbs { opacity: 0; }
-        .light-orbs .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; }
+        .light-orbs .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.35; will-change: transform; transform: translate3d(0,0,0); }
         .light-orbs .orb:nth-child(1) { width: 500px; height: 500px; top: -15%; left: -10%; background: #c4b5fd; animation: float 12s ease-in-out infinite; }
         .light-orbs .orb:nth-child(2) { width: 400px; height: 400px; top: 30%;  right: -5%; background: #93c5fd; animation: float 15s ease-in-out infinite 2s; }
         .light-orbs .orb:nth-child(3) { width: 350px; height: 350px; bottom: 5%; left: 20%;  background: #fbcfe8; animation: float 18s ease-in-out infinite 4s; }
@@ -148,6 +148,8 @@
             width: 320px; height: 210px;
             transform-style: preserve-3d;
             animation: macbookFloat 6s ease-in-out infinite;
+            will-change: transform;
+            transform: translate3d(0,0,0);
         }
         .macbook-screen {
             width: 100%; height: 100%;
@@ -231,6 +233,8 @@
             width: 180px; height: 260px;
             transform-style: preserve-3d;
             animation: ipadFloat 7s ease-in-out infinite 1s;
+            will-change: transform;
+            transform: translate3d(0,0,0);
         }
         .ipad-body {
             width: 100%; height: 100%;
@@ -290,6 +294,7 @@
             background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.08) 40%, transparent 70%);
             filter: blur(40px);
             animation: glowPulse 4s ease-in-out infinite;
+            will-change: transform;
         }
         @keyframes glowPulse {
             0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
@@ -835,13 +840,29 @@
             }
         })();
 
-        // Scroll-to-top
+        // Scroll-to-top (Highly optimized using requestAnimationFrame and avoiding layout thrashing)
         const scrollButton = document.getElementById('scrollToTop');
+        let scrollTicking = false;
         function updateScrollBtn() {
-            const footer = document.querySelector('footer');
-            if (window.pageYOffset <= 300) { scrollButton.classList.remove('show'); return; }
-            if (footer) { const r = footer.getBoundingClientRect(); if (r.top < window.innerHeight - 40) { scrollButton.classList.remove('show'); return; } }
-            scrollButton.classList.add('show');
+            if (!scrollTicking) {
+                window.requestAnimationFrame(() => {
+                    const pageY = window.pageYOffset;
+                    if (pageY <= 300) {
+                        scrollButton.classList.remove('show');
+                    } else {
+                        // Avoid getBoundingClientRect, check if scroll is near bottom
+                        const totalHeight = document.documentElement.scrollHeight;
+                        const distanceToBottom = totalHeight - (window.innerHeight + pageY);
+                        if (distanceToBottom < 100) {
+                            scrollButton.classList.remove('show');
+                        } else {
+                            scrollButton.classList.add('show');
+                        }
+                    }
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
         }
         window.addEventListener('scroll', updateScrollBtn, { passive: true });
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
@@ -863,30 +884,44 @@
         const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-fade-in-up'); }); }, { threshold: 0.1 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
-        // 3D tilt
+        // Throttled 3D tilt
         (function() {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(hover: none)').matches) return;
             document.querySelectorAll('.tilt-3d').forEach(el => {
                 let rect = null;
+                let tiltTicking = false;
                 el.addEventListener('mouseenter', () => rect = el.getBoundingClientRect());
                 el.addEventListener('mousemove', e => {
-                    if (!rect) rect = el.getBoundingClientRect();
-                    const rx = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -8;
-                    const ry = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 8;
-                    el.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(0)`;
+                    if (!tiltTicking) {
+                        window.requestAnimationFrame(() => {
+                            if (!rect) rect = el.getBoundingClientRect();
+                            const rx = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -8;
+                            const ry = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 8;
+                            el.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(0)`;
+                            tiltTicking = false;
+                        });
+                        tiltTicking = true;
+                    }
                 });
                 el.addEventListener('mouseleave', () => { el.style.transform = ''; rect = null; });
             });
         })();
 
-        // Hero parallax
+        // Throttled Hero parallax
         (function() {
             const p = document.getElementById('heroPortrait');
             if (!p || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(hover: none)').matches) return;
+            let parallaxTicking = false;
             document.addEventListener('mousemove', e => {
-                const rx = (e.clientY / window.innerHeight - 0.5) * -10;
-                const ry = (e.clientX / window.innerWidth - 0.5) * 10;
-                p.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+                if (!parallaxTicking) {
+                    window.requestAnimationFrame(() => {
+                        const rx = (e.clientY / window.innerHeight - 0.5) * -10;
+                        const ry = (e.clientX / window.innerWidth - 0.5) * 10;
+                        p.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+                        parallaxTicking = false;
+                    });
+                    parallaxTicking = true;
+                }
             });
         })();
 
