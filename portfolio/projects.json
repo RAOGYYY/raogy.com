@@ -17,10 +17,20 @@
       "link": "/paaniboss/",
       "linkLabel": "View App Details",
       "linkTarget": "_blank",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.roservice.manager",
       "tags": [
-        { "label": "Flutter",   "color": "blue"   },
-        { "label": "Supabase",  "color": "purple" },
-        { "label": "GPS",       "color": "green"  }
+        {
+          "label": "Flutter",
+          "color": "blue"
+        },
+        {
+          "label": "Supabase",
+          "color": "purple"
+        },
+        {
+          "label": "GPS",
+          "color": "green"
+        }
       ],
       "featured": true,
       "published": true,
@@ -41,11 +51,24 @@
       "link": "/snapscribe/",
       "linkLabel": "View App Details",
       "linkTarget": "_blank",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.screenscribe.app",
       "tags": [
-        { "label": "Kotlin",  "color": "purple" },
-        { "label": "Compose", "color": "cyan"   },
-        { "label": "ML Kit",  "color": "green"  },
-        { "label": "Offline", "color": "red"    }
+        {
+          "label": "Kotlin",
+          "color": "purple"
+        },
+        {
+          "label": "Compose",
+          "color": "cyan"
+        },
+        {
+          "label": "ML Kit",
+          "color": "green"
+        },
+        {
+          "label": "Offline",
+          "color": "red"
+        }
       ],
       "featured": false,
       "published": true,
@@ -67,10 +90,22 @@
       "linkLabel": "View App Details",
       "linkTarget": "_blank",
       "tags": [
-        { "label": "Flutter",  "color": "blue"   },
-        { "label": "Supabase", "color": "green"  },
-        { "label": "YT API",   "color": "red"    },
-        { "label": "AI",       "color": "amber"  }
+        {
+          "label": "Flutter",
+          "color": "blue"
+        },
+        {
+          "label": "Supabase",
+          "color": "green"
+        },
+        {
+          "label": "YT API",
+          "color": "red"
+        },
+        {
+          "label": "AI",
+          "color": "amber"
+        }
       ],
       "featured": false,
       "published": true,
@@ -92,10 +127,22 @@
       "linkLabel": "View App Details",
       "linkTarget": "_blank",
       "tags": [
-        { "label": "Flutter",  "color": "blue"    },
-        { "label": "Supabase", "color": "purple"  },
-        { "label": "Google",   "color": "emerald" },
-        { "label": "AdMob",    "color": "amber"   }
+        {
+          "label": "Flutter",
+          "color": "blue"
+        },
+        {
+          "label": "Supabase",
+          "color": "purple"
+        },
+        {
+          "label": "Google",
+          "color": "emerald"
+        },
+        {
+          "label": "AdMob",
+          "color": "amber"
+        }
       ],
       "featured": false,
       "published": true,
