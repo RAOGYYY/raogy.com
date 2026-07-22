@@ -2,4 +2,4 @@
 # Authorized digital sellers for https://raogy.com
 # App page: https://raogy.com/krexo
 
-google.com, pub-9572833379410399, DIRECT, f08c47fec0942fa0
+google.com, pub-5885193730689076, DIRECT, f08c47fec0942fa0
