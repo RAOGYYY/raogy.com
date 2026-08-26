@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iSellBack — Platform Architecture &amp; System Overview</title>
-    <meta name="description" content="Technical overview of iSellBack — a secure buyback &amp; recommerce system featuring real-time valuation algorithms and doorstep pickup scheduling.">
+
+    <!-- Primary SEO -->
+    <title>iSell Back — Startup Progress Report | RAOGY</title>
+    <meta name="description"
+        content="Engineering and product progress report for iSell Back, a device recommerce platform for India. Six shipped surfaces, 47 database migrations, server-authoritative pricing, multi-tenant RLS and a 6-job CI pipeline — built with Kiro spec-driven development.">
+    <meta name="keywords"
+        content="iSell Back, iSellback, Buyback Elite, device recommerce India, MacBook buyback, iPad buyback, startup progress report, Kiro spec-driven development, Supabase, Flutter, React">
+    <meta name="author" content="RAOGY">
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://raogy.com/isellback">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://raogy.com/isellback">
+    <meta property="og:title" content="iSell Back — Startup Progress Report">
+    <meta property="og:description"
+        content="Six shipped surfaces, 47 database migrations, server-authoritative pricing, multi-tenant row-level security and a 6-job CI pipeline. Built with Kiro spec-driven development.">
+    <meta property="og:image" content="https://raogy.com/images/raogy.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="iSell Back — Startup Progress Report">
+    <meta name="twitter:description"
+        content="Engineering and product progress report for iSell Back, a device recommerce platform for India.">
+    <meta name="twitter:image" content="https://raogy.com/images/raogy.jpg">
+
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
     <link rel="apple-touch-icon" href="/images/logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,237 +48,1173 @@
         }
     </script>
     <style>
-        * { scroll-behavior: smooth; }
-        html { background: #f8fafc; transition: background-color 0.5s; }
-        html.dark { background: #050816; }
+        * {
+            scroll-behavior: smooth;
+        }
+
+        html {
+            background: #f8fafc;
+            transition: background-color 0.5s;
+        }
+
+        html.dark {
+            background: #050816;
+        }
+
         .gradient-text {
             background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
         .panel-card {
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
         .panel-card:hover {
             transform: translateY(-4px);
         }
-        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section number chip */
+        .sec-num {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Metric tile */
+        .metric {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.25rem 1rem;
+            text-align: center;
+        }
+
+        .dark .metric {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .metric-num {
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* Timeline */
+        .tl-item {
+            position: relative;
+            padding-left: 2.25rem;
+            padding-bottom: 1.75rem;
+            border-left: 2px solid #e5e7eb;
+        }
+
+        .dark .tl-item {
+            border-left-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tl-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0.15rem;
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 9999px;
+            border: 2px solid #fff;
+        }
+
+        .dark .tl-dot {
+            border-color: #050816;
+        }
+
+        /* Progress bar */
+        .bar {
+            height: 0.5rem;
+            border-radius: 9999px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .dark .bar {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .bar>span {
+            display: block;
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+        }
+
+        /* Simple table */
+        .tbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .tbl th,
+        .tbl td {
+            text-align: left;
+            padding: 0.7rem 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dark .tbl th,
+        .dark .tbl td {
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .tbl th {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .tbl tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.85em;
+            background: #f1f5f9;
+            padding: 0.1rem 0.35rem;
+            border-radius: 0.25rem;
+        }
+
+        .dark code {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            .animate-fade-in-up {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            * {
+                scroll-behavior: auto;
+            }
+        }
     </style>
 </head>
-<body class="font-sans text-gray-900 dark:text-gray-100 bg-[#f8fafc] dark:bg-[#050816] transition-colors duration-500 antialiased overflow-x-hidden">
+
+<body
+    class="font-sans text-gray-900 dark:text-gray-100 bg-[#f8fafc] dark:bg-[#050816] transition-colors duration-500 antialiased overflow-x-hidden">
+
+    <a href="#main"
+        class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-purple-600 focus:text-white focus:text-sm">Skip
+        to content</a>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-slate-800/50 transition-colors">
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-slate-800/50 transition-colors">
         <div class="container mx-auto px-6 h-16 flex items-center justify-between">
             <a href="/" class="text-2xl font-bold gradient-text">RAOGY</a>
             <div class="hidden md:flex items-center gap-8">
-                <a href="/" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Home</a>
-                <a href="/about" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">About</a>
-                <a href="/isellback" class="text-sm font-medium text-purple-600 dark:text-white transition-colors">iSellBack</a>
-                <a href="/#contact" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Contact</a>
+                <a href="/"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Home</a>
+                <a href="/about"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">About</a>
+                <a href="/isellback" aria-current="page"
+                    class="text-sm font-semibold text-purple-600 dark:text-white transition-colors">Startup</a>
+                <a href="/#portfolio"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Portfolio</a>
+                <a href="/#contact"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Contact</a>
             </div>
-            <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
-                <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
-                <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            <button onclick="toggleTheme()"
+                class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
+                aria-label="Toggle dark mode">
+                <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        clip-rule="evenodd" />
+                </svg>
+                <svg class="w-5 h-5 block dark:hidden text-gray-600" fill="currentColor" viewBox="0 0 20 20"
+                    aria-hidden="true">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
             </button>
         </div>
     </nav>
 
-    <main class="pt-24 pb-20">
+    <main id="main" class="pt-24 pb-20">
         <div class="container mx-auto px-6 max-w-6xl">
-            <!-- Header Section -->
-            <div class="text-center mb-16 animate-fade-in-up">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full bg-sky-100 dark:bg-sky-900/30 border border-sky-200 dark:border-sky-800 text-sky-700 dark:text-sky-300 text-xs font-semibold uppercase tracking-wider">
-                    Startup Architecture
+
+            <!-- ============ HERO ============ -->
+            <header class="mb-14 animate-fade-in-up">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2" aria-hidden="true">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Live product
+                    </span>
+                    <span
+                        class="inline-flex items-center px-4 py-1.5 rounded-full bg-sky-100 dark:bg-sky-900/30 border border-sky-200 dark:border-sky-800 text-sky-700 dark:text-sky-300 text-xs font-bold uppercase tracking-wider">
+                        Progress report &middot; August 2026
+                    </span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-                    Inside <span class="gradient-text">iSellBack</span>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-[1.08]">
+                    <span class="gradient-text">iSell Back</span><br class="hidden sm:block">
+                    <span class="text-gray-900 dark:text-white">Startup progress report</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    A multi-layered recommerce system powered by secure AWS infrastructure, dynamic ML pricing engines, and real-time agent dispatch mechanisms.
+
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mb-4">
+                    iSell Back is a device recommerce platform for India. People sell their MacBook or iPad
+                    from home: they get a price in seconds, an agent collects the device at their door, and the
+                    payout is transferred after inspection.
                 </p>
-            </div>
+                <p class="text-base text-gray-500 dark:text-gray-400 max-w-3xl leading-relaxed mb-8">
+                    This page is the engineering and product record behind it. Every number below is
+                    countable in the source repository &mdash; it is not a pitch deck estimate.
+                    The Android app is still listed on Google Play as
+                    <strong class="font-semibold text-gray-700 dark:text-gray-300">BuyBack Elite</strong>:
+                    that listing and the package id <code>com.buybackelite.app</code> are deliberately
+                    preserved so existing installs keep updating, while the product name moved to
+                    iSell Back.
+                </p>
 
-            <!-- 3-Tier Platform Architecture Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-fade-in-up">
-                <!-- Customer Panel -->
-                <div class="panel-card bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Customer App</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                        A web and mobile checkout system where customers select their MacBook/iPad, answer condition questions, and generate an instant quote.
-                    </p>
-                    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Instant pricing engine (<60s)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Live device condition questionnaire</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Seamless doorstep pickup schedule</li>
-                    </ul>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://isellback.com" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        Visit the live product &mdash; isellback.com
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.buybackelite.app&hl=en_IN"
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                        </svg>
+                        Android app on Google Play
+                    </a>
+                    <a href="#next-phase"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-200 font-semibold text-sm hover:border-purple-300 dark:hover:border-purple-500/40 transition-all">
+                        What the next phase needs
+                    </a>
                 </div>
+            </header>
 
-                <!-- Agent Panel -->
-                <div class="panel-card bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Field Agent App</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                        A dedicated platform (`field.buybackelite.com`) for verified collection agents to locate orders, verify hardware specifications, and execute payouts.
-                    </p>
-                    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Real-time doorstep agent tracking</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> On-the-spot physical state validation</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Secure on-premise data sanitation</li>
-                    </ul>
-                </div>
-
-                <!-- Admin Dashboard -->
-                <div class="panel-card bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Admin Console</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                        An administrative control panel (`control.buybackelite.com`) to manage the system parameters, track business goals, adjust price equations, and dispatch agents.
-                    </p>
-                    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span> Custom API synchronization (e.g. Cashify)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span> Pricing margin controls &amp; adjustments</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span> Comprehensive database monitoring</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Detailed Architecture Block -->
-            <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
-                <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-500 flex items-center justify-center text-sm font-bold">01</span>
-                    Security &amp; Infrastructure
+            <!-- ============ TL;DR ============ -->
+            <section aria-labelledby="tldr-h"
+                class="bg-gradient-to-br from-purple-50 to-sky-50 dark:from-purple-950/30 dark:to-sky-950/20 border border-purple-200 dark:border-purple-900/40 rounded-3xl p-8 md:p-10 mb-16 animate-fade-in-up">
+                <h2 id="tldr-h"
+                    class="text-xs font-bold uppercase tracking-[0.15em] text-purple-600 dark:text-purple-400 mb-4">
+                    Summary in one paragraph
                 </h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <p class="text-lg md:text-xl text-gray-800 dark:text-gray-200 leading-relaxed">
+                    iSell Back started as a single-business prototype with one Android app and a basic sell
+                    flow. It was rebuilt through AI-assisted, spec-driven development, and the system is now
+                    <strong>six shipped surfaces</strong> &mdash; three web applications and three Android applications
+                    &mdash;
+                    on a backend of <strong>47 database migrations</strong>, <strong>~77 tables</strong>,
+                    <strong>119 Postgres functions</strong> and <strong>139 row-level-security policies</strong>,
+                    with <strong>116 hand-written test files</strong> and a <strong>6-job CI pipeline</strong> that
+                    gates every push.
+                    Pricing became fully server-authoritative, the schema became multi-tenant, and the customer
+                    bundle dropped from 297&nbsp;KB to 134.8&nbsp;KB gzipped. The current focus is launch
+                    infrastructure for the India rollout.
+                </p>
+            </section>
+
+            <!-- ============ 01 — THEN vs NOW ============ -->
+            <section aria-labelledby="delta-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="delta-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-sky-500/15 text-sky-600 dark:text-sky-400">01</span>
+                    What changed since the first grant
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    The most useful way to read this project is as a delta. Here is the state of the system at
+                    the end of the prototype phase, against the state of the system today.
+                </p>
+
+                <div class="table-scroll">
+                    <table class="tbl">
+                        <caption class="sr-only">Comparison of the iSell Back system at the time of the first credit
+                            grant versus
+                            today</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">Prototype phase</th>
+                                <th scope="col">Today</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-300">
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Shipped surfaces
+                                </th>
+                                <td class="text-gray-500 dark:text-gray-400">1 Android app + prototype web</td>
+                                <td class="font-semibold">3 web apps + 3 Android apps + 1 shared package</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Tenancy model</th>
+                                <td class="text-gray-500 dark:text-gray-400">Single business, hard-coded</td>
+                                <td class="font-semibold">Multi-tenant, <code>business_id</code> + additive RLS</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Who decides the
+                                    price</th>
+                                <td class="text-gray-500 dark:text-gray-400">Device could compute and display its own
+                                    price</td>
+                                <td class="font-semibold">Server only &mdash; 14 <code>canonical_*</code> RPCs</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Database</th>
+                                <td class="text-gray-500 dark:text-gray-400">Base schema</td>
+                                <td class="font-semibold">47 migrations, ~77 tables, 119 functions</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Access control</th>
+                                <td class="text-gray-500 dark:text-gray-400">Partial RLS</td>
+                                <td class="font-semibold">139 policies, RLS enabled on 87 tables</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Automated tests</th>
+                                <td class="text-gray-500 dark:text-gray-400">None in CI</td>
+                                <td class="font-semibold">116 test files, 6-job pipeline on every push</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Customer first-load
+                                    JS</th>
+                                <td class="text-gray-500 dark:text-gray-400">297&nbsp;KB gz, one chunk, 0 split points
+                                </td>
+                                <td class="font-semibold">134.8&nbsp;KB gz, budget-gated at 250&nbsp;KB</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Product scope</th>
+                                <td class="text-gray-500 dark:text-gray-400">Sell your device to us</td>
+                                <td class="font-semibold">+ multi-store discovery, offer comparison, refurb marketplace
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white">Payouts</th>
+                                <td class="text-gray-500 dark:text-gray-400">Manual</td>
+                                <td class="font-semibold">Razorpay, fail-closed webhook, idempotent reservation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ============ 02 — BY THE NUMBERS ============ -->
+            <section aria-labelledby="numbers-h" class="mb-16 animate-fade-in-up">
+                <h2 id="numbers-h"
+                    class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-purple-500/15 text-purple-600 dark:text-purple-400">02</span>
+                    By the numbers
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    Every figure here is a direct count from the repository &mdash; migration files, SQL statements,
+                    route declarations, test files. They are reproducible, not rounded up.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">6</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Shipped apps</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">47</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">DB migrations</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">~77</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Database tables</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">119</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Postgres functions
+                        </div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">139</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">RLS policies</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">116</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Hand-written test
+                            files</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">160</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">DB indexes</div>
+                    </div>
+                    <div class="metric panel-card">
+                        <div class="metric-num gradient-text">194</div>
+                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Spec tasks completed
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Backend surface</h3>
+                        <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                            <li>62 database triggers</li>
+                            <li>13 serverless API handlers</li>
+                            <li>1 Supabase Edge Function</li>
+                            <li>14 server-authoritative pricing RPCs</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Test breakdown</h3>
+                        <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                            <li>68 JavaScript / JSX (Vitest)</li>
+                            <li>43 Dart (flutter&nbsp;test)</li>
+                            <li>5 Deno (Edge Function)</li>
+                            <li class="text-xs pt-1 text-gray-500 dark:text-gray-500">Plus a separate generated
+                                end-to-end suite</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Device catalog</h3>
+                        <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                            <li>35 seeded models</li>
+                            <li>21 MacBook &middot; 14 iPad</li>
+                            <li>56 condition-deduction rules</li>
+                            <li>~70 model spec entries on mobile</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 03 — WHAT IS BUILT ============ -->
+            <section aria-labelledby="built-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="built-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">03</span>
+                    The six surfaces
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    Three sides of the business each need their own interface: the customer selling a device,
+                    the field agent collecting it, and the operator running pricing and payouts. Each exists on
+                    both web and Android.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                    <!-- Customer -->
+                    <article
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Customer</h3>
+                        <p class="text-xs font-semibold text-sky-600 dark:text-sky-400 mb-3">isellback.com &middot;
+                            Android</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            About 30 routes on web. A 7-step sell wizard, store discovery by pincode, offer
+                            comparison across stores, refurbished listings and per-request lifecycle tracking.
+                        </p>
+                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1.5">
+                            <li>Guests finish the whole quote before any login wall</li>
+                            <li>Android <code>com.buybackelite.app</code> v1.0.4</li>
+                            <li>100 Dart files &middot; 26 screens</li>
+                        </ul>
+                    </article>
+
+                    <!-- Agent -->
+                    <article
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Field agent</h3>
+                        <p class="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-3">agent.isellback.com
+                            &middot;
+                            Android</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            8 pages for the person at the customer's door: assigned pickups, on-site condition
+                            verification, photo capture, customer signature and history.
+                        </p>
+                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1.5">
+                            <li>Offline queue for patchy field connectivity</li>
+                            <li>Android <code>com.buyback.agent</code> v1.0.1</li>
+                            <li>Agents have no payout-initiation path by design</li>
+                        </ul>
+                    </article>
+
+                    <!-- Operator -->
+                    <article
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 panel-card">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-400 flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Operator</h3>
+                        <p class="text-xs font-semibold text-pink-600 dark:text-pink-400 mb-3">control.isellback.com
+                            &middot; Android
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            22 pages of back office: the price engine and its governance, condition deductions,
+                            competitor price sync, agent management, fraud alerts, payout administration and store
+                            verification.
+                        </p>
+                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1.5">
+                            <li>Super-admin guard on platform-wide screens</li>
+                            <li>Android <code>com.buyback.app</code> v1.0.1</li>
+                            <li>Hosts the 13 serverless API handlers</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div
+                    class="bg-slate-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6">
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-4">How one sale moves through the
+                        system</h3>
+                    <ol class="space-y-4">
+                        <li class="tl-item">
+                            <span class="tl-dot bg-sky-500" aria-hidden="true"></span>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Quote</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5 leading-relaxed">
+                                The customer picks a model, storage and condition. The server &mdash; never the device
+                                &mdash;
+                                calculates the price through <code>canonical_calculate_pricing</code> and issues a
+                                quote.
+                            </p>
+                        </li>
+                        <li class="tl-item">
+                            <span class="tl-dot bg-violet-500" aria-hidden="true"></span>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Compare and choose a store</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5 leading-relaxed">
+                                A pincode resolves which stores actually serve that area, and each returns a fresh
+                                server-issued offer. Customers never see a pre-deduction headline number that later
+                                shrinks.
+                            </p>
+                        </li>
+                        <li class="tl-item">
+                            <span class="tl-dot bg-purple-500" aria-hidden="true"></span>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Doorstep pickup</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5 leading-relaxed">
+                                An agent self-assigns the pickup, verifies the device on site, captures photos and a
+                                signature, and the inspection result produces a revised quote the customer accepts or
+                                declines.
+                            </p>
+                        </li>
+                        <li class="tl-item">
+                            <span class="tl-dot bg-pink-500" aria-hidden="true"></span>
+                            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Payout</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5 leading-relaxed">
+                                Payout is reserved in SQL with an idempotency key, executed via Razorpay, and confirmed
+                                by a fail-closed webhook that re-fetches the authoritative record from the provider.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- ============ 04 — HOW THE CREDITS WERE USED ============ -->
+            <section aria-labelledby="kiro-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="kiro-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-amber-500/15 text-amber-600 dark:text-amber-400">04</span>
+                    How the credits were spent
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    The credits funded AI-assisted development in Kiro, and specifically its spec workflow:
+                    requirements first, then a design, then a task list that gets worked through and checked off.
+                    Six specs live in the repository under <code>.kiro/specs/</code>, each with a requirements
+                    document, a design document and a tracked task list. That is where the money went, and the
+                    artifacts are auditable.
+                </p>
+
+                <div class="table-scroll mb-8">
+                    <table class="tbl">
+                        <caption class="sr-only">Kiro specs and their task completion counts</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Spec</th>
+                                <th scope="col">Scope</th>
+                                <th scope="col" class="whitespace-nowrap">Tasks done</th>
+                                <th scope="col" class="w-40">Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-300">
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    ui-overhaul</th>
+                                <td class="text-gray-600 dark:text-gray-400">Presentation and delivery only. Forbidden
+                                    from touching
+                                    pricing, RLS or payments.</td>
+                                <td class="font-semibold whitespace-nowrap">54 / 54</td>
+                                <td>
+                                    <div class="bar"><span style="width:100%"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    multi-tenant-marketplace</th>
+                                <td class="text-gray-600 dark:text-gray-400">Turn a single-business system into a
+                                    marketplace, purely
+                                    additively.</td>
+                                <td class="font-semibold whitespace-nowrap">52 / 75</td>
+                                <td>
+                                    <div class="bar"><span style="width:69%"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    production-hardening</th>
+                                <td class="text-gray-600 dark:text-gray-400">Server-owned command boundaries, private
+                                    media lifecycle,
+                                    authoritative pricing.</td>
+                                <td class="font-semibold whitespace-nowrap">61 / 92</td>
+                                <td>
+                                    <div class="bar"><span style="width:66%"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    india-launch-audit
+                                </th>
+                                <td class="text-gray-600 dark:text-gray-400">Drive every finding from the internal audit
+                                    to closure.</td>
+                                <td class="font-semibold whitespace-nowrap">27 / 37</td>
+                                <td>
+                                    <div class="bar"><span style="width:73%"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    store-discovery-launch</th>
+                                <td class="text-gray-600 dark:text-gray-400">The five items standing between the product
+                                    and marketing
+                                    spend.</td>
+                                <td class="text-gray-500 dark:text-gray-400 whitespace-nowrap">In progress</td>
+                                <td>
+                                    <div class="bar"><span style="width:35%"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+                                    mobile-launch-readiness</th>
+                                <td class="text-gray-600 dark:text-gray-400">Android release readiness across all three
+                                    apps.</td>
+                                <td class="text-gray-500 dark:text-gray-400 whitespace-nowrap">Scoped</td>
+                                <td>
+                                    <div class="bar"><span style="width:8%"></span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5">
+                        <div class="text-2xl font-extrabold gradient-text mb-1">194 / 258</div>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Spec tasks closed across the
+                            four specs
+                            that carry task lists.</p>
+                    </div>
+                    <div
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5">
+                        <div class="text-2xl font-extrabold gradient-text mb-1">Requirements-first</div>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Every spec was written
+                            before its
+                            implementation, not reverse-engineered afterwards.</p>
+                    </div>
+                    <div
+                        class="bg-slate-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5">
+                        <div class="text-2xl font-extrabold gradient-text mb-1">Audited</div>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">A full internal audit in
+                            July 2026
+                            reviewed the code against those specs and logged 11 findings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 05 — ENGINEERING RIGOR ============ -->
+            <section aria-labelledby="rigor-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="rigor-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">05</span>
+                    The parts that are hard to fake
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    Anyone can ship screens. These are the invariants underneath, which is where a money-handling
+                    product either holds up or does not.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="border-l-2 border-sky-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">The server owns every price
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            14 <code>canonical_*</code> database functions are the only thing allowed to produce a
+                            number. The audit found one Flutter screen still recomputing a price locally and that
+                            code was deleted. Clients display prices; they never derive them.
+                        </p>
+                    </article>
+
+                    <article class="border-l-2 border-purple-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">Tenant isolation, proven in
+                            CI</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Every push spins up a throwaway PostgreSQL 16, applies all 47 migrations in order,
+                            verifies checksums and ordering, then runs a two-tenant harness that asserts one
+                            business cannot read another's rows.
+                        </p>
+                    </article>
+
+                    <article class="border-l-2 border-pink-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">Payments fail closed</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            The Razorpay webhook verifies a timing-safe HMAC over the raw body, de-duplicates events
+                            with payload-hash conflict detection, re-fetches the authoritative record from the
+                            provider, cross-checks amount, currency and fund account, and only permits monotonic
+                            status transitions.
+                        </p>
+                    </article>
+
+                    <article class="border-l-2 border-emerald-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">No secret in any client
+                            bundle</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Both web source trees were swept: no service-role key and no webhook secret is exposed
+                            through a browser-visible variable. Privileged work happens in serverless handlers, not
+                            the client.
+                        </p>
+                    </article>
+
+                    <article class="border-l-2 border-amber-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">Identity documents get their
+                            own path
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            ID proofs, verification photos and signatures move to a receipt-based private pipeline:
+                            an insert-only capability scoped to the uploader's own user id, with retention rules and
+                            an access audit trail. It ships behind a flag, currently off, ahead of the data cutover.
+                        </p>
+                    </article>
+
+                    <article class="border-l-2 border-teal-500 pl-5">
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">Lifecycle as independent
+                            domains</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Request, pickup, inspection and inventory each own their state, coordinating through an
+                            outbox/inbox with idempotent command middleware. The customer lifecycle screen adds no
+                            authority of its own &mdash; labels and permitted actions come from a versioned server
+                            contract.
+                        </p>
+                    </article>
+                </div>
+
+                <div
+                    class="mt-8 pt-8 border-t border-gray-100 dark:border-white/[0.06] grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-slate-200">AWS Infrastructure Scaling</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                            iSellBack runs on a highly secure and optimized server layout. Using serverless application handlers, API calls scale dynamically based on active requests. Static content is cached on a global content delivery network, ensuring sub-second response times.
+                        <h3 class="font-bold text-base text-gray-900 dark:text-white mb-2">Performance is a build gate,
+                            not a
+                            wish</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                            The customer site went from a single 1,112&nbsp;KB bundle with zero code-split points to a
+                            route-split app at 134.8&nbsp;KB gzipped on first load. CI fails the build if first-load
+                            JavaScript crosses 250&nbsp;KB gzipped, so it cannot quietly regress.
                         </p>
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-slate-200">Supabase Backend</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Database rows are shielded behind granular Row-Level Security (RLS) policies. User authentication is verified via OAuth integration protocols, ensuring safe transaction processes from initial sign-up to payout approval.
+                        <p class="text-xs text-gray-500 dark:text-gray-500 leading-relaxed">
+                            This matters commercially: the audience is on Indian mobile networks, and the database
+                            currently sits in Seoul at roughly 150&ndash;250&nbsp;ms per round trip.
                         </p>
                     </div>
-                    <div class="bg-slate-50 dark:bg-slate-950 border border-gray-100 dark:border-slate-800 rounded-2xl p-6 flex flex-col justify-center">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-500">Technical Highlights</span>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-gray-500 dark:text-gray-400">Before &mdash; 297 KB gz</span>
+                                <span class="text-gray-400 dark:text-gray-500">1 chunk</span>
+                            </div>
+                            <div class="bar"><span
+                                    style="width:100%;background:linear-gradient(90deg,#f87171,#fb923c)"></span></div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="border-b border-gray-100 dark:border-slate-800 pb-3">
-                                <h4 class="text-sm font-bold text-gray-900 dark:text-white">Real-Time Messaging</h4>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Firebase Cloud Messaging alerts agents and customers on status adjustments.</p>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-gray-900 dark:text-white">Now &mdash; 134.8 KB gz</span>
+                                <span class="text-emerald-600 dark:text-emerald-400">route-split</span>
                             </div>
-                            <div class="border-b border-gray-100 dark:border-slate-800 pb-3">
-                                <h4 class="text-sm font-bold text-gray-900 dark:text-white">Dynamic Pricing Feeds</h4>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">APIs synchronizing with pricing platforms like Cashify keep valuations precise.</p>
+                            <div class="bar"><span
+                                    style="width:45%;background:linear-gradient(90deg,#34d399,#0ea5e9)"></span></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1.5">
+                                <span class="text-gray-500 dark:text-gray-400">CI budget ceiling</span>
+                                <span class="text-gray-400 dark:text-gray-500">250 KB gz</span>
                             </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-900 dark:text-white">Secure Data Deletion</h4>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Verified diagnostic checklists ensure devices undergo complete factory reset prior to packaging.</p>
+                            <div class="bar"><span
+                                    style="width:84%;background:repeating-linear-gradient(45deg,#94a3b8,#94a3b8 6px,#cbd5e1 6px,#cbd5e1 12px)"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Founding Team Grid -->
-            <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
-                <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-sm font-bold">02</span>
-                    The Innovators
+            <!-- ============ 06 — STACK ============ -->
+            <section aria-labelledby="stack-h" class="mb-16 animate-fade-in-up">
+                <h2 id="stack-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-slate-500/15 text-slate-600 dark:text-slate-300">06</span>
+                    Current stack
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Anwar Rao -->
-                    <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-gray-100 dark:border-slate-850">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-0.5 shadow-md flex-shrink-0"><img src="/assets/RAOGY.jpg" alt="Anwar Rao" loading="lazy" class="w-full h-full rounded-full object-cover" /></div>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    Stated plainly, with no aspirational entries. This is what the system runs on today.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 panel-card">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-3">Data
+                            &amp; auth
+                        </h3>
+                        <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1.5">
+                            <li>Supabase &mdash; PostgreSQL</li>
+                            <li>Supabase Auth + Google OAuth</li>
+                            <li>Supabase Storage</li>
+                            <li>1 Deno Edge Function</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 panel-card">
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-3">
+                            Web</h3>
+                        <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1.5">
+                            <li>React 18 + Vite 5</li>
+                            <li>TailwindCSS 3</li>
+                            <li>Zustand, React Router 6</li>
+                            <li>Leaflet maps</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 panel-card">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-pink-600 dark:text-pink-400 mb-3">
+                            Mobile</h3>
+                        <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1.5">
+                            <li>Flutter, Dart 3.10</li>
+                            <li>3 Android apps</li>
+                            <li>1 shared internal package</li>
+                            <li>Firebase Cloud Messaging</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 panel-card">
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3">
+                            Ops
+                        </h3>
+                        <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1.5">
+                            <li>Vercel hosting + serverless</li>
+                            <li>Razorpay payouts</li>
+                            <li>GitHub Actions &mdash; 6 jobs</li>
+                            <li>Kiro spec-driven development</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ 07 — HONEST STATUS ============ -->
+            <section aria-labelledby="status-h"
+                class="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-3xl p-8 md:p-12 mb-16 animate-fade-in-up">
+                <h2 id="status-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-amber-500/20 text-amber-700 dark:text-amber-400">07</span>
+                    How the work is governed
+                </h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-3xl">
+                    A platform that holds someone's device and their payout details cannot ship on optimism.
+                    Two habits keep this system honest with itself: nothing sensitive goes live until it has been
+                    reviewed, and anything not yet verified stays switched off rather than switched on and hoped for.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div
+                        class="bg-white/70 dark:bg-white/[0.04] border border-amber-200/60 dark:border-amber-900/30 rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Staged rollout by default</h3>
+                        <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                            <li>New subsystems ship behind environment flags and are enabled only after their data path
+                                has been verified end to end.</li>
+                            <li>Notifications are complete and tested, and stay dormant until delivery credentials are
+                                provisioned in the target environment.</li>
+                            <li>Schema changes are additive: with one business present, every screen, query result and
+                                price is identical to before the change.</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white/70 dark:bg-white/[0.04] border border-amber-200/60 dark:border-amber-900/30 rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Reviewed, then merged</h3>
+                        <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                            <li>A full internal audit in July 2026 reviewed the codebase against its own specs and
+                                logged every finding with an owner and a fix status.</li>
+                            <li>Changes touching pricing, access control or payments are drafted as written proposals
+                                and reviewed before they enter the migration chain.</li>
+                            <li>Each finding is tracked to closure in a dedicated spec rather than in someone's head.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-500 dark:text-gray-500 mt-6 leading-relaxed max-w-3xl">
+                    On the July 2026 audit: it was a static code review. The sandbox it ran in failed to start, so
+                    no build, linter or test runner was executed during that pass. It is cited here as a review,
+                    not as a green test run.
+                </p>
+            </section>
+
+            <!-- ============ 08 — NEXT PHASE ============ -->
+            <section id="next-phase" aria-labelledby="next-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="next-h" class="text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-blue-500/15 text-blue-600 dark:text-blue-400">08</span>
+                    What the next phase needs
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    The build phase is largely done. The remaining distance to a marketed launch in India is
+                    mostly infrastructure and verification rather than new features, and here is exactly what
+                    that consists of, in priority order.
+                </p>
+
+                <ol class="space-y-5 mb-10">
+                    <li class="flex gap-4">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">1</span>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-900 dark:text-white">Move the data layer into an
+                                India region
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                The single largest user-facing problem. Every request from an Indian customer currently
+                                crosses to Seoul and back at 150&ndash;250&nbsp;ms. The designs already minimise round
+                                trips
+                                to compensate, but the real fix is regional. This means standing up a parallel
+                                environment, replaying all 47 migrations, migrating storage objects and cutting over.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">2</span>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-900 dark:text-white">Execute the launch gate
+                                against live
+                                infrastructure</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                The canonical-pricing and two-tenant isolation harnesses run green on ephemeral
+                                Postgres in CI on every push. Re-running them against the provisioned India
+                                environment is the sign-off step for the regional cutover.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">3</span>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-900 dark:text-white">Turn on notifications and
+                                complete the
+                                media cutover</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                Both are finished code sitting behind flags. Enabling them requires provisioned
+                                credentials, a storage migration for existing objects, and a reconciliation pass to
+                                confirm nothing was orphaned.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">4</span>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-900 dark:text-white">Finish the Android release
+                                track</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                Route the eleven built marketplace screens, close out the mobile launch readiness spec,
+                                and get all three apps onto a repeatable release process rather than manual builds.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">5</span>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-900 dark:text-white">Onboard real partner stores
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
+                                The multi-tenant schema, store verification flow and offer-comparison engine are built
+                                and currently exercised by fixtures. The next phase replaces fixtures with actual
+                                merchants, which is what turns this from a buyback shop into a marketplace.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div
+                    class="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/20 border border-blue-200 dark:border-blue-900/40 rounded-2xl p-6">
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-2">Infrastructure, not features</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Every item above is infrastructure and verification work. The product surface is built; what
+                        remains is putting it on the right regional footing, signing off the cutover, and replacing
+                        fixture data with real partner stores. That is the whole distance to a marketed launch in
+                        India.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ============ 09 — TEAM ============ -->
+            <section aria-labelledby="team-h"
+                class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
+                <h2 id="team-h" class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center gap-3">
+                    <span class="sec-num bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">09</span>
+                    Founders
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        class="flex flex-col sm:flex-row gap-5 bg-slate-50 dark:bg-white/[0.03] p-6 rounded-2xl border border-gray-100 dark:border-white/[0.06]">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-0.5 shadow-md flex-shrink-0">
+                            <img src="/assets/RAOGY.jpg" alt="Anwar Rao" loading="lazy" width="64" height="64"
+                                class="w-full h-full rounded-full object-cover" />
+                        </div>
                         <div>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white">Anwar Rao</h3>
-                            <p class="text-purple-600 dark:text-purple-400 text-xs font-semibold mb-3">Co-Founder &amp; CEO</p>
+                            <p class="text-purple-600 dark:text-purple-400 text-xs font-semibold mb-2.5">Co-Founder
+                                &amp; CEO</p>
                             <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                Leads the business roadmap, strategic partnerships, financial scaling, and recommerce integrations.
+                                Business roadmap, store partnerships, pricing strategy and operations.
                             </p>
                         </div>
                     </div>
-                    <!-- Abdul Mannan -->
-                    <div class="flex flex-col sm:flex-row gap-6 bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-gray-100 dark:border-slate-850">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5 shadow-md flex-shrink-0"><img src="/assets/Abdul.jpg" alt="Abdul Mannan" loading="lazy" class="w-full h-full rounded-full object-cover" /></div>
+                    <div
+                        class="flex flex-col sm:flex-row gap-5 bg-slate-50 dark:bg-white/[0.03] p-6 rounded-2xl border border-gray-100 dark:border-white/[0.06]">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5 shadow-md flex-shrink-0">
+                            <img src="/assets/Abdul.jpg" alt="Abdul Mannan" loading="lazy" width="64" height="64"
+                                class="w-full h-full rounded-full object-cover" />
+                        </div>
                         <div>
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white">Abdul Mannan</h3>
-                            <p class="text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3">Co-Founder &amp; CTO</p>
+                            <p class="text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-2.5">Co-Founder
+                                &amp; CTO</p>
                             <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                Oversees system architecture, web and mobile implementations, Supabase database rules, and ML pricing logic.
+                                System architecture, the web and Flutter applications, database schema and row-level
+                                security, payments integration and the CI pipeline.
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Operations Section -->
-            <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-sm mb-16 animate-fade-in-up">
-                <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-500 flex items-center justify-center text-sm font-bold">03</span>
-                    Operational Workflow
+            <!-- ============ CTA ============ -->
+            <section aria-labelledby="cta-h" class="text-center animate-fade-in-up">
+                <h2 id="cta-h" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">See it running
                 </h2>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold flex-shrink-0">1</div>
-                        <div>
-                            <h4 class="font-bold text-base text-gray-900 dark:text-white">Submit Request &amp; Quote Validation</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Users query quotes on iSellBack. The system parses structural values and assigns a temporary valuation index.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold flex-shrink-0">2</div>
-                        <div>
-                            <h4 class="font-bold text-base text-gray-900 dark:text-white">Doorstep Verification</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">Collection agent completes physical state checks on-premise, adjusting specifications to determine local market worth.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-950 text-pink-600 dark:text-pink-400 flex items-center justify-center font-bold flex-shrink-0">3</div>
-                        <div>
-                            <h4 class="font-bold text-base text-gray-900 dark:text-white">Instant Payout Processing</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">The agent confirms the transaction status. Supabase triggers database webhooks that run fast secure transfers (UPI/Direct Bank Transfer) instantly.</p>
-                        </div>
-                    </div>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
+                    The fastest way to check any claim on this page is to use the product. Get a quote on a
+                    MacBook or iPad without creating an account.
+                </p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <a href="https://isellback.com" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                        isellback.com
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                    <a href="/#contact"
+                        class="inline-flex items-center gap-2 px-8 py-3.5 bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-200 rounded-full font-semibold text-sm hover:border-purple-300 dark:hover:border-purple-500/40 transition-all">
+                        Contact the founders
+                    </a>
                 </div>
-            </div>
+            </section>
 
-            <!-- Footer Buttons -->
-            <div class="text-center mt-12">
-                <a href="/" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    Back to Home
-                </a>
-            </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="py-10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm border-t border-gray-200 dark:border-slate-800">
+    <footer
+        class="py-10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm border-t border-gray-200 dark:border-slate-800">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
                 <div class="text-2xl font-bold gradient-text">RAOGY</div>
-                <div class="flex gap-3 text-sm">
-                    <a href="/privacy" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
-                    <span class="text-gray-400">•</span>
-                    <a href="/terms" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
-                    <span class="text-gray-400">•</span>
-                    <a href="/about" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">About</a>
+                <div class="flex flex-wrap justify-center gap-3 text-sm">
+                    <a href="/"
+                        class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</a>
+                    <span class="text-gray-400" aria-hidden="true">&bull;</span>
+                    <a href="/about"
+                        class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">About</a>
+                    <span class="text-gray-400" aria-hidden="true">&bull;</span>
+                    <a href="/privacy"
+                        class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
+                    <span class="text-gray-400" aria-hidden="true">&bull;</span>
+                    <a href="/terms"
+                        class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
                 </div>
             </div>
             <div class="border-t border-gray-200/50 dark:border-slate-800/50 pt-6 text-center">
                 <p class="text-gray-600 dark:text-gray-400 text-xs">
-                    © <span id="year"></span> RAOGY. Crafted with ❤️ for web, iOS &amp; Android.
+                    &copy; <span id="year"></span> RAOGY. iSell Back is built and operated by the founders listed above.
                 </p>
             </div>
         </div>
@@ -272,7 +1231,7 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
-        (function() {
+        (function () {
             const saved = localStorage.getItem('theme');
             if (saved === 'dark') {
                 document.documentElement.classList.add('dark');
@@ -283,4 +1242,5 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>

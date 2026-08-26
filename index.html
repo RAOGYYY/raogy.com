@@ -9,11 +9,11 @@
   <meta name="google-site-verification" content="cvHOg_E5N9mN7QBxOxtEQhNl-eEr8pM9hOWLvBB_8kw" />
 
   <!-- Primary SEO -->
-  <title>RAOGY - Web, iOS & Android App Developer | Full-Stack & Mobile Solutions</title>
+  <title>RAOGY — Home of iSell Back | Web, iOS &amp; Android App Developer</title>
   <meta name="description"
-    content="RAOGY - Full-stack web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js, UI/UX design & custom solutions.">
+    content="RAOGY builds iSell Back, a device recommerce platform for India now live on web and Android. Six shipped surfaces, a hardened multi-tenant backend, and a full public progress report. Also full-stack web, iOS and Android development.">
   <meta name="keywords"
-    content="RAOGY, web developer, iOS developer, Android developer, mobile app developer, Flutter developer, Kotlin developer, React developer, full stack developer, UI UX designer, Paani Boss, Snapscribe, Krexo, RewardNest">
+    content="RAOGY, iSell Back, iSellback, Buyback Elite, device recommerce India, sell MacBook India, sell iPad India, startup progress report, Kiro spec-driven development, web developer, iOS developer, Android developer, Flutter developer, React developer, Supabase, Paani Boss, Snapscribe, Krexo, RewardNest">
   <meta name="author" content="RAOGY">
   <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
@@ -22,13 +22,14 @@
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://raogy.com/">
-  <meta property="og:title" content="RAOGY - Web, iOS & Android App Developer">
+  <meta property="og:title" content="RAOGY — Home of iSell Back">
   <meta property="og:description"
-    content="Full-stack web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js & UI/UX design.">
+    content="iSell Back is a device recommerce platform for India, live on web and Android. Read the public engineering progress report: six shipped surfaces, 47 database migrations, 139 RLS policies.">
   <meta property="og:image" content="https://raogy.com/images/raogy.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RAOGY - Web, iOS & Android App Developer">
-  <meta name="twitter:description" content="Full-stack web & mobile app developer building modern sites and apps.">
+  <meta name="twitter:title" content="RAOGY — Home of iSell Back">
+  <meta name="twitter:description"
+    content="Device recommerce for India, live on web and Android. Full engineering progress report at raogy.com/isellback.">
   <meta name="twitter:image" content="https://raogy.com/images/raogy.jpg">
 
   <!-- Favicon -->
@@ -1055,18 +1056,58 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "RAOGY — Web & Mobile App Developer",
-      "description": "Professional web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js & UI/UX design.",
-      "url": "https://raogy.com/",
-      "logo": "https://raogy.com/images/logo.svg",
-      "image": "https://raogy.com/images/raogy.jpg",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://github.com/RAOGYYY",
-        "https://instagram.com/anwarul.20",
-        "https://facebook.com/anwarul.20",
-        "https://linkedin.com/in/raogy"
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://raogy.com/#service",
+          "name": "RAOGY — Web & Mobile App Developer",
+          "description": "Professional web developer and mobile app creator building modern websites, iOS apps, and Android apps. Flutter, Kotlin, React, Node.js & UI/UX design.",
+          "url": "https://raogy.com/",
+          "logo": "https://raogy.com/images/logo.svg",
+          "image": "https://raogy.com/images/raogy.jpg",
+          "priceRange": "$$",
+          "sameAs": [
+            "https://github.com/RAOGYYY",
+            "https://instagram.com/anwarul.20",
+            "https://facebook.com/anwarul.20",
+            "https://linkedin.com/in/raogy"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://raogy.com/isellback#organization",
+          "name": "iSell Back",
+          "alternateName": "Buyback Elite",
+          "description": "Device recommerce platform for India. Sell a MacBook or iPad with an instant server-issued quote, doorstep pickup by a verified agent, and payout after inspection.",
+          "url": "https://isellback.com",
+          "foundingLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "IN"
+            }
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "founder": [
+            { "@type": "Person", "name": "Anwar Rao", "jobTitle": "Co-Founder & CEO" },
+            { "@type": "Person", "name": "Abdul Mannan", "jobTitle": "Co-Founder & CTO" }
+          ],
+          "subjectOf": {
+            "@id": "https://raogy.com/isellback#report"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://raogy.com/isellback#report",
+          "url": "https://raogy.com/isellback",
+          "name": "iSell Back — Startup Progress Report",
+          "description": "Engineering and product progress report for iSell Back: six shipped surfaces, 47 database migrations, 119 Postgres functions, 139 row-level-security policies and a 6-job CI pipeline.",
+          "about": { "@id": "https://raogy.com/isellback#organization" },
+          "isPartOf": { "@id": "https://raogy.com/#service" }
+        }
       ]
     }
     </script>
@@ -1123,9 +1164,9 @@
           class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
           Portfolio
         </a>
-        <a href="/blog/"
+        <a href="/isellback"
           class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
-          Blog
+          Startup
         </a>
         <a href="/#contact"
           class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm font-medium tracking-wide">
@@ -1187,8 +1228,8 @@
           class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Services</a>
         <a href="/#portfolio"
           class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Portfolio</a>
-        <a href="/blog/"
-          class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Blog</a>
+        <a href="/isellback"
+          class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Startup</a>
         <a href="/#contact"
           class="mobile-menu-item text-left text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white py-3 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Contact</a>
       </div>
@@ -1341,6 +1382,154 @@
           <h3 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">24/7
           </h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm mt-2 font-medium">Support Available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Startup Spotlight — iSell Back ===== -->
+  <section id="startup" class="py-20 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-purple-50/70 via-sky-50/50 to-emerald-50/40 dark:from-purple-950/25 dark:via-slate-900/40 dark:to-emerald-950/15"
+      aria-hidden="true"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-6xl mx-auto">
+
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-400/20 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold uppercase tracking-[0.15em]">
+            <span class="relative flex h-2 w-2" aria-hidden="true">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Our startup &middot; live
+          </span>
+          <span
+            class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/70 dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-300 text-[11px] font-bold uppercase tracking-[0.15em]">
+            Progress report &middot; August 2026
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+
+          <!-- Left: the story -->
+          <div class="lg:col-span-3">
+            <h2 class="text-4xl md:text-5xl font-bold mb-3 leading-tight">
+              <span class="gradient-text">iSell Back</span>
+              <span class="block text-2xl md:text-3xl mt-1 text-gray-900 dark:text-white">Device recommerce, built for
+                India</span>
+            </h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-6"></div>
+
+            <p class="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-4">
+              Sell your MacBook or iPad from home. A price in seconds, an agent at your door,
+              and the payout transferred after inspection. Live on web at
+              <strong class="font-semibold">isellback.com</strong> and on Google Play, where the
+              app is still listed under its original name, BuyBack Elite.
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8">
+              It started as a single-business prototype with one Android app, and was rebuilt through
+              <strong class="font-semibold text-gray-800 dark:text-gray-200">spec-driven
+                development</strong> into six shipped surfaces on a hardened, multi-tenant backend:
+              server-authoritative pricing, row-level security on every table, and a CI pipeline that
+              gates each push. The full engineering record is on the progress page.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <a href="/isellback"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                Read the progress report
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a href="https://isellback.com" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-200 font-semibold text-sm hover:border-purple-300 dark:hover:border-purple-500/40 transition-all">
+                Open isellback.com
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.buybackelite.app&hl=en_IN" target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                </svg>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: verifiable metrics -->
+          <div class="lg:col-span-2">
+            <div
+              class="bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-6 shadow-sm backdrop-blur">
+              <h3 class="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400 mb-5">
+                Counted from the repository
+              </h3>
+              <dl class="grid grid-cols-2 gap-x-4 gap-y-5">
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">6</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Shipped apps<br>3 web
+                    &middot; 3 Android</dd>
+                </div>
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">47</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Database<br>migrations
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">139</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Row-level<br>security
+                    policies</dd>
+                </div>
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">116</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Hand-written<br>test
+                    files</dd>
+                </div>
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">119</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Postgres<br>functions
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-2xl font-extrabold gradient-text leading-none">194</dt>
+                  <dd class="text-[11px] font-semibold text-gray-500 dark:text-gray-400 mt-1.5">Kiro spec<br>tasks
+                    closed</dd>
+                </div>
+              </dl>
+
+              <div class="mt-6 pt-5 border-t border-gray-200 dark:border-white/[0.08]">
+                <div class="flex flex-wrap gap-1.5">
+                  <span
+                    class="px-2 py-0.5 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded text-[10px] font-medium">React
+                    18</span>
+                  <span
+                    class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-[10px] font-medium">Flutter</span>
+                  <span
+                    class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded text-[10px] font-medium">Supabase</span>
+                  <span
+                    class="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-[10px] font-medium">PostgreSQL</span>
+                  <span
+                    class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-[10px] font-medium">Razorpay</span>
+                  <span
+                    class="px-2 py-0.5 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded text-[10px] font-medium">Kiro
+                    specs</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-gray-500 dark:text-gray-500 mt-3 leading-relaxed px-1">
+              Every figure is a direct count from the source repository, not an estimate.
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1890,33 +2079,6 @@
     </div>
   </section>
 
-  <!-- Blog Preview Section -->
-  <section id="blog"
-    class="py-20 bg-gradient-to-br from-gray-50/60 to-purple-50/60 dark:from-slate-900/40 dark:to-slate-800/40 backdrop-blur-sm">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-        <div class="text-center md:text-left">
-          <h2 class="text-4xl md:text-5xl font-bold mb-2">Latest <span class="gradient-text">Articles</span></h2>
-          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto md:mx-0"></div>
-          <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm">Thoughts on mobile, web &amp; shipping real products
-          </p>
-        </div>
-        <a href="/blog/"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
-          View All Articles
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
-        </a>
-      </div>
-
-      <div id="blog-preview-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- Posts injected by JS from /blog/posts.json -->
-        <div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">Loading articles…</div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA Section — Deep space / twinkling stars -->
   <section class="relative py-24 overflow-hidden cta-cosmic">
     <div class="absolute inset-0 cta-stars-1"></div>
@@ -2307,51 +2469,6 @@
         portrait.style.transform =
           `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
       });
-    })();
-
-    // =========================
-    // Blog preview loader (fetches /blog/posts.json)
-    // =========================
-    (function loadBlogPreview() {
-      const grid = document.getElementById('blog-preview-grid');
-      if (!grid) return;
-      window.raogyLoadPublishedPosts()
-        .then(all => {
-          const posts = all
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 3);
-          const data = { posts };
-          if (!posts.length) {
-            grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">No articles yet — check back soon.</div>';
-            return;
-          }
-          grid.innerHTML = posts.map(p => `
-                        <a href="/blog/${encodeURIComponent(p.slug)}" class="tilt-3d group block bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300">
-                            <div class="h-36 bg-gradient-to-br from-purple-500 via-blue-500 to-pink-500 relative overflow-hidden">
-                                ${p.cover ? `<img src="${p.cover}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">` : ''}
-                                <div class="absolute top-2 left-2 flex flex-wrap gap-1">
-                                    ${(p.tags || []).slice(0, 2).map(t => `<span class="px-2 py-0.5 text-[10px] font-semibold rounded bg-white/90 dark:bg-slate-900/80 text-gray-800 dark:text-gray-200 backdrop-blur">${t}</span>`).join('')}
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-[11px] uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold mb-1.5 flex items-center gap-2">
-                                    <span>${new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                                    <span>•</span>
-                                    <span>${p.readTime || '3 min read'}</span>
-                                </div>
-                                <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1.5 leading-snug group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">${p.title}</h3>
-                                <p class="text-gray-600 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">${p.excerpt || ''}</p>
-                                <span class="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-purple-600 dark:text-purple-400">
-                                    Read more
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                            </div>
-                        </a>
-                    `).join('');
-        })
-        .catch(() => {
-          grid.innerHTML = '<div class="text-center col-span-full py-8 text-gray-500 dark:text-gray-400 text-sm">Unable to load articles right now.</div>';
-        });
     })();
 
     // =========================

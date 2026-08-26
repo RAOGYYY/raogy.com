@@ -41,3 +41,7 @@ Thumbs.db
 *.tmp
 temp/
 tmp/
+# Private credit-application material — must never be published.
+# Contains the funding narrative and unfixed-security notes that are safe for a
+# reviewer's eyes but not for a public repo or a public URL.
+APPLICATION-NOTES.md
