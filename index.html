@@ -36,6 +36,12 @@
   <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="apple-touch-icon" href="/images/logo.svg">
 
+  <!-- Identity verification (rel="me"). Declares that the same operator controls
+       raogy.com, isellback.com and the linked accounts. Only meaningful when the
+       other end links back, so isellback.com carries the reciprocal rel="me". -->
+  <link rel="me" href="https://isellback.com">
+  <link rel="me" href="https://github.com/RAOGYYY">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
@@ -1074,10 +1080,32 @@
           ]
         },
         {
+          "@type": "Person",
+          "@id": "https://raogy.com/#person",
+          "name": "Anwar Rao",
+          "alternateName": "RAOGY",
+          "url": "https://raogy.com/",
+          "image": "https://raogy.com/assets/RAOGY.jpg",
+          "jobTitle": "Co-Founder & CEO, iSell Back",
+          "sameAs": [
+            "https://github.com/RAOGYYY",
+            "https://instagram.com/anwarul.20",
+            "https://facebook.com/anwarul.20",
+            "https://linkedin.com/in/raogy",
+            "https://isellback.com"
+          ],
+          "founderOf": { "@id": "https://raogy.com/isellback#organization" }
+        },
+        {
           "@type": "Organization",
           "@id": "https://raogy.com/isellback#organization",
           "name": "iSell Back",
-          "alternateName": "Buyback Elite",
+          "alternateName": ["Buyback Elite", "BuyBack Elite"],
+          "legalName": "Macintosh Enterprise",
+          "sameAs": [
+            "https://isellback.com",
+            "https://play.google.com/store/apps/details?id=com.buybackelite.app"
+          ],
           "description": "Device recommerce platform for India. Sell a MacBook or iPad with an instant server-issued quote, doorstep pickup by a verified agent, and payout after inspection.",
           "url": "https://isellback.com",
           "foundingLocation": {
@@ -1092,9 +1120,10 @@
             "name": "India"
           },
           "founder": [
-            { "@type": "Person", "name": "Anwar Rao", "jobTitle": "Co-Founder & CEO" },
+            { "@id": "https://raogy.com/#person" },
             { "@type": "Person", "name": "Abdul Mannan", "jobTitle": "Co-Founder & CTO" }
           ],
+          "parentOrganization": { "@id": "https://raogy.com/#service" },
           "subjectOf": {
             "@id": "https://raogy.com/isellback#report"
           }
@@ -1527,6 +1556,8 @@
 
             <p class="text-[11px] text-gray-500 dark:text-gray-500 mt-3 leading-relaxed px-1">
               Every figure is a direct count from the source repository, not an estimate.
+              Built and operated by us &mdash; <a href="/isellback#verify-h"
+                class="text-purple-600 dark:text-purple-400 font-medium hover:underline">how to verify that</a>.
             </p>
           </div>
 
