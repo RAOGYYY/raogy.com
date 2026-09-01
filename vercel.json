@@ -2,7 +2,13 @@
   "redirects": [
     {
       "source": "/blog/post",
-      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>.*)" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>.*)"
+        }
+      ],
       "destination": "/blog/:slug",
       "permanent": true
     }
@@ -67,6 +73,26 @@
     {
       "source": "/rewardnest/delete-account",
       "destination": "/rewardnest/delete-account.html"
+    },
+    {
+      "source": "/golden-sparrow/privacy",
+      "destination": "/golden-sparrow/privacy.html"
+    },
+    {
+      "source": "/golden-sparrow/terms",
+      "destination": "/golden-sparrow/terms.html"
+    },
+    {
+      "source": "/golden-sparrow/delete-account",
+      "destination": "/golden-sparrow/delete-account.html"
+    },
+    {
+      "source": "/goldensparrow",
+      "destination": "/golden-sparrow/index.html"
+    },
+    {
+      "source": "/goldensparrow/:path*",
+      "destination": "/golden-sparrow/:path*"
     }
   ],
   "headers": [

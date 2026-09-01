@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.goldensparrow.app",
+      "sha256_cert_fingerprints": [
+        "6A:5A:0C:F2:3F:14:BB:95:60:4E:4D:EB:6C:ED:F2:3C:15:9F:2F:58:ED:F0:96:20:6D:8D:51:BD:96:2C:CA:5F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.goldensparrow.app.dev",
+      "sha256_cert_fingerprints": [
+        "6A:5A:0C:F2:3F:14:BB:95:60:4E:4D:EB:6C:ED:F2:3C:15:9F:2F:58:ED:F0:96:20:6D:8D:51:BD:96:2C:CA:5F"
+      ]
+    }
+  }
+]
