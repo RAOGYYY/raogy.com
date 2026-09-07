@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinbrook — Detective Logic Puzzle Game for Android</title>
+    <meta name="description"
+        content="Tinbrook is a free offline detective logic puzzle. Question the suspects, catch the lie, close the case. 52 cases, a fresh case every day, no timers, no ads and nothing to buy.">
+    <meta name="keywords"
+        content="detective game, logic puzzle, deduction game, whodunit, mystery game, brain teaser, riddle game, offline puzzle game, daily puzzle, knights and knaves, single player puzzle, no ads game, crime puzzle, reasoning game">
+    <link rel="canonical" href="https://raogy.com/tinbrook/">
+    <meta property="og:title" content="Tinbrook — Detective Logic Puzzle Game for Android">
+    <meta property="og:description"
+        content="Somebody at the table is lying. A free offline deduction puzzle: 52 cases, a fresh case every day, no timers, no ads and nothing to buy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raogy.com/tinbrook/">
+    <meta name="robots" content="index, follow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#B5352A',
+                        secondary: '#C08C2E',
+                        accent: '#33456B',
+                    }
+                }
+            }
+        }
+    </script>
+    <!--
+      JSON-LD as its own top-level script, deliberately.
+
+      The equivalent block on the RewardNest page sits INSIDE the tailwind.config
+      script, which makes it a syntax error in a JavaScript string rather than
+      structured data, and no crawler has ever read it. Keep this one separate.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Tinbrook",
+      "alternateName": "Tinbrook: Detective Puzzle",
+      "description": "A detective logic puzzle about reading testimony. Question the suspects, weigh what each of them says, and name the culprit when their statements can no longer all be true. 52 cases across six chapters, plus a fresh case every day.",
+      "operatingSystem": "Android",
+      "applicationCategory": "GameApplication",
+      "genre": ["Puzzle", "Logic", "Mystery"],
+      "gamePlatform": "Android",
+      "playMode": "SinglePlayer",
+      "contentRating": "Everyone",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.tinbrook.game",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.tinbrook.game",
+      "author": {
+        "@type": "Person",
+        "name": "RAOGY",
+        "url": "https://raogy.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RAOGY",
+        "url": "https://raogy.com/"
+      },
+      "privacyPolicy": "https://raogy.com/tinbrook/privacy"
+    }
+    </script>
+</head>
+
+<body class="bg-gradient-to-br from-stone-50 to-amber-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/tinbrook/" class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 3a4.2 4.2 0 00-2.35 7.68L8.1 20.5h7.8l-1.55-9.82A4.2 4.2 0 0012 3z" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Tinbrook</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.tinbrook.game" target="_blank" rel="noopener"
+                    class="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-800 transition">
+                    Get it on Google Play
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-4xl mx-auto px-4 pt-16 pb-12 text-center">
+        <p class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-4">A detective puzzle</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
+            Somebody at the table is lying.
+        </h1>
+        <p class="text-xl text-gray-600 mt-5 max-w-2xl mx-auto leading-relaxed">
+            Your job is to work out who. Tinbrook is a logic puzzle about reading testimony — no timers, no reflexes, no
+            luck. Just evidence and reasoning.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3 justify-center">
+            <a href="https://play.google.com/store/apps/details?id=com.tinbrook.game" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg hover:bg-red-800 transition">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                </svg>
+                Download free
+            </a>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 justify-center text-xs">
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">Free</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No ads</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No purchases</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">Plays offline</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No account</span>
+        </div>
+    </section>
+
+    <!-- What makes it different -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-3">What makes it different</h2>
+        <p class="text-gray-600 text-center max-w-2xl mx-auto mb-10">
+            There are a lot of puzzle games. Here is what this one does that the others do not.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">No timers, ever</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    No countdown, no lives, no energy bar. A case waits for you to think about it. Stars come from how few
+                    questions you spend, never from how fast you were.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Deduction, not guessing</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    Every case has exactly one answer and a clean line of reasoning that reaches it — proved by an
+                    automated solver before the case ever ships. If you are stuck, the answer is on the page.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Six kinds of witness</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    The Liar is the easy one. The Alternator tells the truth, then a lie, then the truth. The Confused
+                    witness is completely honest and completely wrong. Each one is predictable once you know them.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">A fresh case every day</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    One case a day, the same one for every player in the world, with a streak to keep and a spoiler-free
+                    result you can share. Seven kinds of day, from a gentle warm-up to one with no help at all.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Search the scene</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    Some cases open on a room you can examine. Find what somebody left behind, read the forensics, and
+                    catch a suspect in a contradiction they cannot talk their way out of.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Nothing to buy, nothing tracked</h3>
+                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
+                    No adverts, no in-app purchases, no sign-in, no analytics and no tracking. Coins are earned by
+                    playing and the only thing they unlock is more cases.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- How it plays -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">How it plays</h2>
+            <ol class="space-y-5">
+                <li class="flex gap-4">
+                    <span
+                        class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                    <p class="text-gray-700 leading-relaxed"><strong>Read the statements.</strong> Everyone at the table
+                        says something. Some of them are lying, and which kind of person each one is decides how.</p>
+                </li>
+                <li class="flex gap-4">
+                    <span
+                        class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                    <p class="text-gray-700 leading-relaxed"><strong>Ask the right question.</strong> You can question
+                        whoever you like — but every question costs, and a perfect solve spends as few as possible.</p>
+                </li>
+                <li class="flex gap-4">
+                    <span
+                        class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">3</span>
+                    <p class="text-gray-700 leading-relaxed"><strong>Mark your notebook.</strong> Tick and cross your way
+                        through who is honest, who lies and who did it. The game never checks these — it is your scratch
+                        paper.</p>
+                </li>
+                <li class="flex gap-4">
+                    <span
+                        class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">4</span>
+                    <p class="text-gray-700 leading-relaxed"><strong>Make the accusation.</strong> Fewer questions, more
+                        stars. Getting a name wrong costs you one question and nothing else — it never ends the case,
+                        because you are meant to experiment.</p>
+                </li>
+            </ol>
+            <div class="bg-red-50 border-l-4 border-primary p-4 rounded-r-lg mt-8">
+                <p class="text-gray-700 text-sm">
+                    <strong>Not every case asks the same question.</strong> Most ask who did it. Some ask which of them
+                    always lies. Some only ask you to find the two statements that cannot both be true.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The town -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
+            <h2 class="text-3xl font-bold text-gray-900 mb-3">Fifty-two cases, six chapters</h2>
+            <p class="text-gray-700 leading-relaxed">
+                It starts with a changed label on a medicine bottle in the corner shop and ends with a cellar unlocked at
+                four in the morning at Hollis Manor. The town starts simple and gets complicated: new kinds of witness
+                arrive one at a time, and by the last chapter you will be drawing a grid on paper.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3 mt-6">
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">The Corner Shop</p>
+                    <p class="text-gray-500 text-xs mt-0.5">Honest and Liar</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">Kettle Street</p>
+                    <p class="text-gray-500 text-xs mt-0.5">The Alternator arrives</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">Tinbrook School</p>
+                    <p class="text-gray-500 text-xs mt-0.5">Somebody here is mistaken</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">The Village Hall</p>
+                    <p class="text-gray-500 text-xs mt-0.5">Honest unless guilty</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">The Post Office</p>
+                    <p class="text-gray-500 text-xs mt-0.5">Rooms to search</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 rounded-xl px-4 py-3">
+                    <p class="font-semibold text-gray-900 text-sm">Hollis Manor</p>
+                    <p class="text-gray-500 text-xs mt-0.5">Nobody speaks against their betters</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-3">The town remembers</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Twenty residents, each with a trade and a way of talking. Learn that the locksmith alternates and that the
+                barber will tell you anything, and case forty goes faster than case five. That is the only way you get
+                stronger in this game — you never get better tools, you get to know the town.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-3">
+                Name somebody wrongly and they will remember it. That one is not undoable.
+            </p>
+        </div>
+    </section>
+
+    <!-- Legal / links -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Policies and links</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <a href="/tinbrook/privacy"
+                class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Privacy Policy</h3>
+                <p class="text-gray-600 text-sm mt-2">What the game does and does not collect</p>
+            </a>
+
+            <a href="/tinbrook/terms"
+                class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Terms of Service</h3>
+                <p class="text-gray-600 text-sm mt-2">Rules for playing the game</p>
+            </a>
+
+            <a href="/tinbrook/delete-account"
+                class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Delete your data</h3>
+                <p class="text-gray-600 text-sm mt-2">No account to close — here is what to do</p>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.tinbrook.game" target="_blank" rel="noopener"
+                class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Google Play</h3>
+                <p class="text-gray-600 text-sm mt-2">Download the game</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 3a4.2 4.2 0 00-2.35 7.68L8.1 20.5h7.8l-1.55-9.82A4.2 4.2 0 0012 3z" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">Tinbrook</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        A free offline detective logic puzzle. Question the suspects, catch the lie, close the case. No
+                        timers, no ads and nothing to buy.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tinbrook/privacy" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="/tinbrook/terms" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="/tinbrook/delete-account" class="hover:text-white transition">Delete your data</a>
+                        </li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.tinbrook.game" target="_blank"
+                                rel="noopener" class="hover:text-white transition">Google Play listing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 <a href="mailto:contact@raogy.com"
+                                class="hover:text-white transition">contact@raogy.com</a>
+                        </li>
+                        <li>🌐 raogy.com/tinbrook</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2026 Tinbrook. All rights reserved. | A product by <a href="https://raogy.com"
+                        class="text-secondary hover:underline">RAOGY</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
