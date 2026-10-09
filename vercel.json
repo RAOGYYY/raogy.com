@@ -11,6 +11,11 @@
       ],
       "destination": "/blog/:slug",
       "permanent": true
+    },
+    {
+      "source": "/beatflak/privacy",
+      "destination": "/beatflak/privacy-policy",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -113,10 +118,6 @@
     {
       "source": "/beatflak/terms",
       "destination": "/beatflak/terms.html"
-    },
-    {
-      "source": "/beatflak/privacy",
-      "destination": "/beatflak/privacy-policy.html"
     }
   ],
   "headers": [
