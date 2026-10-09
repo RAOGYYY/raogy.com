@@ -1,6 +1,12 @@
 # Enable URL Rewriting
 RewriteEngine On
 
+# Short alias: the BeatFlak policy file is privacy-policy.html (the game build links
+# to that exact name), so /beatflak/privacy has no privacy.html to fall back on.
+# Must sit above the root rule, which would otherwise rewrite it to privacy.html.
+# Mirrors the /beatflak/privacy rewrite in vercel.json.
+RewriteRule ^beatflak/privacy/?$ beatflak/privacy-policy.html [NC,L]
+
 # Remove .html extension for root files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -13,15 +19,15 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 # noticed it was missing from both.
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook)/([^\.]+)$ $1/$2.html [NC,L]
+RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook|beatflak)/([^\.]+)$ $1/$2.html [NC,L]
 
 # Redirect .html to clean URLs for root files
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
 RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
 
 # Redirect .html to clean URLs for subdirectories
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook)/([^.]+)\.html\ HTTP
-RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook)/([^.]+)\.html$ /$1/$2 [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook|beatflak)/([^.]+)\.html\ HTTP
+RewriteRule ^(screenscribe|paaniboss|rewardnest|snapscribe|krexo|isellback|golden-sparrow|tinbrook|beatflak)/([^.]+)\.html$ /$1/$2 [R=301,L]
 
 # Force HTTPS (uncomment when you have SSL)
 # RewriteCond %{HTTPS} off

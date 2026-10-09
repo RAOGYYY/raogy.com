@@ -105,6 +105,18 @@
     {
       "source": "/tinbrook/delete-account",
       "destination": "/tinbrook/delete-account.html"
+    },
+    {
+      "source": "/beatflak/privacy-policy",
+      "destination": "/beatflak/privacy-policy.html"
+    },
+    {
+      "source": "/beatflak/terms",
+      "destination": "/beatflak/terms.html"
+    },
+    {
+      "source": "/beatflak/privacy",
+      "destination": "/beatflak/privacy-policy.html"
     }
   ],
   "headers": [

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatFlak: Music Shooter — Neon Vertical Shooter Game for Android</title>
+    <meta name="description"
+        content="BeatFlak is a free neon vertical shooter where every explosion plays music. 15 stages, 15 remixes, 10 boss types and 7 fighters. Works offline, no ads and nothing to buy.">
+    <meta name="keywords"
+        content="music shooter, vertical shooter, shoot em up, arcade shooter, neon game, rhythm shooter, boss rush, offline game, no ads game, single player game, android game">
+    <link rel="canonical" href="https://raogy.com/beatflak/">
+    <link rel="icon" type="image/png" href="/beatflak/images/icon-128.png">
+    <meta property="og:title" content="BeatFlak: Music Shooter — every explosion is music">
+    <meta property="og:description"
+        content="A neon vertical shooter where every explosion plays music. 15 stages, 15 remixes, 10 boss types and 7 fighters. Free, offline and no ads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raogy.com/beatflak/">
+    <meta property="og:image" content="https://raogy.com/beatflak/images/feature-graphic.jpg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="500">
+    <meta property="og:image:alt" content="BeatFlak: every explosion is music">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BeatFlak: Music Shooter — every explosion is music">
+    <meta name="twitter:description"
+        content="A neon vertical shooter where every explosion plays music. Free, offline and no ads.">
+    <meta name="twitter:image" content="https://raogy.com/beatflak/images/feature-graphic.jpg">
+    <meta name="robots" content="index, follow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0E7490',
+                        secondary: '#DB2777',
+                        accent: '#2E1065',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- JSON-LD kept as its own top-level script, like the Tinbrook page. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "BeatFlak",
+      "alternateName": "BeatFlak: Music Shooter",
+      "description": "A neon vertical shooter whose soundtrack is played live by your fight. Every machine you destroy rings a note in key, combos climb into melodies, and each region's song changes once you free it.",
+      "image": "https://raogy.com/beatflak/images/feature-graphic.jpg",
+      "operatingSystem": "Android 7.0+",
+      "applicationCategory": "GameApplication",
+      "genre": ["Arcade", "Shooter", "Music"],
+      "gamePlatform": "Android",
+      "playMode": "SinglePlayer",
+      "softwareVersion": "5.2.0",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.beatflak.game",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.beatflak.game",
+      "author": {
+        "@type": "Person",
+        "name": "RAOGY",
+        "url": "https://raogy.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RAOGY",
+        "url": "https://raogy.com/"
+      },
+      "privacyPolicy": "https://raogy.com/beatflak/privacy-policy"
+    }
+    </script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-cyan-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/beatflak/" class="flex items-center space-x-3">
+                    <img src="/beatflak/images/icon-128.png" width="128" height="128" alt=""
+                        class="w-10 h-10 rounded-xl">
+                    <span class="text-xl font-bold text-gray-900">BeatFlak</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.beatflak.game" target="_blank" rel="noopener"
+                    class="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-cyan-800 transition">
+                    Get it on Google Play
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-4xl mx-auto px-4 pt-14 pb-12 text-center">
+        <img src="/beatflak/images/icon-512.png" width="512" height="512" alt="BeatFlak icon"
+            class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-3xl shadow-xl">
+        <p class="text-secondary font-semibold tracking-[0.2em] text-xs uppercase mt-7 mb-3">A neon music shooter</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">BeatFlak</h1>
+        <p class="text-2xl font-semibold text-primary mt-3">Every explosion is music.</p>
+        <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+            A neon vertical shooter where every explosion plays music. Offline. No ads.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3 justify-center">
+            <a href="https://play.google.com/store/apps/details?id=com.beatflak.game" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg hover:bg-cyan-800 transition">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                </svg>
+                Get it on Google Play
+            </a>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 justify-center text-xs">
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">Free</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No ads</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No in-app
+                purchases</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">Works offline</span>
+            <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1.5 rounded-full">No data
+                collected</span>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">About the game</h2>
+            <p class="text-gray-700 leading-relaxed">
+                BeatFlak is a neon vertical shooter whose soundtrack is played live by your fight. Every machine you
+                destroy rings a note in key, combos climb into melodies, and each region's song changes once you free it.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-3">
+                Nothing is pre-recorded: every sprite and every sound in the game is generated in code. Steering is
+                relative drag with auto-fire, built for one thumb, and the whole game plays offline.
+            </p>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Screenshots</h2>
+        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible"
+            role="region" aria-label="BeatFlak screenshots" tabindex="0">
+            <img src="/beatflak/images/screenshot-01-title.jpg" width="540" height="960" loading="lazy"
+                alt="BeatFlak title screen over a neon coastline"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-02-coral-coast.jpg" width="540" height="960" loading="lazy"
+                alt="Stage 1, Coral Coast: a fighter firing over the sea"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-03-boss-frost-cantor.jpg" width="540" height="960" loading="lazy"
+                alt="Frost Cantor boss fight on the ice stage Whiteout"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-04-boss-tempest.jpg" width="540" height="960" loading="lazy"
+                alt="The Tempest boss fight in the Stormfront stage"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-05-the-divide.jpg" width="540" height="960" loading="lazy"
+                alt="Stage 14, The Divide, with a lightning weapon"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-06-hub.jpg" width="540" height="960" loading="lazy"
+                alt="Home screen with the next stage, game modes and missions"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-07-shop.jpg" width="540" height="960" loading="lazy"
+                alt="In-game shop where items cost shards earned by playing"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+            <img src="/beatflak/images/screenshot-08-hangar-upgrades.jpg" width="540" height="960" loading="lazy"
+                alt="Hangar upgrades bought with shards"
+                class="w-44 sm:w-52 lg:w-full h-auto shrink-0 snap-start rounded-2xl shadow-lg">
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">Features</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Fly through the flak</h3>
+                <ul class="text-gray-600 text-sm mt-3 space-y-2 list-disc pl-5 leading-relaxed">
+                    <li>15 stages across Earth, Mars and deep space, from a coral coast and a city in blackout to
+                        storms, ice fields and volcanic rifts, each with its own hazard</li>
+                    <li>15 remix stages with two twists each</li>
+                    <li>10 kinds of Conductor bosses that fight in phases and have parts to break</li>
+                    <li>4 primary weapons that power up as you fly, Nova bombs and 11 special abilities</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Build your squadron</h3>
+                <ul class="text-gray-600 text-sm mt-3 space-y-2 list-disc pl-5 leading-relaxed">
+                    <li>7 fighters, each with its own role, perk and signature ability</li>
+                    <li>9 permanent hangar upgrades, one-run boosts and Phoenix Cores for a second chance</li>
+                    <li>Earn shards by playing and spend them in the hangar and the shop. No real-money purchases and
+                        no ads.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">More ways to play</h3>
+                <ul class="text-gray-600 text-sm mt-3 space-y-2 list-disc pl-5 leading-relaxed">
+                    <li>Campaign, endless Surge, the Daily Signal and Boss Rush</li>
+                    <li>4 difficulties, from Relaxed to Nightmare</li>
+                    <li>Daily and weekly missions, 38 achievements and 50 pilot ranks</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900 text-lg">Made for phones</h3>
+                <ul class="text-gray-600 text-sm mt-3 space-y-2 list-disc pl-5 leading-relaxed">
+                    <li>Relative-drag steering with auto-fire, built for one thumb</li>
+                    <li>Left-handed layout and accessibility options: reduced flashes, high-contrast bullets, a
+                        visible hitbox, bullet focus and Auto Nova</li>
+                    <li>Plays fully offline</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Game info -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Game info</h2>
+            <dl class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Price</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">Free</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Ads</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">None</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">In-app purchases</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">None</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Internet</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">Works offline</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Data collected</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">None</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Requires</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">Android 7.0+</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Version</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">5.2.0</dd>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <dt class="text-gray-500 text-xs">Developer</dt>
+                    <dd class="font-semibold text-gray-900 text-sm mt-0.5">RAOGY</dd>
+                </div>
+            </dl>
+            <p class="text-gray-600 text-sm mt-6 leading-relaxed">
+                Shards, the in-game currency, are earned by playing and cannot be bought. The only permission the game
+                asks for is vibration, and your progress and settings stay on your phone.
+            </p>
+        </div>
+    </section>
+
+    <!-- Legal / links -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Policies and links</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <a href="/beatflak/privacy-policy"
+                class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Privacy Policy</h3>
+                <p class="text-gray-600 text-sm mt-2">Nothing is collected, and how to delete local data</p>
+            </a>
+
+            <a href="/beatflak/terms"
+                class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Terms of Service</h3>
+                <p class="text-gray-600 text-sm mt-2">Rules for playing the game</p>
+            </a>
+
+            <a href="mailto:contact@raogy.com"
+                class="bg-gradient-to-br from-violet-50 to-violet-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Contact</h3>
+                <p class="text-gray-600 text-sm mt-2">contact@raogy.com</p>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.beatflak.game" target="_blank" rel="noopener"
+                class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-2xl shadow-md hover:shadow-xl transition text-center">
+                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                    </svg>
+                </div>
+                <h3 class="font-bold text-gray-900">Google Play</h3>
+                <p class="text-gray-600 text-sm mt-2">Download the game</p>
+            </a>
+
+        </div>
+        <p class="text-center text-gray-600 text-sm mt-8">
+            Questions or ideas? Write to
+            <a href="mailto:contact@raogy.com" class="text-primary font-semibold hover:underline">contact@raogy.com</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/beatflak/images/icon-128.png" width="128" height="128" alt=""
+                            class="w-10 h-10 rounded-xl" loading="lazy">
+                        <span class="text-xl font-bold">BeatFlak</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        A free neon vertical shooter where every explosion plays music. Works offline, with no ads and
+                        nothing to buy.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/beatflak/privacy-policy" class="hover:text-white transition">Privacy Policy</a>
+                        </li>
+                        <li><a href="/beatflak/terms" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.beatflak.game" target="_blank"
+                                rel="noopener" class="hover:text-white transition">Google Play listing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 <a href="mailto:contact@raogy.com"
+                                class="hover:text-white transition">contact@raogy.com</a>
+                        </li>
+                        <li>🌐 raogy.com/beatflak</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2026 BeatFlak. All rights reserved. | A product by <a href="https://raogy.com"
+                        class="text-pink-400 hover:underline">RAOGY</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
